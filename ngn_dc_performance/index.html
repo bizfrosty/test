@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DC Performance Детейлинг · Ногинск, детейлинг в Ногинске</title>
+<meta name="description" content="Детейлинг, плёнки архитектурные, декоративные, защитные. Ногинск, 1-й Текстильный пер., 11А. 5,0 на Яндекс Картах, 50 отзывов.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2308090b'/%3E%3Cg transform='translate(4 4)' fill='none' stroke='%235ccbff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z'/%3E%3Cpath d='m8.5 12 2.5 2.5 4.5-5'/%3E%3C/g%3E%3C/svg%3E">
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --acc:#5ccbff; --acc-ink:#04101a; --acc-rgb:92,203,255;
+  --bg:#08090b; --bg2:#0e1013; --card:#13161a; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
+  --ink:#f2f1ec; --ink2:#b4b7bd; --mute:#767b84; --paper:#efece4; --paper-ink:#17150f;
+  --head:'Tektur',system-ui,sans-serif; --sans:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1); --out:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--acc);color:var(--acc-ink)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.H{font-family:var(--head);font-weight:900;font-stretch:78%;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
+.lab{font:600 11.5px/1.25 var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.acc{color:var(--acc)}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:0 30px;border-radius:2px;font:700 13px/1 var(--head);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;transition:transform .35s var(--out),background .3s,box-shadow .3s,color .3s;white-space:nowrap;overflow:hidden;isolation:isolate}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .35s var(--out)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-acc{background:var(--acc);color:var(--acc-ink)}
+.btn-acc:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.65) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--out)}
+.btn-acc:hover:after{transform:translateX(120%)}
+.btn-ghost{box-shadow:inset 0 0 0 1px var(--line2);color:var(--ink);background:rgba(8,9,11,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--acc);color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+/* шум плёнки поверх всего */
+.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes grain{0%{background-position:0 0}20%{background-position:-37px 21px}40%{background-position:29px -43px}60%{background-position:-18px -11px}80%{background-position:41px 33px}100%{background-position:0 0}}
+
+/* превью */
+.top.solid .demo-strip{display:none}
+.demo-strip{position:relative;z-index:50;background:var(--acc);color:var(--acc-ink);font:600 12.5px/1.4 var(--sans);text-align:center;padding:8px 16px}
+.demo-strip a{color:inherit}
+.wm{position:fixed;inset:-25%;z-index:90;pointer-events:none;display:flex;flex-wrap:wrap;gap:70px 90px;align-content:center;justify-content:center;transform:rotate(-24deg);opacity:.06;font:700 19px var(--head);letter-spacing:.06em;color:#fff;overflow:hidden;contain:strict}
+.wm span{white-space:nowrap}
+
+/* курсор */
+.cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--acc);border-radius:50%;z-index:100;pointer-events:none;transition:width .3s var(--out),height .3s var(--out),margin .3s var(--out),background .3s,opacity .3s;opacity:0}
+.cur.on{opacity:1}
+.cur.big{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(var(--acc-rgb),.15)}
+
+/* шапка */
+.top{position:fixed;top:0;left:0;right:0;z-index:40;transition:background .4s,border-color .4s,transform .4s var(--out);border-bottom:1px solid transparent}
+.top.solid{background:rgba(8,9,11,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:30px;height:76px}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none}
+.logo i{position:relative;width:40px;height:40px;display:grid;place-items:center;color:var(--acc)}
+.logo i:before,.logo i:after{content:"";position:absolute;width:10px;height:10px;border:1.5px solid var(--acc)}
+.logo i:before{left:0;top:0;border-right:0;border-bottom:0}
+.logo i:after{right:0;bottom:0;border-left:0;border-top:0}
+.logo i svg{width:20px;height:20px}
+.logo b{display:block;font:900 21px/1 var(--head);font-stretch:85%;letter-spacing:.1em;text-transform:uppercase}
+.logo small{display:block;font:500 10.5px/1.2 var(--head);letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-top:5px}
+.nav{display:flex;gap:30px;margin-left:auto;font:600 12px/1 var(--head);letter-spacing:.14em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--ink2);transition:color .2s;position:relative}
+.nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1.5px;background:var(--acc);transition:right .35s var(--out)}
+.nav a:hover{color:var(--ink)}.nav a:hover:after{right:0}
+.top .btn{min-height:46px;padding:0 22px;font-size:12px}
+
+/* ===== первый экран: в боксе включается свет ===== */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;isolation:isolate;background:#000}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero picture{z-index:-3;animation:lights 2.6s linear both}
+.hero picture img{animation:settle 9s var(--out) both}
+@keyframes lights{0%{filter:brightness(0)}7%{filter:brightness(.55)}9%{filter:brightness(.04)}15%{filter:brightness(.7)}17%{filter:brightness(.12)}21%{filter:brightness(.9) saturate(.6)}23%{filter:brightness(.35)}34%,100%{filter:brightness(1)}}
+@keyframes settle{from{transform:scale(1.14)}to{transform:scale(1.02)}}
+.hero .flash{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(120% 60% at 50% -10%,rgba(220,235,255,.55),transparent 60%);opacity:0;animation:flash 2.6s linear both}
+@keyframes flash{7%{opacity:.8}9%{opacity:0}15%{opacity:.9}17%{opacity:.1}21%{opacity:1}34%{opacity:.25}100%{opacity:0}}
+.hero .shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(8,9,11,.94) 0%,rgba(8,9,11,.72) 30%,rgba(8,9,11,.05) 64%),linear-gradient(0deg,var(--bg) 0%,rgba(8,9,11,0) 34%),linear-gradient(180deg,rgba(8,9,11,.7) 0%,rgba(8,9,11,0) 22%)}
+.hero .glare{position:absolute;inset:-20% -60%;z-index:-1;pointer-events:none;background:linear-gradient(108deg,transparent 42%,rgba(255,255,255,.16) 48%,rgba(255,255,255,.04) 50%,transparent 56%);mix-blend-mode:screen;transform:translateX(-70%);animation:glare 2.4s 2.4s var(--ease) both}
+@keyframes glare{to{transform:translateX(70%)}}
+.hud{position:absolute;inset:120px 40px 40px;z-index:1;pointer-events:none}
+.hud i{position:absolute;width:30px;height:30px;border:0 solid var(--acc);opacity:0;animation:hud .6s 1.9s var(--out) both}
+.hud i:nth-child(1){left:0;top:0;border-width:2px 0 0 2px}.hud i:nth-child(2){right:0;top:0;border-width:2px 2px 0 0}
+.hud i:nth-child(3){left:0;bottom:0;border-width:0 0 2px 2px}.hud i:nth-child(4){right:0;bottom:0;border-width:0 2px 2px 0}
+@keyframes hud{from{opacity:0;transform:scale(1.6)}to{opacity:1;transform:none}}
+.hud .ruler{position:absolute;right:-2px;top:20%;bottom:20%;width:12px;background:repeating-linear-gradient(180deg,var(--line2) 0 1px,transparent 1px 14px);opacity:0;animation:fade 1s 2.2s both}
+.hud .gps{position:absolute;right:26px;bottom:6px;opacity:0;animation:fade 1s 2.3s both}
+.hud .live{position:absolute;right:0;top:-2px;display:flex;align-items:center;gap:10px;padding:9px 14px;background:rgba(8,9,11,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line2);color:var(--ink);opacity:0;animation:fade .8s 2.4s both;pointer-events:auto}
+.live b{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:ping 1.8s infinite}
+.live.off b{background:var(--mute);animation:none}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(61,220,132,0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.hero .wrap{position:absolute;left:0;right:0;bottom:0;padding-bottom:64px;z-index:2}
+.kick{display:flex;gap:10px 22px;flex-wrap:wrap;margin-bottom:24px}
+.kick span:first-child{color:var(--acc)}
+.hero h1{font-size:min(clamp(78px,13.2vw,230px),calc((min(100vw,1320px) - 80px) * .64 / (var(--L,9) * .57)));margin-bottom:28px}
+.ln{display:block;overflow:hidden;padding-bottom:.04em;margin-bottom:-.04em}
+.ln>span{display:block;animation:up 1.1s var(--out) both}
+.ln:nth-child(1)>span{animation-delay:1.55s}.ln:nth-child(2)>span{animation-delay:1.68s}
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+.shine{background:linear-gradient(100deg,var(--ink) 0 40%,#fff 46%,var(--acc) 50%,#fff 54%,var(--ink) 60% 100%);background-size:280% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up 1.1s var(--out) both,shine 7s 3.2s var(--ease) infinite}
+@keyframes shine{0%{background-position:100% 0}40%,100%{background-position:0 0}}
+.hrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
+.hero .lead{font-size:19px;color:var(--ink2);max-width:30em;margin-bottom:28px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.hq{max-width:330px;border-left:2px solid var(--acc);padding:2px 0 2px 18px}
+.hq p{font:500 19px/1.4 var(--sans)}
+.hq cite{display:block;margin-top:10px;font-style:normal}
+.rise{animation:rise 1s var(--out) both}
+.d1{animation-delay:1.85s}.d2{animation-delay:1.95s}.d3{animation-delay:2.05s}.d4{animation-delay:2.15s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.cue{position:absolute;left:50%;bottom:22px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;transform:translateX(-50%);opacity:0;animation:fade 1s 2.8s both}
+.cue i{width:1.5px;height:38px;background:linear-gradient(var(--acc),transparent);animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== марки ===== */
+.brands{padding:46px 0 40px;border-bottom:1px solid var(--line);overflow:hidden}
+.brands .lab{display:block;text-align:center;margin-bottom:22px}
+.row{white-space:nowrap;overflow:hidden}
+.row>div{display:inline-flex;align-items:center;gap:40px;padding-right:40px;animation:run 40s linear infinite;will-change:transform}
+.row.rev>div{animation-direction:reverse;animation-duration:46s}
+.row span{font:900 clamp(40px,6.4vw,96px)/1.05 var(--head);font-stretch:78%;text-transform:uppercase}
+.row.rev span{color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.35)}
+.row i{width:14px;height:14px;background:var(--acc);transform:rotate(45deg);flex:none}
+@keyframes run{to{transform:translateX(-50%)}}
+@keyframes runpx{to{transform:translate3d(calc(-1 * var(--w)),0,0)}}
+
+/* ===== общие секции ===== */
+section{position:relative}
+.sec{padding:140px 0}
+.tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
+.tag:before{content:"";width:28px;height:1.5px;background:var(--acc)}
+.tag b{color:var(--acc);font-weight:700}
+.big{font-size:clamp(54px,8vw,128px)}
+.mid{font-size:clamp(42px,5.6vw,88px)}
+
+/* ===== сцена: анатомия защиты ===== */
+.scene{height:auto;background:radial-gradient(900px 700px at 50% 45%,rgba(var(--acc-rgb),.06),transparent 65%),var(--bg)}
+.js .scene{height:340vh}
+.js .scene .pin{position:sticky;top:0;height:100svh}
+.scene .pin{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;padding:90px 40px 40px;max-width:1400px;margin:0 auto}
+.scene .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;-webkit-mask:radial-gradient(circle at 50% 52%,#000 18%,transparent 60%);mask:radial-gradient(circle at 50% 52%,#000 18%,transparent 60%);opacity:.6}
+.states{position:relative;min-height:330px}
+.state{position:relative;margin-bottom:34px;transition:opacity .6s var(--out),transform .6s var(--out)}
+.js .state{position:absolute;inset:0 0 auto 0;margin:0;opacity:0;transform:translateY(30px);pointer-events:none}
+.js .state.on{opacity:1;transform:none;pointer-events:auto}
+.state .mid{margin:6px 0 22px}
+.state p{color:var(--ink2);max-width:30ch;font-size:17px}
+.state .price{display:inline-flex;align-items:baseline;gap:12px;margin-bottom:18px;padding:12px 18px;border:1px solid rgba(var(--acc-rgb),.5);background:rgba(var(--acc-rgb),.07)}
+.state .price b{font:900 34px/1 var(--head);font-stretch:85%;color:var(--acc)}
+.nojs-states .state{position:relative;margin-bottom:40px}
+.carwrap{position:relative;height:min(78svh,700px);aspect-ratio:300/640}
+.carwrap .car{width:100%;height:100%}
+.carwrap:before{content:"";position:absolute;inset:6% -14%;background:radial-gradient(closest-side,rgba(var(--acc-rgb),.16),transparent);filter:blur(10px);opacity:var(--glow,0);transition:opacity .6s}
+.car{display:block;overflow:visible}
+.car .z{opacity:0;transition:opacity .55s var(--out)}
+.car .z.on{opacity:1;animation:apply .9s var(--out)}
+@keyframes apply{0%{filter:brightness(2.6)}100%{filter:brightness(1)}}
+.done .car .z{opacity:1}
+.car .sheen{animation:sheen 5s var(--ease) infinite}
+@keyframes sheen{0%{transform:translateY(-200px)}55%,100%{transform:translateY(700px)}}
+.meter{justify-self:end;display:grid;gap:4px;min-width:250px}
+.meter .lab{margin-bottom:10px}
+.meter .pct{font:900 72px/1 var(--head);font-stretch:78%;margin-bottom:16px}
+.meter .pct small{font-size:.45em;color:var(--mute)}
+.meter li{list-style:none;display:flex;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font:600 12.5px/1.2 var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);transition:color .4s}
+.meter li:before{content:"";width:9px;height:9px;border:1.5px solid var(--line2);transform:rotate(45deg);transition:all .4s}
+.meter li.on{color:var(--ink)}
+.meter li.on:before{background:var(--acc);border-color:var(--acc)}
+.done .meter li{color:var(--ink)}
+
+/* ===== заказ-наряд ===== */
+.order{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.order .head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:60px}
+.order .head p{color:var(--ink2);max-width:36ch}
+.obox{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:start}
+.opts{display:grid;gap:34px}
+.grp h3{display:flex;align-items:center;gap:14px;margin-bottom:16px;font:700 13px/1 var(--head);letter-spacing:.16em;text-transform:uppercase}
+.grp h3 i{font-style:normal;color:var(--acc)}
+.grp h3:after{content:"";flex:1;height:1px;background:var(--line)}
+.pks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pk{position:relative;cursor:pointer}
+.pk input{position:absolute;opacity:0;pointer-events:none}
+.pk span{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px;border:1px solid var(--line2);background:var(--card);transition:border-color .3s,background .3s,transform .3s var(--out)}
+.pk b{font:800 20px/1.05 var(--head);font-stretch:85%;text-transform:uppercase}
+.pk em{font:800 19px/1 var(--head);font-style:normal;color:var(--acc)}
+.pk em small{font-size:.6em;color:var(--mute);margin-right:4px}
+.pk small.n{font:400 13.5px/1.4 var(--sans);color:var(--mute)}
+.pk:hover span{border-color:var(--ink2);transform:translateY(-2px)}
+.pk input:checked+span{border-color:var(--acc);background:rgba(var(--acc-rgb),.09);box-shadow:inset 0 0 0 1px var(--acc)}
+.pk input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+.els.chips{display:none;margin-top:12px}
+.js .el-on .els.chips{display:flex}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;inset:0;opacity:0;margin:0;width:100%;height:100%;cursor:pointer}
+.chip span{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--line2);background:var(--card);font:500 14.5px/1.2 var(--sans);transition:all .25s}
+.chip span em{font:700 13px var(--head);font-style:normal;color:var(--mute);white-space:nowrap}
+.chip:hover span{border-color:var(--ink2)}
+.chip input:checked+span{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.chip input:checked+span em{color:var(--acc-ink)}
+.chip input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+.model{width:100%;margin-top:12px;background:var(--card);border:1px solid var(--line2);padding:17px 18px;color:var(--ink);font:500 16px var(--sans);border-radius:0}
+.model::placeholder{color:var(--mute)}
+.model:focus{outline:none;border-color:var(--acc)}
+/* бумага */
+.printer{position:sticky;top:100px}
+.slot{height:22px;background:linear-gradient(#000,#1a1d22);border:1px solid var(--line2);border-radius:4px;position:relative;z-index:2;box-shadow:0 10px 30px -10px #000}
+.slot:after{content:"";position:absolute;left:4%;right:4%;top:9px;height:4px;background:#000;border-radius:2px}
+.paper{position:relative;margin:-12px 4% 0;background:var(--paper);color:var(--paper-ink);padding:40px 30px 46px;font:500 14.5px/1.5 var(--sans);box-shadow:0 40px 60px -30px rgba(0,0,0,.8);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(0,0,0,.035) 27px 28px);-webkit-mask:linear-gradient(#000 calc(100% - 12px),transparent 0),conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 12px repeat-x;mask:linear-gradient(#000 calc(100% - 12px),transparent 0),conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 12px repeat-x}
+.paper .ph{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:2px solid var(--paper-ink);margin-bottom:16px}
+.paper .ph b{display:block;font:900 22px/1 var(--head);font-stretch:85%;letter-spacing:.06em;text-transform:uppercase}
+.paper .ph small{display:block;font:600 10.5px/1.4 var(--head);letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:4px}
+.paper .no{white-space:nowrap;text-align:right;font:700 12px/1.5 var(--head);letter-spacing:.08em}
+.paper .doc{font:900 15px/1 var(--head);letter-spacing:.24em;text-transform:uppercase;text-align:center;margin:4px 0 16px}
+.paper .f{display:grid;grid-template-columns:110px 1fr;gap:8px;padding:6px 0;border-bottom:1px dashed rgba(0,0,0,.25);font-size:14px}
+.paper .f dt{font:600 10.5px/1.9 var(--head);letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.paper .f dd{font-weight:600;min-height:21px}
+.paper ul{list-style:none;margin:18px 0 10px;min-height:120px}
+.paper li{display:flex;align-items:baseline;gap:8px;padding:7px 0}
+.paper li span:first-child{flex:0 1 auto}
+.paper li i{flex:1 0 14px;border-bottom:1.5px dotted rgba(0,0,0,.35);transform:translateY(-4px)}
+.paper li b{font:800 15px/1 var(--head);white-space:nowrap}
+.paper li.sub{padding:0 0 4px 14px;font-size:12.5px;opacity:.7}
+.paper li.new{animation:print .55s var(--out) both}
+@keyframes print{from{clip-path:inset(0 0 100% 0);transform:translateY(-8px)}to{clip-path:inset(0);transform:none}}
+.paper li.empty{opacity:.45;font-style:italic}
+.paper .tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;border-top:2px solid var(--paper-ink)}
+.paper .tot span{font:700 11px/1 var(--head);letter-spacing:.16em;text-transform:uppercase}
+.paper .tot b{font:900 46px/1 var(--head);font-stretch:85%;white-space:nowrap}
+.paper .fine{font-size:12px;opacity:.6;margin-top:12px}
+.stamp{position:absolute;right:22px;bottom:150px;padding:10px 14px;border:3px solid #c3261f;color:#c3261f;font:900 13px/1.15 var(--head);letter-spacing:.12em;text-transform:uppercase;text-align:center;transform:rotate(-11deg);opacity:0;mix-blend-mode:multiply;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.7' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)'/%3E%3C/svg%3E");mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.7' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)'/%3E%3C/svg%3E")}
+.stamp.on{opacity:.85;animation:stamp .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes stamp{from{opacity:0;transform:rotate(-11deg) scale(1.7)}}
+.send{margin:22px 4% 0;display:grid;gap:10px}
+.send .btn{width:100%}
+.send .alt{display:flex;justify-content:center;gap:26px;font:700 12px/1 var(--head);letter-spacing:.14em;text-transform:uppercase}
+.send .alt a{text-decoration:none;color:var(--ink2);border-bottom:1px solid var(--line2);padding-bottom:4px}
+.send .alt a:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ===== работы: горизонтальная лента ===== */
+.works{overflow:visible;padding:0}
+.works .pin{position:relative;overflow:hidden;padding:140px 0 60px}
+.js-pin .works .pin{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 30px}
+.js-pin .shot{width:auto;height:min(58vh,560px)}
+.js-pin .works .pin>.wrap{width:100%}
+.works .head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:50px}
+.works .head p{color:var(--ink2);max-width:30ch}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 40px 16px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.shot{position:relative;flex:none;width:min(440px,78vw);aspect-ratio:3/4;overflow:hidden;scroll-snap-align:center;background:var(--card)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--out),filter .8s}
+.shot:hover img{transform:scale(1.06)}
+.shot:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,9,11,.9),rgba(8,9,11,0) 45%)}
+.shot figcaption{position:absolute;left:22px;right:22px;bottom:20px;z-index:1}
+.shot figcaption .lab{color:var(--acc)}
+.shot figcaption b{display:block;margin-top:6px;font:900 34px/.92 var(--head);font-stretch:80%;text-transform:uppercase}
+.shot .n{position:absolute;right:18px;top:16px;z-index:1;font:700 12px var(--head);letter-spacing:.14em;color:var(--ink2)}
+.shot .c{position:absolute;inset:14px;z-index:1;pointer-events:none}
+.shot .c:before,.shot .c:after{content:"";position:absolute;width:16px;height:16px;border:0 solid var(--acc);opacity:0;transition:opacity .4s}
+.shot .c:before{left:0;top:0;border-width:2px 0 0 2px}.shot .c:after{right:0;bottom:0;border-width:0 2px 2px 0}
+.shot:hover .c:before,.shot:hover .c:after{opacity:1}
+.ghost{position:absolute;left:0;top:50%;white-space:nowrap;font:900 22vw/1 var(--head);font-stretch:75%;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);pointer-events:none;transform:translateY(-50%);z-index:-1}
+
+/* ===== история ===== */
+.story .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+.story h2 em{font-style:normal;color:var(--acc)}
+.sph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.sph img{width:100%;height:100%;object-fit:cover}
+.sph .lab{position:absolute;left:16px;top:16px;background:var(--acc);color:var(--acc-ink);padding:8px 12px}
+.hero h1.l3{font-size:min(clamp(64px,9.2vw,150px),calc((min(100vw,1320px) - 80px) * .64 / (var(--L,9) * .57)))}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.duo figure{position:relative;background:var(--card);border:1px solid var(--line);padding:22px 18px 18px;text-align:center}
+.duo figure:last-child{border-color:rgba(var(--acc-rgb),.5);background:linear-gradient(180deg,rgba(var(--acc-rgb),.07),transparent)}
+.duo .car{height:300px;width:auto;margin:14px auto 12px}
+.duo figcaption b{display:block;font:900 26px/1 var(--head);font-stretch:80%;text-transform:uppercase;margin-top:4px}
+.duo figure:last-child figcaption b{color:var(--acc)}
+.story h2{margin:6px 0 26px}
+.story p{color:var(--ink2);max-width:46ch}
+.story blockquote{position:relative;margin:34px 0 12px;padding-left:26px;border-left:2px solid var(--acc);font:500 clamp(21px,2vw,27px)/1.4 var(--sans)}
+.story .who{margin-bottom:34px}
+
+/* ===== как работаем: линия ===== */
+.how .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.how .side{position:sticky;top:120px;align-self:start}
+.how .side p{color:var(--ink2);max-width:32ch;margin-top:22px}
+.tl{position:relative;padding-left:60px}
+.tl:before{content:"";position:absolute;left:14px;top:10px;bottom:10px;width:1.5px;background:var(--line2)}
+.tl .bar{position:absolute;left:14px;top:10px;bottom:10px;width:1.5px;background:var(--acc);transform-origin:top;transform:scaleY(var(--p,1));box-shadow:0 0 12px rgba(var(--acc-rgb),.6)}
+.js .tl .bar{transform:scaleY(var(--p,0))}
+.stp{position:relative;padding-bottom:70px}
+.stp:last-child{padding-bottom:0}
+.stp .dot{position:absolute;left:-60px;top:2px;width:30px;height:30px;display:grid;place-items:center;background:var(--bg);border:1.5px solid var(--line2);font:800 12px var(--head);color:var(--mute);transition:all .4s}
+.stp.on .dot{border-color:var(--acc);color:var(--acc-ink);background:var(--acc)}
+.stp h3{font:900 clamp(30px,3vw,44px)/.92 var(--head);font-stretch:80%;text-transform:uppercase;margin-bottom:18px}
+.stp .im{overflow:hidden;aspect-ratio:16/9;margin-bottom:20px}
+.stp .im img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) contrast(1.1) brightness(.8);transform:scale(1.08);transition:filter 1s,transform 1.6s var(--out)}
+.stp.on .im img{filter:none;transform:none}
+.stp blockquote{font-size:17.5px;color:var(--ink);max-width:46ch;background:#1c2027;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--acc);padding:18px 22px}
+.stp cite{display:block;margin-top:10px;font-style:normal}
+
+/* ===== студия ===== */
+.studio .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:56px}
+.studio .ph{position:relative;overflow:hidden}
+.studio .ph img{width:100%;height:100%;object-fit:cover}
+.studio .ph.big{grid-row:span 2;min-height:600px}
+.studio .phs{display:grid;gap:18px;grid-template-rows:1fr 1fr}
+.studio .ph .lab{position:absolute;left:16px;bottom:14px;color:var(--ink);background:rgba(8,9,11,.6);padding:7px 10px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.studio .top2{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.card-live{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line2);font:700 13px/1 var(--head);letter-spacing:.12em;text-transform:uppercase}
+.spec{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line2)}
+.spec div{padding:22px 22px 24px 0;border-bottom:1px solid var(--line);margin-right:22px}
+.spec dt{margin-bottom:10px}
+.spec dd{font-weight:600;font-size:16px;line-height:1.45}
+
+/* ===== отзывы ===== */
+.voices .top3{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:end;margin-bottom:60px}
+.score>b{display:block;font:900 clamp(120px,15vw,220px)/.8 var(--head);font-stretch:78%}
+.score .stars{display:flex;gap:6px;margin:18px 0 10px}
+.score .stars i{width:22px;height:22px;background:var(--acc);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.score .stars i.half{background:linear-gradient(90deg,var(--acc) 90%,var(--line2) 90%)}
+.bars{display:grid;gap:16px}
+.bars>.lab{margin-bottom:4px}
+.bars div{display:grid;grid-template-columns:150px 1fr 54px;gap:16px;align-items:center}
+.bars span{font:600 14px var(--sans)}
+.bars s{position:relative;display:block;height:10px;background:var(--line);text-decoration:none;overflow:hidden}
+.bars s:before{content:"";position:absolute;inset:0;background:var(--acc);transform-origin:left;transform:scaleX(var(--w));transition:transform 1.4s var(--out)}
+.js .bars:not(.in) s:before{transform:scaleX(0)}
+.bars em{font:800 18px var(--head);font-style:normal;text-align:right}
+.qrow{overflow:hidden;padding:6px 0}
+.qrow+.qrow{margin-top:18px}
+.qrow>div{display:inline-flex;align-items:stretch;gap:18px;padding-right:18px;animation:run 70s linear infinite;will-change:transform}
+.qrow.rev>div{animation-direction:reverse;animation-duration:80s}
+.qrow:hover>div{animation-play-state:paused}
+.q{position:relative;flex:none;width:420px;white-space:normal;background:#1c2027;border:1px solid rgba(255,255,255,.16);border-top:3px solid var(--acc);padding:34px 30px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 24px 50px -24px rgba(0,0,0,.9)}
+.q .qm{position:absolute;right:22px;top:6px;font:900 84px/1 var(--head);color:var(--acc)}
+.q p{font:500 17.5px/1.5 var(--sans);color:var(--ink);padding-right:30px}
+.q>div{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.q .who{display:flex;align-items:center;gap:12px}
+.q .who i{width:40px;height:40px;flex:none;border-radius:50%;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font:800 17px var(--head);font-style:normal}
+.q .who b{display:block;font:700 14.5px/1.2 var(--sans)}
+.q .who small{display:block;font:500 12px/1.3 var(--sans);color:var(--mute)}
+.q .st{color:var(--acc);letter-spacing:2px;font-size:15px;white-space:nowrap}
+.qrow.paper .q{background:var(--paper);border-color:transparent;border-top-color:var(--acc)}
+.qrow.paper .q p,.qrow.paper .q .who b{color:var(--paper-ink)}
+.qrow.paper .q .who small{color:#77736a}
+.qrow.paper .q .qm{color:var(--paper-ink);opacity:.14}
+.qrow.paper .q .st{color:#d9a400}
+.allrev{display:inline-flex;margin-top:40px;font:700 12.5px/1 var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);text-decoration:none;border-bottom:1.5px solid;padding-bottom:5px}
+
+/* ===== вопросы ===== */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.faq h2{font-size:clamp(46px,5.4vw,84px)}
+.faq details{border-bottom:1px solid var(--line2)}
+.faq summary{list-style:none;cursor:pointer;padding:26px 54px 26px 0;font:700 19px/1.35 var(--sans);position:relative;transition:color .2s}
+.faq summary:hover{color:var(--acc)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before,.faq summary:after{content:"";position:absolute;right:8px;top:50%;width:18px;height:2px;background:var(--acc);transition:transform .35s var(--out)}
+.faq summary:after{transform:rotate(90deg)}
+.faq details[open] summary:after{transform:rotate(0)}
+.faq details p{padding:0 0 26px;color:var(--ink2);max-width:60ch}
+
+/* ===== финал ===== */
+.final{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.final>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.js .final>img{filter:brightness(0)}
+.js .final.lit>img{animation:lights 2.6s linear both}
+.final:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.45) 60%,rgba(8,9,11,.6))}
+.final .wrap{width:100%;padding-bottom:70px}
+.final .big{margin:14px 0 40px}
+.final .big em{font-style:normal;color:var(--acc)}
+.tel{display:inline-block;font:900 clamp(44px,7.4vw,118px)/.9 var(--head);font-stretch:78%;text-decoration:none;color:var(--ink);transition:color .3s;margin-bottom:40px}
+.tel:hover{color:var(--acc)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:30px;align-items:end;padding-top:30px;border-top:1px solid var(--line2)}
+.fgrid dd{font-weight:600;margin-top:8px}
+.fgrid dd a{text-decoration:none;border-bottom:1px solid var(--line2)}
+.fgrid .cta{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px}
+.fgrid .cta .btn{padding:0 14px}
+footer{padding:26px 0 40px;color:var(--mute);font-size:13.5px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 20px}
+.dock{display:none}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);opacity:0;background:var(--acc);color:var(--acc-ink);padding:14px 22px;font:700 13px var(--head);letter-spacing:.08em;z-index:95;transition:all .3s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* сцена на телефоне: плёнка ложится сама + кнопки пакетов */
+.ptabs,.mpct{display:none}
+.js .scene.auto{height:auto}
+.js .scene.auto .pin{position:relative;top:auto;height:auto;grid-template-columns:1fr;grid-template-rows:none;justify-items:center;align-content:start;padding:96px 16px 64px;gap:14px}
+.scene.auto .meter{display:none}
+.scene.auto .states{width:100%;min-height:136px}
+.js .scene.auto .state{transition:opacity .3s,transform .45s var(--out)}
+.js .scene.auto .state:not(.on){transition-duration:.15s}
+.scene.auto .carwrap{height:min(46svh,440px)}
+.scene.auto .ptabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:520px}
+.ptabs button{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 14px 13px;background:var(--card);border:1px solid var(--line2);color:var(--ink);cursor:pointer;text-align:left;transition:all .3s var(--out)}
+.ptabs span{font:800 15px/1 var(--head);font-stretch:85%;text-transform:uppercase;letter-spacing:.04em}
+.ptabs b{font:800 17px/1 var(--head);color:var(--acc)}
+.ptabs button.on{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.ptabs button.on b{color:var(--acc-ink)}
+.scene.auto .mpct{display:block;color:var(--ink2)}
+.mpct b{color:var(--acc);font-size:14px}
+/* выбор машины */
+.picker .bgrid,.picker .mgrid,.picker .psel{display:none}
+.js .picker #model{display:none}
+.js .picker.other #model{display:block}
+.js .picker:not(.brand):not(.done) .bgrid{display:grid}
+.bgrid{grid-template-columns:repeat(4,1fr);gap:8px}
+.bt,.mt{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:6px;padding:15px 14px;min-height:76px;background:var(--card);border:1px solid var(--line2);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .25s,transform .3s var(--out),background .25s}
+.bt b{font:800 15px/1.05 var(--head);font-stretch:85%;text-transform:uppercase;letter-spacing:.05em}
+.bt small,.mt small{font:500 11.5px/1 var(--sans);color:var(--mute)}
+.bt:hover,.mt:hover{border-color:var(--acc);transform:translateY(-2px)}
+.bt.more{display:none}
+.bgrid.all-on .bt.more{display:flex}
+.bgrid.all-on .bt.all{display:none}
+.bt.all,.bt.other{align-items:center;justify-content:center;font:700 11.5px/1.2 var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);border-style:dashed;text-align:center}
+.js .picker.brand .mgrid{display:block}
+.pback,.pchg{background:none;border:0;color:var(--acc);font:700 12px/1 var(--head);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:6px 0}
+.mhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:4px 0 10px}
+.mhead b{font:900 34px/1 var(--head);font-stretch:80%;text-transform:uppercase}
+.mlist{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mt{min-height:66px}
+.mt b{font:800 17px/1.05 var(--head);font-stretch:85%}
+.js .picker.done .psel{display:flex}
+.psel{align-items:center;gap:18px;padding:16px 18px;border:1px solid var(--acc);background:rgba(var(--acc-rgb),.08);animation:rise .5s var(--out)}
+.sil{width:104px;flex:none}
+.sil path{fill:var(--acc)}
+.sil circle{fill:var(--bg2);stroke:var(--acc);stroke-width:3}
+.psel b{display:block;margin-top:6px;font:900 30px/1 var(--head);font-stretch:80%;text-transform:uppercase}
+.pchg{margin-left:auto}
+/* подсказка «листайте» у ленты работ */
+.swipe{display:none}
+@keyframes sw{50%{transform:translateX(10px)}}
+.js .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--out),transform 1s var(--out)}
+.js .rv.in{opacity:1;transform:none}
+.js .wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--out)}
+.js .wipe.in{clip-path:inset(0)}
+
+
+@media (max-width:1100px){
+  .swipe{display:flex;align-items:center;gap:20px;padding:0 28px 16px;color:var(--ink)}
+  .swipe i{position:relative;width:30px;height:2px;background:var(--acc);animation:sw 1.4s var(--ease) infinite}
+  .swipe i:after{content:"";position:absolute;right:-1px;top:-4px;width:8px;height:8px;border-top:2px solid var(--acc);border-right:2px solid var(--acc);transform:rotate(45deg)}
+  .swipe span{color:var(--mute)}
+  .nav{display:none}
+  .wrap{padding:0 28px}
+  .scene .pin{grid-template-columns:1fr auto;padding:90px 28px 30px}
+  .meter{display:none}
+  .obox,.story .wrap,.how .wrap,.faq .wrap{grid-template-columns:1fr}
+  .printer{position:relative;top:0}
+  .how .side{position:relative;top:0}
+  .spec{grid-template-columns:1fr 1fr}
+  .voices .top3{grid-template-columns:1fr;gap:40px}
+  .fgrid{grid-template-columns:1fr 1fr}.fgrid .cta{grid-column:1/-1;justify-content:flex-start}
+}
+@media (max-width:640px){
+  .swipe{padding:0 16px 14px}
+  body{font-size:16px;padding-bottom:76px}
+  .wrap{padding:0 16px}
+  .top .wrap{height:62px}.top .btn{display:none}
+  .logo i{width:34px;height:34px}.logo b{font-size:18px}.logo small{font-size:9.5px}
+  .hero{min-height:600px}
+  .hero picture img{object-position:50% 78%}
+  .hero .shade{background:linear-gradient(0deg,var(--bg) 0%,rgba(8,9,11,.92) 34%,rgba(8,9,11,.2) 62%,rgba(8,9,11,.55) 100%)}
+  .hud{inset:112px 14px 14px}
+  .hud .ruler,.hud .gps,.hud i:nth-child(3),.hud i:nth-child(4){display:none}
+  .hud .live{font-size:10px;padding:7px 10px;letter-spacing:.1em}
+  .hero .wrap{padding-bottom:96px}
+  .kick{margin-bottom:14px;gap:4px 14px}
+  .hero h1{font-size:min(108px,calc((100vw - 32px) / max(4.3, var(--L,9) * .57)));margin-bottom:18px}
+  .hero h1.l3{font-size:min(92px,calc((100vw - 32px) / max(4.1, var(--L,9) * .57)))}
+  .sph{aspect-ratio:4/3}
+  .hrow{grid-template-columns:1fr;gap:20px}
+  .hero .lead{font-size:15.5px;margin-bottom:20px}
+  .hq{display:none}
+  .hero .cta{display:grid;grid-template-columns:1fr 60px;gap:8px}
+  .hero .cta .btn{padding:0 14px}
+  .hero .cta .btn-ghost span{display:none}
+  .cue{display:none}
+  .brands{padding:34px 0 30px}
+  .row div{gap:22px;padding-right:22px}.row i{width:10px;height:10px}
+  .sec{padding:90px 0}
+  .big{font-size:min(70px,calc((100vw - 32px) / 6))}
+  .mid{font-size:min(58px,calc((100vw - 32px) / 5.6))}
+  .js .scene{height:300vh}
+  .scene .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-content:start;gap:8px;padding:76px 16px 92px;justify-items:center}
+  .states{width:100%;min-height:150px}
+  .state .tag{margin-bottom:10px}
+  .state .mid{margin:0;font-size:min(44px,calc((100vw - 32px) / 7.4))}
+  .state p{display:none}
+  .js .state .price{position:absolute;right:0;top:4px;padding:8px 12px;margin:0}
+  .state .price b{font-size:22px}
+  .state .price .lab{display:none}
+  .carwrap{height:min(50svh,440px)}
+  .order .head{grid-template-columns:1fr;margin-bottom:36px}
+  .pks{grid-template-columns:1fr}
+  .pk span{padding:16px;display:grid;grid-template-columns:1fr auto;gap:6px 12px}
+  .pk small.n{grid-column:1/-1}
+  .chip span{font-size:14px;padding:11px 13px}
+  .paper{padding:30px 18px 40px;margin:-12px 3% 0}
+  .paper .f{grid-template-columns:90px 1fr}
+  .paper .tot b{font-size:min(36px,9vw)}
+  .stamp{right:12px;bottom:150px;font-size:11px}
+  .demo-strip .long{display:none}
+  .works .head{flex-direction:column;align-items:start;margin-bottom:30px}
+  .track{padding:0 16px 12px;gap:12px}
+  .shot{width:80vw}
+  .shot figcaption b{font-size:28px}
+  .ghost{display:none}
+  .story .wrap{gap:40px}
+  .duo{gap:10px}.duo figure{padding:16px 8px 12px}
+  .duo .car{height:200px}
+  .duo figcaption b{font-size:19px}
+  .tl{padding-left:46px}.stp .dot{left:-46px;width:26px;height:26px}
+  .tl:before,.tl .bar{left:12px}
+  .stp{padding-bottom:54px}
+  .studio .grid{grid-template-columns:1fr;margin-top:36px}
+  .studio .ph.big{min-height:0;aspect-ratio:4/3;grid-row:auto}
+  .studio .phs{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .studio .phs .ph{aspect-ratio:1}
+  .studio .top2{grid-template-columns:1fr}
+  .spec{grid-template-columns:1fr 1fr}
+  .spec div{padding:16px 10px 18px 0;margin-right:10px}
+  .spec dd{font-size:14.5px}
+  .bars div{grid-template-columns:110px 1fr 40px;gap:10px}
+  .q{width:300px;padding:28px 20px 20px}
+  .q p{font-size:15.5px;padding-right:18px}
+  .q .qm{font-size:64px;right:14px}
+  .bgrid{grid-template-columns:repeat(3,1fr)}
+  .mlist{grid-template-columns:repeat(3,1fr)}
+  .bt{min-height:66px;padding:12px 10px}.bt b{font-size:13.5px}
+  .mt{padding:12px 10px}.mt b{font-size:15px}
+  .psel{gap:12px;padding:14px}.sil{width:78px}.psel b{font-size:24px}
+  .faq summary{font-size:17px;padding:22px 44px 22px 0}
+  .final{min-height:0;padding-top:320px}
+  .final>img{object-position:50% 70%}
+  .fgrid{grid-template-columns:1fr;gap:16px}
+  .fgrid .cta{display:grid;grid-template-columns:1fr 1fr}.fgrid .cta .btn:first-child{grid-column:1/-1}
+  .dock{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(8,9,11,.92);border-top:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .dock .btn{min-height:50px;padding:0 6px;font-size:11px;letter-spacing:.08em}
+  .wm{font-size:13px;gap:50px 60px}
+  .grain{opacity:.05}
+}
+/* до реагентов */
+.winter{position:relative;padding:64px 0;border-bottom:1px solid var(--line);background:radial-gradient(120% 140% at 85% 0%,rgba(var(--acc-rgb),.16),transparent 60%)}
+.winter .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center}.winter .wrap>*{min-width:0}.winter p,.winter span{overflow-wrap:break-word}
+.winter h2{margin:14px 0 14px}
+.winter .wn{font-style:normal;color:var(--acc);white-space:nowrap}
+.winter .wd{font-variant-numeric:tabular-nums}
+.winter .wp{color:var(--mute,#9aa0a8);max-width:52ch;line-height:1.5}
+.winter .wpk{padding:24px;border:1px solid rgba(var(--acc-rgb),.45);background:rgba(var(--acc-rgb),.07)}
+.winter .wpk small{display:block;margin-bottom:10px}
+.winter .wpk b{display:block;font-family:Tektur,sans-serif;font-size:24px;line-height:1.1;text-transform:uppercase;margin-bottom:8px}
+.winter .wpk span{display:block;color:var(--mute,#9aa0a8);line-height:1.45;margin-bottom:18px}
+.winter.off{display:none}
+@media (max-width:760px){.winter h2{font-size:clamp(30px,10.5vw,46px);line-height:.95}.winter .wn{display:block}.winter{padding:44px 0}.winter .wrap{grid-template-columns:minmax(0,1fr);gap:22px}.winter .wpk b{font-size:20px}}
+@media (hover:none){.cur{display:none}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .final>img{filter:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<header class="top"><div class="demo-strip">Демо-версия сайта для DC Performance<span class="long">. Фото, цены и отзывы с вашей карточки на Яндекс Картах</span></div><div class="wrap">
+<a class="logo" href="#"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></i><span><b>DC Performance</b><small>Детейлинг · Ногинск</small></span></a>
+<nav class="nav"><a href="#protect">Защита</a><a href="#cfg">Расчёт</a><a href="#works">Работы</a><a href="#how">Как работаем</a><a href="#contacts">Контакты</a></nav>
+<a class="btn btn-acc" href="#cfg">Рассчитать</a></div></header><main>
+<section class="hero"><picture><source media="(max-width:700px)" srcset="img/p032.jpg"><img src="img/p004.jpg" alt="DC Performance" width="960" height="1280"></picture><div class="flash"></div><div class="shade"></div><div class="glare"></div>
+<div class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="ruler"></span><span class="gps lab">N 55.8860° · E 38.4303°</span><span class="live lab"><b></b><span>пн–сб 9–21, вс выходной</span></span></div>
+<div class="wrap">
+<div class="kick lab rise d1"><span>Детейлинг в Ногинске</span><span>1-й Текстильный пер., 11А</span></div>
+<h1 class="H" style="--L:9"><span class="ln"><span class="shine">Не узнать</span></span><span class="ln"><span class="shine">машину.</span></span></h1>
+<div class="hrow"><div><p class="lead rise d2">Плёнка на зоны риска, полировка и керамика, шумоизоляция, удаление вмятин и царапин без покраски, тонировка. 1-й Текстильный пер., 11А — пн–сб 9–21.</p>
+<div class="cta rise d3"><a class="btn btn-acc" href="#protect">Смотреть защиту <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="tel:+79637704313" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 963 770-43-13</span></a></div></div>
+<blockquote class="hq rise d4"><p>«Мне кажется, они не были такими даже в момент покупки 👍»</p><cite class="lab">Ольга · ★ 5,0 · 50 отзывов</cite></blockquote></div>
+</div><div class="cue lab"><span>Листайте</span><i></i></div></section>
+<div class="brands" aria-label="Марки машин из фото и отзывов"><span class="lab">Уже были в боксе</span><div class="row"><div><span>BMW</span><i></i><span>Audi</span><i></i><span>Toyota</span><i></i><span>Peugeot</span><i></i><span>Honda</span><i></i><span>Mazda</span><i></i><span>Lada</span><i></i><span>Haval</span><i></i><span>BMW</span><i></i><span>Audi</span><i></i><span>Toyota</span><i></i><span>Peugeot</span><i></i><span>Honda</span><i></i><span>Mazda</span><i></i><span>Lada</span><i></i><span>Haval</span><i></i></div></div><div class="row rev"><div><span>Haval</span><i></i><span>Lada</span><i></i><span>Mazda</span><i></i><span>Honda</span><i></i><span>Peugeot</span><i></i><span>Toyota</span><i></i><span>Audi</span><i></i><span>BMW</span><i></i><span>Haval</span><i></i><span>Lada</span><i></i><span>Mazda</span><i></i><span>Honda</span><i></i><span>Peugeot</span><i></i><span>Toyota</span><i></i><span>Audi</span><i></i><span>BMW</span><i></i></div></div></div>
+<section class="winter" id="winter" data-m="11" data-d="6"><div class="wrap">
+<div class="wl"><span class="tag lab"><b>Сезон</b> · Ногинск</span><h2 class="H mid"><span class="wt">До реагентов</span> <em class="wn"><b class="wd">6</b> <span class="wdw">дней</span></em></h2>
+<p class="wp">В Ногинске реагенты и щебень на дорогах начинаются с первым гололёдом — обычно 6 ноября. Плёнке нужно 1–2 дня в боксе, поэтому окна перед зимой разбирают первыми.</p></div>
+<div class="wpk"><small class="lab">Пакет «Защита к зиме»</small><b>Зоны риска</b><span>Бампер, капот, фары и зеркала под плёнку — чтобы весной не считать сколы.</span>
+<a class="btn btn-acc" href="#cfg" data-winter="">Собрать наряд к зиме</a></div>
+</div></section>
+<section class="scene done" id="protect" data-order="bumper,lights,hood,fenders,mirrors,roof,doors,rfenders,trunk,rbumper" data-risk="bumper,lights,hood,fenders,mirrors"><div class="pin"><div class="grid-bg"></div>
+<div class="states"><div class="state"><span class="tag lab"><b>Анатомия защиты</b></span><h2 class="H mid">Плёнка ложится <br>деталь за деталью</h2><p>Листайте вниз и посмотрите, что закрывает каждый пакет.</p></div><div class="state"><span class="tag lab"><b>Пакет 1</b></span><h2 class="H mid">Зоны <br>риска</h2><div class="price"><b>от 45 000 ₽</b><span class="lab">по прайсу</span></div><p>Бампер, фары, капот, передние крылья и зеркала. «оклейка всей машины в бронепленку titanium; -шумоизоляция дверей, арок и ло», — Nemesis.</p></div><div class="state"><span class="tag lab"><b>Пакет 2</b></span><h2 class="H mid">Весь <br>кузов</h2><div class="price"><b>по осмотру</b><span class="lab">после осмотра</span></div><p>Вся машина в полиуретан. Цену назовут на осмотре.</p></div></div>
+<div class="carwrap"><svg class="car" viewBox="0 0 300 640" role="img" aria-label="Машина сверху: зоны оклейки плёнкой"><defs><clipPath id="sb"><path d="M150,20 C112,20 80,24 68,38 C58,50 54,76 53,106 C51,132 46,152 46,180 C46,214 52,236 53,268 L53,404 C52,434 46,452 46,486 C46,522 50,556 57,582 C66,606 104,620 150,620 C196,620 234,606 243,582 C250,556 254,522 254,486 C254,452 248,434 247,404 L247,268 C248,236 254,214 254,180 C254,152 249,132 247,106 C246,76 242,50 232,38 C220,24 188,20 150,20 Z"/></clipPath>
+<linearGradient id="spaint" x1="0" x2="1"><stop offset="0" stop-color="#0c0e11"/><stop offset=".1" stop-color="#22272e"/><stop offset=".28" stop-color="#454c57"/><stop offset=".42" stop-color="#2c3139"/><stop offset=".5" stop-color="#3a414b"/><stop offset=".58" stop-color="#2c3139"/><stop offset=".72" stop-color="#454c57"/><stop offset=".9" stop-color="#22272e"/><stop offset="1" stop-color="#0c0e11"/></linearGradient>
+<linearGradient id="sspec" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".14" stop-color="#fff" stop-opacity=".16"/><stop offset=".24" stop-color="#fff" stop-opacity="0"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset=".72" stop-color="#fff" stop-opacity=".1"/><stop offset=".8" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="sglass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#25303b"/><stop offset=".45" stop-color="#0a0d11"/><stop offset=".55" stop-color="#151b22"/><stop offset="1" stop-color="#05070a"/></linearGradient>
+<linearGradient id="sfilm" x1="0" x2="1"><stop offset="0" style="stop-color:var(--acc);stop-opacity:.7"/><stop offset=".3" style="stop-color:var(--acc);stop-opacity:.95"/><stop offset=".5" style="stop-color:#fff6c9;stop-opacity:.95"/><stop offset=".7" style="stop-color:var(--acc);stop-opacity:.95"/><stop offset="1" style="stop-color:var(--acc);stop-opacity:.7"/></linearGradient>
+<linearGradient id="ssh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<radialGradient id="sshadow"><stop offset=".6" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs><ellipse cx="150" cy="322" rx="150" ry="330" fill="url(#sshadow)"/><rect x="38" y="128" width="18" height="76" rx="7" fill="#050607"/><rect x="42" y="136" width="10" height="60" rx="4" fill="none" stroke="#3a3f47" stroke-width="1.5"/><rect x="244" y="128" width="18" height="76" rx="7" fill="#050607"/><rect x="248" y="136" width="10" height="60" rx="4" fill="none" stroke="#3a3f47" stroke-width="1.5"/><rect x="38" y="446" width="18" height="76" rx="7" fill="#050607"/><rect x="42" y="454" width="10" height="60" rx="4" fill="none" stroke="#3a3f47" stroke-width="1.5"/><rect x="244" y="446" width="18" height="76" rx="7" fill="#050607"/><rect x="248" y="454" width="10" height="60" rx="4" fill="none" stroke="#3a3f47" stroke-width="1.5"/><path d="M53,264 C44,259 33,259 28,264 C25,268 25,278 29,281 C37,285 47,284 53,280 Z" fill="url(#spaint)"/><path d="M247,264 C256,259 267,259 272,264 C275,268 275,278 271,281 C263,285 253,284 247,280 Z" fill="url(#spaint)"/><path d="M150,20 C112,20 80,24 68,38 C58,50 54,76 53,106 C51,132 46,152 46,180 C46,214 52,236 53,268 L53,404 C52,434 46,452 46,486 C46,522 50,556 57,582 C66,606 104,620 150,620 C196,620 234,606 243,582 C250,556 254,522 254,486 C254,452 248,434 247,404 L247,268 C248,236 254,214 254,180 C254,152 249,132 247,106 C246,76 242,50 232,38 C220,24 188,20 150,20 Z" fill="url(#spaint)"/><g clip-path="url(#sb)"><path d="M57,88 C70,80 84,76 97,75 L98,88 C84,90 70,95 56,103 Z" fill="#cfd8e3"/><path d="M243,88 C230,80 216,76 203,75 L202,88 C216,90 230,95 244,103 Z" fill="#cfd8e3"/><path d="M60,92 C72,86 84,82 96,81" stroke="#fff" stroke-width="2" fill="none" opacity=".9"/><path d="M240,92 C228,86 216,82 204,81" stroke="#fff" stroke-width="2" fill="none" opacity=".9"/><path d="M62,576 C100,586 200,586 238,576 L236,584 C200,594 100,594 64,584 Z" fill="#b3121b"/></g><path class="z on" data-z="bumper" d="M0,0 H300 V82 L260,82 C210,62 90,62 40,82 L0,82 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="lights" d="M57,88 C70,80 84,76 97,75 L98,88 C84,90 70,95 56,103 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="lights" d="M243,88 C230,80 216,76 203,75 L202,88 C216,90 230,95 244,103 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="hood" d="M92,69 C120,63 180,63 208,69 C206,120 203,175 200,222 C170,216 130,216 100,222 C97,175 94,120 92,69 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="fenders" d="M0,82 L40,82 C60,75 78,71 92,69 C94,120 97,175 100,222 L98,242 L0,248 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="fenders" d="M300,82 L260,82 C240,75 222,71 208,69 C206,120 203,175 200,222 L202,242 L300,248 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="mirrors" d="M53,264 C44,259 33,259 28,264 C25,268 25,278 29,281 C37,285 47,284 53,280 Z" fill="url(#sfilm)"/><path class="z on" data-z="mirrors" d="M247,264 C256,259 267,259 272,264 C275,268 275,278 271,281 C263,285 253,284 247,280 Z" fill="url(#sfilm)"/><path class="z on" data-z="roof" d="M96,304 C128,298 172,298 204,304 L205,442 C172,448 128,448 95,442 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="doors" d="M0,248 L98,242 L96,446 L0,452 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="doors" d="M300,248 L202,242 L204,446 L300,452 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="rfenders" d="M0,452 L96,446 L88,506 L84,562 L0,570 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="rfenders" d="M300,452 L204,446 L212,506 L216,562 L300,570 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="trunk" d="M88,508 C126,516 174,516 212,508 L216,562 C176,570 124,570 84,562 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path class="z on" data-z="rbumper" d="M0,570 L84,562 C124,570 176,570 216,562 L300,570 V640 H0 Z" fill="url(#sfilm)" clip-path="url(#sb)"/><path d="M100,224 C130,217 170,217 200,224 L207,300 C172,292 128,292 93,300 Z" fill="url(#sglass)"/><path d="M95,448 C128,454 172,454 205,448 L212,504 C174,512 126,512 88,504 Z" fill="url(#sglass)"/><path d="M80,250 L97,243 L93,302 L94,442 L86,449 L80,441 Z" fill="url(#sglass)"/><path d="M220,250 L203,243 L207,302 L206,442 L214,449 L220,441 Z" fill="url(#sglass)"/><path d="M112,232 L134,226 L120,292 L104,294 Z" fill="#fff" opacity=".07"/><path d="M112,456 L130,458 L122,500 L104,498 Z" fill="#fff" opacity=".05"/><g clip-path="url(#sb)" fill="none" stroke="#050607" stroke-width="1.6" opacity=".85"><path d="M40,82 C90,62 210,62 260,82"/><path d="M92,69 C94,120 97,175 100,222"/><path d="M208,69 C206,120 203,175 200,222"/><path d="M48,248 L98,242"/><path d="M252,248 L202,242"/><path d="M50,350 L80,350"/><path d="M250,350 L220,350"/><path d="M48,452 L95,446"/><path d="M252,452 L205,446"/><path d="M88,508 C126,516 174,516 212,508"/><path d="M84,562 C124,570 176,570 216,562"/></g><g clip-path="url(#sb)" style="pointer-events:none"><rect width="300" height="640" fill="url(#sspec)"/><rect class="sheen" x="0" y="0" width="300" height="120" fill="url(#ssh)"/></g><path d="M150,20 C112,20 80,24 68,38 C58,50 54,76 53,106 C51,132 46,152 46,180 C46,214 52,236 53,268 L53,404 C52,434 46,452 46,486 C46,522 50,556 57,582 C66,606 104,620 150,620 C196,620 234,606 243,582 C250,556 254,522 254,486 C254,452 248,434 247,404 L247,268 C248,236 254,214 254,180 C254,152 249,132 247,106 C246,76 242,50 232,38 C220,24 188,20 150,20 Z" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/></svg></div>
+<div class="meter"><span class="lab">Под плёнкой</span><div class="pct"><span>100</span><small>%</small></div><ul><li data-z="bumper">Передний бампер</li><li data-z="lights">Фары</li><li data-z="hood">Капот</li><li data-z="fenders">Передние крылья</li><li data-z="mirrors">Зеркала</li><li data-z="roof">Крыша</li><li data-z="doors">Двери</li><li data-z="rfenders">Задние крылья</li><li data-z="trunk">Крышка багажника</li><li data-z="rbumper">Задний бампер</li></ul></div>
+<div class="ptabs"><button type="button" data-st="1"><span>Зоны риска</span><b>от 45 000 ₽</b></button><button type="button" data-st="2"><span>Весь кузов</span><b>по осмотру</b></button></div><div class="mpct lab">Под плёнкой <b><span>100</span>%</b> кузова</div>
+</div></section>
+<section class="order sec" id="cfg"><div class="wrap">
+<div class="head"><div><span class="tag lab"><b>Расчёт</b> · по прайсу студии</span><h2 class="H big">Заказ-наряд <br><span class="acc">за минуту</span></h2></div><p class="rv">Отметьте, что нужно машине. Наряд заполнится сам, а потом уйдёт мастеру в Telegram одним сообщением.</p></div>
+<form class="obox" id="cfgForm" onsubmit="return false"><div class="opts">
+<div class="grp rv"><h3><i>01</i>Плёнка</h3><div class="pks"><label class="pk"><input type="radio" name="pk" id="pk-risk" value="Зоны риска" data-price="45000" data-from="1" checked><span><b>Зоны риска</b><em><small>от</small>45 000 ₽</em><small class="n">Бампер, капот, фары, зеркала и передние крылья</small></span></label><label class="pk"><input type="radio" name="pk" id="pk-full" value="Весь кузов" data-price="0" data-ask="1"><span><b>Весь кузов</b><em>по осмотру</em><small class="n">Вся машина в полиуретановую плёнку</small></span></label><label class="pk"><input type="radio" name="pk" id="pk-none" value="" data-price="0"><span><b>Без плёнки</b><em>&nbsp;</em><small class="n">Только работы ниже</small></span></label></div><div class="els chips"><label class="chip"><input type="checkbox" name="el" value="bumper"><span>Передний бампер</span></label><label class="chip"><input type="checkbox" name="el" value="lights"><span>Фары</span></label><label class="chip"><input type="checkbox" name="el" value="hood"><span>Капот</span></label><label class="chip"><input type="checkbox" name="el" value="fenders"><span>Передние крылья</span></label><label class="chip"><input type="checkbox" name="el" value="mirrors"><span>Зеркала</span></label><label class="chip"><input type="checkbox" name="el" value="roof"><span>Крыша</span></label><label class="chip"><input type="checkbox" name="el" value="doors"><span>Двери</span></label><label class="chip"><input type="checkbox" name="el" value="rfenders"><span>Задние крылья</span></label><label class="chip"><input type="checkbox" name="el" value="trunk"><span>Крышка багажника</span></label><label class="chip"><input type="checkbox" name="el" value="rbumper"><span>Задний бампер</span></label></div></div>
+<div class="grp rv"><h3><i>02</i>Что ещё сделать</h3><div class="chips"><label class="chip"><input type="checkbox" name="add" value="Полировка кузова" data-price="25000"><span>Полировка кузова <em>25 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Керамика" data-price="15000"><span>Керамика <em>15 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Удаление царапин" data-price="5000"><span>Удаление царапин <em>5 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Вмятины без покраски" data-price="2000"><span>Вмятины без покраски <em>2 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Шумоизоляция" data-price="25000"><span>Шумоизоляция <em>25 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Тонировка" data-price="2000"><span>Тонировка <em>2 000 ₽</em></span></label><label class="chip"><input type="checkbox" name="add" value="Озонация" data-price="1500"><span>Озонация <em>1 500 ₽</em></span></label></div></div>
+<div class="grp rv"><h3><i>03</i>Ваша машина</h3><div class="picker" id="picker">
+<div class="psel" id="psel"><svg class="sil" viewBox="0 0 120 40" aria-hidden="true"><path d=""/><circle cx="28" cy="32" r="7"/><circle cx="92" cy="32" r="7"/></svg><div><span class="lab" id="pbody"></span><b id="pname"></b></div><button type="button" class="pchg" id="pchg">Изменить</button></div>
+<div class="bgrid" id="bgrid"><button type="button" class="bt" data-brand="BMW"><b>BMW</b><small>13 моделей</small></button><button type="button" class="bt" data-brand="Mercedes-Benz"><b>Mercedes-Benz</b><small>12 моделей</small></button><button type="button" class="bt" data-brand="Audi"><b>Audi</b><small>12 моделей</small></button><button type="button" class="bt" data-brand="Porsche"><b>Porsche</b><small>7 моделей</small></button><button type="button" class="bt" data-brand="Toyota"><b>Toyota</b><small>8 моделей</small></button><button type="button" class="bt" data-brand="Lexus"><b>Lexus</b><small>7 моделей</small></button><button type="button" class="bt" data-brand="Land Rover"><b>Land Rover</b><small>6 моделей</small></button><button type="button" class="bt" data-brand="Li Auto"><b>Li Auto</b><small>4 модели</small></button><button type="button" class="bt" data-brand="Zeekr"><b>Zeekr</b><small>4 модели</small></button><button type="button" class="bt" data-brand="Kia"><b>Kia</b><small>9 моделей</small></button><button type="button" class="bt" data-brand="Hyundai"><b>Hyundai</b><small>7 моделей</small></button><button type="button" class="bt" data-brand="Volkswagen"><b>Volkswagen</b><small>7 моделей</small></button><button type="button" class="bt more" data-brand="Genesis"><b>Genesis</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Mazda"><b>Mazda</b><small>6 моделей</small></button><button type="button" class="bt more" data-brand="Haval"><b>Haval</b><small>6 моделей</small></button><button type="button" class="bt more" data-brand="Chery"><b>Chery</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Geely"><b>Geely</b><small>6 моделей</small></button><button type="button" class="bt more" data-brand="Exeed"><b>Exeed</b><small>4 модели</small></button><button type="button" class="bt more" data-brand="Tank"><b>Tank</b><small>3 модели</small></button><button type="button" class="bt more" data-brand="Volvo"><b>Volvo</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Skoda"><b>Skoda</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Nissan"><b>Nissan</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Mitsubishi"><b>Mitsubishi</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Infiniti"><b>Infiniti</b><small>4 модели</small></button><button type="button" class="bt more" data-brand="Changan"><b>Changan</b><small>5 моделей</small></button><button type="button" class="bt more" data-brand="Jaecoo"><b>Jaecoo</b><small>2 модели</small></button><button type="button" class="bt more" data-brand="Omoda"><b>Omoda</b><small>2 модели</small></button><button type="button" class="bt more" data-brand="Voyah"><b>Voyah</b><small>3 модели</small></button><button type="button" class="bt more" data-brand="Hongqi"><b>Hongqi</b><small>4 модели</small></button><button type="button" class="bt more" data-brand="Tesla"><b>Tesla</b><small>4 модели</small></button><button type="button" class="bt more" data-brand="Subaru"><b>Subaru</b><small>3 модели</small></button><button type="button" class="bt more" data-brand="Honda"><b>Honda</b><small>3 модели</small></button><button type="button" class="bt more" data-brand="Ford"><b>Ford</b><small>4 модели</small></button><button type="button" class="bt more" data-brand="Lada"><b>Lada</b><small>4 модели</small></button><button type="button" class="bt all">Все марки · 34</button><button type="button" class="bt other" data-brand="">Другая марка</button></div>
+<div class="mgrid" id="mgrid"><div class="mhead"><b></b><button type="button" class="pback" id="pback">← Все марки</button></div><div class="mlist" id="mlist"></div></div>
+<input class="model" id="model" type="text" placeholder="Марка и модель" autocomplete="off"></div></div>
+</div>
+<div class="printer rv"><div class="slot"></div><div class="paper" aria-live="polite">
+<div class="ph"><div><b>DC Performance</b><small>Детейлинг · Ногинск · 1-й Текстильный пер., 11А</small></div><div class="no"><span id="ono">№ —</span><br><span id="odate"></span></div></div>
+<div class="doc">Заказ-наряд</div>
+<dl><div class="f"><dt>Автомобиль</dt><dd id="ocar">—</dd></div><div class="f"><dt>Телефон</dt><dd>+7 963 770-43-13</dd></div></dl>
+<ul id="lines"><li class="empty"><span>Выберите работы — наряд заполнится сам</span></li></ul>
+<div class="tot"><span>Итого по прайсу</span><b id="total">—</b></div>
+<p class="fine">Точную цену мастер назовёт на осмотре: она зависит от машины и состояния кузова.</p>
+<div class="stamp">Предварительный<br>расчёт</div></div>
+<div class="send"><a class="btn btn-acc" id="sendTg" href="https://t.me/DC_PERFORMANCE_detailing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg> Отправить наряд в Telegram</a>
+<div class="alt"><a id="sendWa" href="https://wa.me/79637704313" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+79637704313">Позвонить</a></div></div></div>
+</form></div></section>
+<section class="works sec" id="works"><div class="pin"><div class="ghost" aria-hidden="true">Кроссовер · Audi · BMW · Peugeot · Toyota · Вмятина:</div>
+<div class="wrap"><div class="head"><div><span class="tag lab"><b>Работы</b> · фото с Яндекс Карт</span><h2 class="H big">Из нашего <br>бокса</h2></div><p>Машины, которые прошли через студию. Листайте дальше.</p></div></div>
+<div class="swipe lab"><i></i>Листайте <span>8 машин</span></div><div class="track"><figure class="shot"><span class="c"></span><span class="n">01/08</span><img src="img/p004.jpg" alt="Кроссовер под плёнкой, DC Performance" loading="lazy" width="960" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Кроссовер под плёнкой</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">02/08</span><img src="img/p032.jpg" alt="Audi Q3, DC Performance" loading="lazy" width="960" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Audi Q3</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">03/08</span><img src="img/p033.jpg" alt="Audi Q3, DC Performance" loading="lazy" width="1057" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Audi Q3</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">04/08</span><img src="img/p000.jpg" alt="BMW X3, DC Performance" loading="lazy" width="600" height="800"><figcaption><span class="lab">DC Performance · бокс</span><b>BMW X3</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">05/08</span><img src="img/p003.jpg" alt="BMW 5 серии, DC Performance" loading="lazy" width="1024" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>BMW 5 серии</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">06/08</span><img src="img/p005.jpg" alt="Peugeot, DC Performance" loading="lazy" width="960" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Peugeot</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">07/08</span><img src="img/p022.jpg" alt="Toyota Camry, DC Performance" loading="lazy" width="720" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Toyota Camry</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">08/08</span><img src="img/p024.jpg" alt="Вмятина: до и после, DC Performance" loading="lazy" width="720" height="1280"><figcaption><span class="lab">DC Performance · бокс</span><b>Вмятина: до и после</b></figcaption></figure></div></div></section>
+<section class="story sec"><div class="wrap">
+<div class="sph rv"><img src="img/p023.jpg" alt="DC Performance" loading="lazy" width="1023" height="1280"><span class="lab">До и после</span></div>
+<div class="rv"><span class="tag lab"><b>Из отзывов</b> · Яндекс Карты</span><h2 class="H mid">Царапина <br><em>во весь бок</em></h2><p>Кто-то прочертил Honda Freed от переднего крыла до самого зада. Здесь сделали так, что не видно.</p>
+<blockquote>Какой то индивид прочертил от переднего крыла до самого зада машины!</blockquote><div class="who lab">Игорь Шаталин, отзыв на Яндекс Картах</div>
+<a class="btn btn-acc" href="#cfg">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+<section class="how sec" id="how"><div class="wrap"><div class="side"><span class="tag lab"><b>Процесс</b></span><h2 class="H big">Как это <br>устроено</h2><p>Не наши обещания, а слова клиентов из отзывов на Яндекс Картах.</p></div>
+<div class="tl"><span class="bar"></span><article class="stp"><span class="dot">01</span><h3>Цена и срок по телефону</h3><div class="im"><img src="img/p006.jpg" alt="Цена и срок по телефону" loading="lazy" width="720" height="1280"></div><blockquote>«Позвонил узнал сколько будет стоить полировка и химчистка и сколько времени займёт»<cite class="lab">Горшок, отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">02</span><h3>Объяснят материал</h3><div class="im"><img src="img/p026.jpg" alt="Объяснят материал" loading="lazy" width="639" height="800"></div><blockquote>«Парень рассказал какой материал лучше, объяснил все нюансы»<cite class="lab">Максим, отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">03</span><h3>Переделают без вопросов</h3><div class="im"><img src="img/p013.jpg" alt="Переделают без вопросов" loading="lazy" width="960" height="1280"></div><blockquote>«отправил видео, парни без вопросов сказали»<cite class="lab">Александр Кудряшов, отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">04</span><h3>Педантичные</h3><div class="im"><img src="img/p038.jpg" alt="Педантичные" loading="lazy" width="960" height="1280"></div><blockquote>«Дмитрий и Сергей мастера своего дела + очень педантичные!»<cite class="lab">Ремсервис24, отзыв на Яндекс Картах</cite></blockquote></article></div></div></section>
+<section class="studio sec"><div class="wrap">
+<div class="top2"><div><span class="tag lab"><b>Студия</b> · 1-й Текстильный пер., 11А</span><h2 class="H big">Студия <br>в Ногинске</h2></div><div class="card-live"><span class="live lab"><b></b><span>пн–сб 9–21, вс выходной</span></span></div></div>
+<div class="grid"><div class="ph big wipe"><img src="img/p004.jpg" alt="Студия DC Performance" loading="lazy" width="960" height="1280"><span class="lab">Бокс</span></div><div class="phs"><div class="ph wipe"><img src="img/p013.jpg" alt="Студия DC Performance" loading="lazy" width="960" height="1280"></div><div class="ph wipe"><img src="img/p032.jpg" alt="Студия DC Performance" loading="lazy" width="960" height="1280"><span class="lab">Вход</span></div></div></div>
+<dl class="spec rv"><div><dt class="lab">Рейтинг</dt><dd>5,0 ★ · 49 оценок</dd></div><div><dt class="lab">Адрес</dt><dd>1-й Текстильный пер., 11А</dd></div><div><dt class="lab">Часы</dt><dd>Пн–сб 9:00–21:00, вс выходной</dd></div><div><dt class="lab">Оплата</dt><dd>Банковским переводом, наличными, предоплата</dd></div><div><dt class="lab">Парковка</dt><dd>есть</dd></div><div><dt class="lab">Плёнка</dt><dd>зоны риска от 45 000 ₽</dd></div><div><dt class="lab">Ещё</dt><dd>вмятины и царапины без покраски</dd></div><div><dt class="lab">Режим</dt><dd>пн–сб 9–21</dd></div></dl></div></section>
+<section class="voices sec" id="voices"><div class="wrap">
+<div class="top3"><div class="score rv"><span class="tag lab"><b>Отзывы</b> · Яндекс Карты</span><b>5,0</b><div class="stars"><i></i><i></i><i></i><i></i><i></i></div><span class="lab">49 оценок · 50 отзывов</span></div>
+<div class="bars"><span class="lab">Что хвалят чаще всего — положительных упоминаний в отзывах</span><div><span>Персонал</span><s style="--w:1.00"></s><em>31</em></div><div><span>Ремонт</span><s style="--w:0.90"></s><em>28</em></div><div><span>Время ожидания</span><s style="--w:0.48"></s><em>15</em></div><div><span>Мойка</span><s style="--w:0.39"></s><em>12</em></div><div><span>Полировка</span><s style="--w:0.35"></s><em>11</em></div></div></div></div>
+<div class="qrow paper"><div><div class="q"><span class="qm">“</span><p>Отличная студия! Делала фары - результат превзошел все ожидания.</p><div><span class="who"><i>О</i><span><b>Ольга</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Сделали полировку, тонировку и помыли подкапотное пространство. Всё быстро, качественно, без нареканий.</p><div><span class="who"><i>А</i><span><b>Артём Прусаков</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Отмечаю высокий уровень профессионализма</p><div><span class="who"><i>А</i><span><b>Александр Лошкарев</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Отличная студия! Делала фары - результат превзошел все ожидания.</p><div><span class="who"><i>О</i><span><b>Ольга</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Сделали полировку, тонировку и помыли подкапотное пространство. Всё быстро, качественно, без нареканий.</p><div><span class="who"><i>А</i><span><b>Артём Прусаков</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Отмечаю высокий уровень профессионализма</p><div><span class="who"><i>А</i><span><b>Александр Лошкарев</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div></div></div><div class="qrow rev"><div><div class="q"><span class="qm">“</span><p>отполировал фары и заклеил их в полиуретан. Настоящий ма</p><div><span class="who"><i>М</i><span><b>Максим</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Обращаюсь к этим ребятам уже не первый раз. Специалисты своего дела.</p><div><span class="who"><i>Т</i><span><b>Татьяна</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Делал керамику,антидождь,пленка на фары.Все понравилось</p><div><span class="who"><i>Н</i><span><b>Николай Осадченко</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>отполировал фары и заклеил их в полиуретан. Настоящий ма</p><div><span class="who"><i>М</i><span><b>Максим</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Обращаюсь к этим ребятам уже не первый раз. Специалисты своего дела.</p><div><span class="who"><i>Т</i><span><b>Татьяна</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div><div class="q"><span class="qm">“</span><p>Делал керамику,антидождь,пленка на фары.Все понравилось</p><div><span class="who"><i>Н</i><span><b>Николай Осадченко</b><small>Яндекс Карты</small></span></span><span class="st">★★★★★</span></div></div></div></div>
+<div class="wrap"><a class="allrev" href="https://yandex.ru/maps/org/dc_performance/115031764703/reviews/" target="_blank" rel="noopener">Все 50 отзывов на Яндекс Картах →</a></div></section>
+<section class="faq sec"><div class="wrap"><div><span class="tag lab"><b>Вопросы</b></span><h2 class="H big">Коротко <br>о&nbsp;главном</h2></div><div class="rv"><details open><summary>Сколько стоит оклейка плёнкой?</summary><p>По прайсу студии: зоны риска — от 45 000 ₽, весь кузов — по осмотру. Точная цена зависит от машины, мастер назовёт её на осмотре.</p></details><details><summary>Как записаться?</summary><p>Позвоните по номеру +7 963 770-43-13, напишите в Telegram или соберите заказ-наряд на этой странице: он уйдёт сообщением.</p></details><details><summary>Как можно оплатить?</summary><p>Банковским переводом, наличными, предоплата.</p></details><details><summary>Где вы находитесь?</summary><p>Ногинск, 1-й Текстильный пер., 11А.</p></details><details><summary>Во сколько работаете?</summary><p>Пн–сб 9:00–21:00, вс выходной.</p></details></div></div></section>
+<section class="final" id="contacts"><img src="img/p032.jpg" alt="DC Performance" loading="lazy" width="960" height="1280"><div class="wrap">
+<span class="tag lab"><b>Контакты</b> · <span class="live lab"><b></b><span>пн–сб 9–21, вс выходной</span></span></span>
+<h2 class="H big">Приезжайте <br><em>на осмотр</em></h2>
+<a class="tel" href="tel:+79637704313">+7 963 770-43-13</a>
+<div class="fgrid"><dl><dt class="lab">Адрес</dt><dd><a href="https://yandex.ru/maps/org/dc_performance/115031764703/" target="_blank" rel="noopener">Ногинск, 1-й Текстильный пер., 11А</a></dd></dl><dl><dt class="lab">Часы</dt><dd>Пн–сб 9:00–21:00, вс выходной</dd></dl>
+<div class="cta"><a class="btn btn-acc" href="#cfg">Собрать наряд <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="https://t.me/DC_PERFORMANCE_detailing" target="_blank" rel="noopener">Telegram</a><a class="btn btn-ghost" href="https://wa.me/79637704313" target="_blank" rel="noopener">WhatsApp</a></div></div>
+</div></section></main>
+<footer><div class="wrap"><span>DC Performance Детейлинг · Ногинск · Ногинск, 1-й Текстильный пер., 11А</span><span>Демо-версия сайта</span></div></footer>
+<nav class="dock" aria-label="Быстрая связь"><a class="btn btn-ghost" href="tel:+79637704313">Позвонить</a><a class="btn btn-ghost" href="https://t.me/DC_PERFORMANCE_detailing" target="_blank" rel="noopener">Telegram</a><a class="btn btn-acc" id="dockGo" href="#cfg">Рассчитать</a></nav>
+<div class="toast" id="toast"></div>
+<div class="wm" aria-hidden="true"><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span><span>ПРЕВЬЮ · демо-версия сайта</span></div>
+<script>
+(function(){
+  var root = document.documentElement; root.className += ' js';
+  var WA = '79637704313', NAME = 'DC Performance Детейлинг · Ногинск', ZN = {"bumper": "Передний бампер", "lights": "Фары", "hood": "Капот", "fenders": "Передние крылья", "mirrors": "Зеркала", "roof": "Крыша", "doors": "Двери", "rfenders": "Задние крылья", "trunk": "Крышка багажника", "rbumper": "Задний бампер"}, HOURS = [null, ["09:00", "21:00"], ["09:00", "21:00"], ["09:00", "21:00"], ["09:00", "21:00"], ["09:00", "21:00"], ["09:00", "21:00"]], CARS = {"BMW": [["1 серии", "хэтчбек"], ["3 серии", "седан"], ["5 серии", "седан"], ["7 серии", "седан"], ["M5", "седан"], ["M4", "купе"], ["X1", "кроссовер"], ["X3", "кроссовер"], ["X4", "кроссовер"], ["X5", "внедорожник"], ["X6", "внедорожник"], ["X7", "внедорожник"], ["XM", "внедорожник"]], "Mercedes-Benz": [["A-Class", "хэтчбек"], ["C-Class", "седан"], ["E-Class", "седан"], ["S-Class", "седан"], ["CLA", "седан"], ["GLA", "кроссовер"], ["GLC", "кроссовер"], ["GLE", "внедорожник"], ["GLS", "внедорожник"], ["G-Class", "внедорожник"], ["AMG GT", "купе"], ["V-Class", "минивэн"]], "Audi": [["A3", "седан"], ["A4", "седан"], ["A5", "лифтбек"], ["A6", "седан"], ["A7", "лифтбек"], ["A8", "седан"], ["Q3", "кроссовер"], ["Q5", "кроссовер"], ["Q7", "внедорожник"], ["Q8", "внедорожник"], ["RS 6", "универсал"], ["e-tron", "кроссовер"]], "Porsche": [["Macan", "кроссовер"], ["Cayenne", "внедорожник"], ["Cayenne Coupe", "внедорожник"], ["Panamera", "лифтбек"], ["911", "купе"], ["718", "купе"], ["Taycan", "седан"]], "Toyota": [["Camry", "седан"], ["Corolla", "седан"], ["RAV4", "кроссовер"], ["Highlander", "внедорожник"], ["Land Cruiser Prado", "внедорожник"], ["Land Cruiser 300", "внедорожник"], ["Fortuner", "внедорожник"], ["Hilux", "пикап"]], "Lexus": [["ES", "седан"], ["LS", "седан"], ["UX", "кроссовер"], ["NX", "кроссовер"], ["RX", "кроссовер"], ["GX", "внедорожник"], ["LX", "внедорожник"]], "Land Rover": [["Range Rover", "внедорожник"], ["Range Rover Sport", "внедорожник"], ["Range Rover Velar", "кроссовер"], ["Range Rover Evoque", "кроссовер"], ["Defender", "внедорожник"], ["Discovery", "внедорожник"]], "Li Auto": [["L6", "внедорожник"], ["L7", "внедорожник"], ["L8", "внедорожник"], ["L9", "внедорожник"]], "Zeekr": [["001", "лифтбек"], ["007", "седан"], ["7X", "кроссовер"], ["9X", "внедорожник"]], "Kia": [["Rio", "седан"], ["Ceed", "хэтчбек"], ["Cerato", "седан"], ["K5", "седан"], ["Seltos", "кроссовер"], ["Sportage", "кроссовер"], ["Sorento", "внедорожник"], ["Mohave", "внедорожник"], ["Carnival", "минивэн"]], "Hyundai": [["Solaris", "седан"], ["Elantra", "седан"], ["Sonata", "седан"], ["Creta", "кроссовер"], ["Tucson", "кроссовер"], ["Santa Fe", "внедорожник"], ["Palisade", "внедорожник"]], "Volkswagen": [["Polo", "седан"], ["Jetta", "седан"], ["Golf", "хэтчбек"], ["Passat", "седан"], ["Tiguan", "кроссовер"], ["Teramont", "внедорожник"], ["Touareg", "внедорожник"]], "Genesis": [["G70", "седан"], ["G80", "седан"], ["G90", "седан"], ["GV70", "кроссовер"], ["GV80", "внедорожник"]], "Mazda": [["3", "седан"], ["6", "седан"], ["CX-30", "кроссовер"], ["CX-5", "кроссовер"], ["CX-60", "кроссовер"], ["CX-9", "внедорожник"]], "Haval": [["Jolion", "кроссовер"], ["F7", "кроссовер"], ["F7x", "кроссовер"], ["H6", "кроссовер"], ["Dargo", "внедорожник"], ["H9", "внедорожник"]], "Chery": [["Arrizo 8", "седан"], ["Tiggo 4", "кроссовер"], ["Tiggo 7 Pro", "кроссовер"], ["Tiggo 8 Pro", "внедорожник"], ["Tiggo 9", "внедорожник"]], "Geely": [["Emgrand", "седан"], ["Coolray", "кроссовер"], ["Atlas", "кроссовер"], ["Tugella", "кроссовер"], ["Monjaro", "внедорожник"], ["Okavango", "внедорожник"]], "Exeed": [["LX", "кроссовер"], ["TXL", "кроссовер"], ["RX", "кроссовер"], ["VX", "внедорожник"]], "Tank": [["300", "внедорожник"], ["400", "внедорожник"], ["500", "внедорожник"]], "Volvo": [["S60", "седан"], ["S90", "седан"], ["XC40", "кроссовер"], ["XC60", "кроссовер"], ["XC90", "внедорожник"]], "Skoda": [["Rapid", "лифтбек"], ["Octavia", "лифтбек"], ["Superb", "лифтбек"], ["Karoq", "кроссовер"], ["Kodiaq", "кроссовер"]], "Nissan": [["Almera", "седан"], ["Qashqai", "кроссовер"], ["X-Trail", "кроссовер"], ["Murano", "кроссовер"], ["Patrol", "внедорожник"]], "Mitsubishi": [["Lancer", "седан"], ["ASX", "кроссовер"], ["Outlander", "кроссовер"], ["Pajero Sport", "внедорожник"], ["L200", "пикап"]], "Infiniti": [["Q50", "седан"], ["QX50", "кроссовер"], ["QX60", "внедорожник"], ["QX80", "внедорожник"]], "Changan": [["UNI-V", "лифтбек"], ["CS35 Plus", "кроссовер"], ["CS55 Plus", "кроссовер"], ["UNI-K", "кроссовер"], ["CS75 Plus", "кроссовер"]], "Jaecoo": [["J7", "кроссовер"], ["J8", "внедорожник"]], "Omoda": [["C5", "кроссовер"], ["S5", "седан"]], "Voyah": [["Free", "кроссовер"], ["Dream", "минивэн"], ["Passion", "седан"]], "Hongqi": [["H5", "седан"], ["H9", "седан"], ["HS5", "кроссовер"], ["E-HS9", "внедорожник"]], "Tesla": [["Model 3", "седан"], ["Model Y", "кроссовер"], ["Model S", "лифтбек"], ["Model X", "внедорожник"]], "Subaru": [["XV", "кроссовер"], ["Forester", "кроссовер"], ["Outback", "универсал"]], "Honda": [["Civic", "седан"], ["Accord", "седан"], ["CR-V", "кроссовер"]], "Ford": [["Focus", "хэтчбек"], ["Mondeo", "седан"], ["Kuga", "кроссовер"], ["Explorer", "внедорожник"]], "Lada": [["Granta", "седан"], ["Vesta", "седан"], ["Largus", "универсал"], ["Niva Travel", "внедорожник"]]}, CLS = {"седан": 0, "хэтчбек": 0, "лифтбек": 0, "купе": 0, "кабриолет": 0, "универсал": 1, "кроссовер": 1, "минивэн": 2, "внедорожник": 2, "пикап": 2};
+  var $ = function(s, r){ return (r || document).querySelector(s); }, $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+  var fmt = function(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽'; };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // до реагентов: счёт в днях по дате города; ноябрь–март — «уже на дорогах»; апрель–август — блок скрыт
+  (function(){
+    var w = $('#winter'); if(!w) return;
+    var now = new Date(), m = now.getMonth() + 1, t = new Date(now.getFullYear(), +w.dataset.m - 1, +w.dataset.d);
+    if(m >= 4 && m <= 8){ w.classList.add('off'); return; }
+    var days = Math.ceil((t - now) / 864e5);
+    if(m <= 3 || days <= 0){
+      $('.wt', w).textContent = 'Реагенты уже';
+      $('.wn', w).innerHTML = 'на дорогах';
+      $('.wp', w).textContent = 'Каждая поездка по реагентам и щебню — новые сколы на капоте и бампере. Плёнку клеят и зимой: бокс тёплый, машина сохнет за 1–2 дня.';
+    } else {
+      var n = days % 100, k = n % 10, wd = (n > 10 && n < 20) ? 'дней' : k === 1 ? 'день' : (k > 1 && k < 5) ? 'дня' : 'дней';
+      $('.wd', w).textContent = days; $('.wdw', w).textContent = wd;
+    }
+    var b = $('[data-winter]', w);
+    if(b) b.addEventListener('click', function(){
+      var r = $('#pk-risk'); if(r){ r.checked = true; r.dispatchEvent(new Event('change', {bubbles: true})); }
+      var c = b.dataset.winter && $$('input[name="add"]').filter(function(i){ return i.value === b.dataset.winter; })[0];
+      if(c && !c.checked){ c.checked = true; c.dispatchEvent(new Event('change', {bubbles: true})); }
+    });
+  })();
+
+  // шапка
+  var top = $('.top'), onScroll = [];
+  onScroll.push(function(){ top.classList.toggle('solid', scrollY > 40); });
+
+  // открыто ли сейчас (время студии, UTC+3)
+  (function(){
+    var d = new Date(Date.now() + (d0 = new Date()).getTimezoneOffset() * 60000 + 3 * 3600000), d0;
+    var days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'], wd = d.getDay(), mins = d.getHours() * 60 + d.getMinutes();
+    var tm = function(s){ var p = s.split(':'); return +p[0] * 60 + +p[1]; }, txt, open = false;
+    var today = HOURS[wd];
+    if(today && mins >= tm(today[0]) && mins < tm(today[1])){ open = true; txt = 'Открыто до ' + today[1].replace('24:00','00:00'); }
+    else { for(var k = 0; k < 8; k++){ var dd = (wd + k) % 7, h = HOURS[dd]; if(!h) continue; if(k === 0 && mins >= tm(h[0])) continue;
+        txt = 'Закрыто · откроемся ' + (k === 0 ? 'сегодня' : k === 1 ? 'завтра' : 'в ' + days[dd]) + ' в ' + h[0]; break; } }
+    $$('.live').forEach(function(el){ el.classList.toggle('off', !open); $('span', el).textContent = txt || ''; });
+  })();
+
+  // сцена: плёнка ложится деталь за деталью
+  // компьютер — по прокрутке; телефон — сама, когда блок на экране, плюс кнопки пакетов
+  var scene = $('.scene');
+  if(scene){
+    scene.classList.remove('done');
+    var zs = $$('.car .z', scene), order = scene.dataset.order.split(','), risk = scene.dataset.risk.split(','),
+        states = $$('.state', scene), lis = $$('.meter li', scene), pcts = $$('.pct span,.mpct span', scene), wrapG = $('.carwrap', scene),
+        tabsB = $$('.ptabs button', scene);
+    var full = order.length, rN = risk.length, curN = -1;
+    var setN = function(n){
+      if(n === curN) return; curN = n;
+      var on = order.slice(0, n);
+      zs.forEach(function(z){ z.classList.toggle('on', on.indexOf(z.dataset.z) > -1); });
+      lis.forEach(function(li){ li.classList.toggle('on', on.indexOf(li.dataset.z) > -1); });
+      var st = n >= full ? 2 : n >= rN ? 1 : 0;
+      states.forEach(function(s, i){ s.classList.toggle('on', i === st); });
+      tabsB.forEach(function(b){ b.classList.toggle('on', +b.dataset.st === st); });
+      pcts.forEach(function(x){ x.textContent = Math.round(n / full * 100); });
+      wrapG.style.setProperty('--glow', n ? 1 : 0);
+    };
+    if(matchMedia('(max-width: 900px)').matches){
+      scene.classList.add('auto'); setN(0);
+      var plan = [], last = null, wait = 0, running = false;
+      var go = function(steps){ plan = steps; if(!running){ running = true; last = null; requestAnimationFrame(tickS); } };
+      var tickS = function(t){
+        if(last === null) last = t; var dt = t - last; last = t; wait -= dt;
+        while(wait <= 0 && plan.length){
+          var st = plan[0];
+          if(st[0] === 'hold'){ plan.shift(); wait += st[1]; continue; }
+          if(curN === st[0]){ plan.shift(); continue; }
+          setN(curN + (st[0] > curN ? 1 : -1)); wait += st[1];
+        }
+        if(plan.length || wait > 0) requestAnimationFrame(tickS); else running = false;
+      };
+      var seq = [['hold', 350], [rN, 260], ['hold', 1700], [full, 200]];
+      if('IntersectionObserver' in window){
+        var sio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ go(seq.slice()); sio.disconnect(); } }); }, {threshold:.45});
+        sio.observe($('.carwrap', scene));
+      } else setN(full);
+      tabsB.forEach(function(b){ b.addEventListener('click', function(){ sio && sio.disconnect(); go([[+b.dataset.st === 2 ? full : rN, 90]]); }); });
+    } else {
+      onScroll.push(function(){
+        var r = scene.getBoundingClientRect(), span = scene.offsetHeight - innerHeight;
+        var p = Math.min(1, Math.max(0, -r.top / span));
+        // 0–.12 вступление, .12–.48 зоны риска, .48–.6 пауза, .6–.92 остальное
+        setN(p < .12 ? 0 : p < .48 ? Math.ceil((p - .12) / .36 * rN) : p < .6 ? rN : Math.min(full, rN + Math.ceil((p - .6) / .32 * (full - rN))));
+      });
+    }
+  }
+
+  // заказ-наряд
+  var f = $('#cfgForm');
+  if(f){
+    var lines = $('#lines'), total = $('#total'), stamp = $('.stamp'), dockBtn = $('#dockGo'), sendTg = $('#sendTg');
+    var TGB = (sendTg.getAttribute('href') || '').split('?')[0], TGD = /t\.me\/(\+\d{10,}|[A-Za-z]\w{3,})$/.test(TGB);  // Telegram умеет t.me/<ник>?text= — чат открывается с готовым нарядом
+    var now = new Date(), pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    $('#ono').textContent = '№ ' + pad(now.getDate()) + pad(now.getMonth() + 1) + '-' + (100 + Math.floor(Math.random() * 900));
+    $('#odate').textContent = pad(now.getDate()) + '.' + pad(now.getMonth() + 1) + '.' + now.getFullYear();
+    var prev = {};
+    // выбор машины: марка → модель (как в автосалоне)
+    var pick = {brand:'', model:'', body:''}, pkr = $('#picker');
+    var SIL = {sedan:'M6,32 V27 Q6,22 12,21 L24,19 L35,10 Q39,8 45,8 H66 Q71,8 75,11 L87,19 L106,21 Q114,22 114,28 V32 Z',
+      hatch:'M6,32 V26 Q6,21 12,20 L26,18 L37,9 Q40,7 46,7 H86 Q92,7 96,11 L106,20 Q113,22 113,28 V32 Z',
+      suv:'M6,32 V24 Q6,18 13,17 L24,16 L33,6 Q35,4 41,4 H92 Q98,4 101,8 L108,16 Q114,18 114,24 V32 Z',
+      coupe:'M6,32 V28 Q6,23 14,22 L30,19 L45,10 Q49,8 57,8 H70 Q78,8 84,13 L97,20 Q112,22 114,28 V32 Z'};
+    var silOf = function(b){ return /кроссовер|внедорожник|минивэн|пикап/.test(b) ? 'suv' : /хэтчбек|универсал/.test(b) ? 'hatch' : /купе|кабриолет/.test(b) ? 'coupe' : 'sedan'; };
+    if(pkr){
+      var bgrid = $('#bgrid', pkr), mlist = $('#mlist', pkr);
+      var mode = function(m){ pkr.className = 'picker' + (m ? ' ' + m : ''); };
+      $$('.bt[data-brand]', pkr).forEach(function(b){ b.addEventListener('click', function(){
+        var br = b.dataset.brand;
+        if(!br){ pick = {brand:'', model:'', body:''}; mode('other'); $('#model').focus(); upd(); return; }
+        pick = {brand:br, model:'', body:''}; mode('brand');
+        mlist.innerHTML = CARS[br].map(function(m, i){ return '<button type="button" class="mt" data-i="' + i + '"><b>' + m[0] + '</b><small>' + m[1] + '</small></button>'; }).join('');
+        $('.mhead b', pkr) && ($('.mhead b', pkr).textContent = br);
+      }); });
+      $('.bt.all', pkr).addEventListener('click', function(){ bgrid.classList.add('all-on'); });
+      mlist.addEventListener('click', function(e){ var b = e.target.closest('.mt'); if(!b) return;
+        var m = CARS[pick.brand][+b.dataset.i]; pick.model = m[0]; pick.body = m[1]; mode('done');
+        $('#pname').textContent = pick.brand + ' ' + pick.model; $('#pbody').textContent = pick.body;
+        $('.sil path', pkr).setAttribute('d', SIL[silOf(pick.body)]); upd(); });
+      $('#pback').addEventListener('click', function(){ mode(''); });
+      $('#pchg').addEventListener('click', function(){ pick = {brand:'', model:'', body:''}; mode(''); upd(); });
+    }
+    var state = function(){
+      var p = $('input[name=pk]:checked', f), els = $$('input[name=el]:checked', f).map(function(i){ return i.value; });
+      var add = $$('input[name=add]:checked', f), model = $('#model').value.trim();
+      f.classList.toggle('el-on', !!(p && p.dataset.custom));
+      var sum = 0, from = false, rows = [], ask = false;
+      if(p && p.value){ var pp = +p.dataset.price, fr = !!p.dataset.from, cl = '';
+        if(p.dataset.cls && CLS[pick.body] != null){ pp = +p.dataset.cls.split(',')[CLS[pick.body]]; fr = false; cl = ' (' + ['I', 'II', 'III'][CLS[pick.body]] + ' класс)'; }
+        if(p.dataset.ask){ ask = true; rows.push({k:'pk-' + p.id, t:'Плёнка: ' + p.value.toLowerCase(), v:'по осмотру'}); }
+        else { sum += pp; if(fr) from = true; rows.push({k:'pk-' + p.id + cl, t:'Плёнка: ' + p.value.toLowerCase() + cl, v:(fr ? 'от ' : '') + fmt(pp)}); }
+        if(p.dataset.custom) els.forEach(function(z){ rows.push({k:'el-' + z, t:ZN[z], sub:1}); }); }
+      add.forEach(function(i){ sum += +i.dataset.price; rows.push({k:'add-' + i.value, t:i.value, v:fmt(+i.dataset.price)}); });
+      var car = pick.model ? pick.brand + ' ' + pick.model + ', ' + pick.body : model;
+      var m = 'Здравствуйте! Хочу рассчитать работы в ' + NAME + '.';
+      if(car) m += '\nМашина: ' + car + '.';
+      if(p && p.value) m += '\nПлёнка: ' + p.value.toLowerCase() + (cl || '') + (p.dataset.custom && els.length ? ' (' + els.map(function(z){ return ZN[z].toLowerCase(); }).join(', ') + ')' : '') + (ask ? ' — цену хочу узнать на осмотре' : '') + '.';
+      if(add.length) m += '\nЕщё: ' + add.map(function(i){ return i.value.toLowerCase(); }).join(', ') + '.';
+      if(sum) m += '\nПо прайсу на сайте выходит ' + (from ? 'от ' : 'около ') + fmt(sum) + (ask ? ' плюс плёнка' : '') + '. Когда можно приехать на осмотр?';
+      else if(ask) m += '\nКогда можно приехать на осмотр?';
+      return {m:m, sum:sum, from:from, rows:rows, car:car, ask:ask};
+    };
+    var shown = 0, raf;
+    var animateTo = function(v, from){ var a = shown, t0 = null; shown = v; cancelAnimationFrame(raf);
+      (function step(t){ if(!t0) t0 = t; var k = Math.min(1, (t - t0) / 700); total.textContent = v || a ? (from && v ? 'от ' : '') + fmt(Math.round(a + (v - a) * (1 - Math.pow(1 - k, 3)))) : '—'; if(k < 1) raf = requestAnimationFrame(step); })(performance.now());
+    };
+    var upd = function(){
+      var r = state(), cur = {};
+      animateTo(r.sum, r.from);
+      lines.innerHTML = r.rows.length ? r.rows.map(function(x){ cur[x.k] = 1;
+        return '<li class="' + (x.sub ? 'sub ' : '') + (prev[x.k] ? '' : 'new') + '"><span>' + (x.sub ? '— ' : '') + x.t + '</span>' + (x.v ? '<i></i><b>' + x.v + '</b>' : '') + '</li>'; }).join('')
+        : '<li class="empty"><span>Выберите работы слева — наряд заполнится сам</span></li>';
+      prev = cur;
+      $('#ocar').textContent = r.car || '—';
+      stamp.classList.toggle('on', r.sum > 0 || r.ask);
+      var wl = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(r.m);
+      if(sendTg.dataset.wa) sendTg.href = wl; else { $('#sendWa').href = wl; if(TGD) sendTg.href = TGB + '?text=' + encodeURIComponent(r.m); }
+      if(dockBtn){ dockBtn.textContent = r.sum ? 'Отправить · ' + (r.from ? 'от ' : '') + fmt(r.sum) : 'Рассчитать';
+        dockBtn.href = r.sum ? sendTg.href : '#cfg'; if(r.sum) dockBtn.target = '_blank'; else dockBtn.removeAttribute('target'); }
+    };
+    f.addEventListener('change', upd); $('#model').addEventListener('input', upd); upd();
+    var toast = $('#toast'), tt;
+    var copyGo = function(){ try{ navigator.clipboard.writeText(state().m).then(function(){ toast.textContent = 'Наряд уже в чате. Если поле пустое, нажмите «Вставить»'; toast.className = 'toast on'; clearTimeout(tt); tt = setTimeout(function(){ toast.className = 'toast'; }, 3500); }); }catch(e){} };
+    if(!sendTg.dataset.wa) sendTg.addEventListener('click', copyGo);
+    if(dockBtn) dockBtn.addEventListener('click', function(){ if(state().sum) copyGo(); });
+  }
+
+  // работы: лента едет вбок при прокрутке вниз (компьютер)
+  var works = $('.works'), track = $('.track'), ghost = $('.ghost');
+  if(works && track && matchMedia('(min-width: 901px)').matches && !reduce){
+    root.classList.add('js-pin');
+    var pin = $('.pin', works), extra = 0;
+    var size = function(){ track.style.overflow = 'visible'; extra = track.scrollWidth - track.clientWidth + 80; works.style.height = (pin.offsetHeight + extra) + 'px'; pin.style.position = 'sticky'; pin.style.top = '0px'; };
+    size(); addEventListener('resize', size);
+    onScroll.push(function(){
+      var r = works.getBoundingClientRect(), span = works.offsetHeight - pin.offsetHeight;
+      var p = Math.min(1, Math.max(0, (parseFloat(pin.style.top) - r.top) / span));
+      track.style.transform = 'translateX(' + (-p * extra) + 'px)';
+      if(ghost) ghost.style.transform = 'translate(' + (-p * extra * .35) + 'px,-50%)';
+    });
+  }
+
+  if(works && track && !root.classList.contains('js-pin') && !reduce && 'IntersectionObserver' in window){
+    var nio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; nio.disconnect();
+      var t0 = null; (function nud(t){ if(t0 === null) t0 = t; var k = (t - t0) / 1300; if(k > 1){ track.scrollLeft = 0; return; }
+        track.scrollLeft = Math.sin(Math.PI * k) * 120; requestAnimationFrame(nud); })(performance.now()); }); }, {threshold:.6});
+    nio.observe(track);
+  }
+
+  // бегущие строки без дыр: набор повторяем, пока не закроет экран, сдвиг ровно на ширину набора
+  $$('.row>div,.qrow>div').forEach(function(tr){
+    var kids = [].slice.call(tr.children), half = kids.length / 2;
+    if(!half) return;
+    var w = kids[half].offsetLeft - kids[0].offsetLeft; if(w <= 0) return;
+    kids.slice(half).forEach(function(k){ tr.removeChild(k); });
+    while(tr.scrollWidth < w + innerWidth + 200){ kids.slice(0, half).forEach(function(k){ tr.appendChild(k.cloneNode(true)); }); }
+    tr.style.setProperty('--w', w + 'px');
+    tr.style.animationName = 'runpx'; tr.style.animationDuration = (w / (tr.parentNode.classList.contains('qrow') ? 34 : 70)) + 's';
+  });
+
+  // линия процесса
+  var tl = $('.tl');
+  if(tl){ var bar = $('.bar', tl), stps = $$('.stp', tl);
+    onScroll.push(function(){ var r = tl.getBoundingClientRect(), mid = innerHeight * .6;
+      var p = Math.min(1, Math.max(0, (mid - r.top) / r.height)); bar.style.setProperty('--p', p);
+      stps.forEach(function(s){ s.classList.toggle('on', s.getBoundingClientRect().top < mid); }); }); }
+
+  var tick = false;
+  var run = function(){ tick = false; onScroll.forEach(function(fn){ fn(); }); };
+  addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(run); } }, {passive:true});
+  addEventListener('resize', run); run();
+
+  // появление блоков
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(e.target.classList.contains('final') ? 'lit' : 'in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -10% 0px'});
+    $$('.rv,.wipe,.bars,.final').forEach(function(el){ io.observe(el); });
+  } else { $$('.rv,.wipe,.bars').forEach(function(el){ el.classList.add('in'); }); $$('.final').forEach(function(el){ el.classList.add('lit'); }); }
+
+  // курсор-прицел
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    var c = document.createElement('div'); c.className = 'cur'; document.body.appendChild(c);
+    var x = 0, y = 0, cx = 0, cy = 0;
+    addEventListener('mousemove', function(e){ x = e.clientX; y = e.clientY; c.classList.add('on'); c.classList.toggle('big', !!e.target.closest('a,button,label,.shot,summary')); });
+    (function loop(){ cx += (x - cx) * .2; cy += (y - cy) * .2; c.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(loop); })();
+  }
+})();
+</script>
+<script>
+// длинное слово в заголовке («Кирилловском», «Владивостока») не должно распирать страницу на телефоне: уменьшаем шрифт, пока не влезет
+(function(){
+  function fit(){ document.querySelectorAll('.H').forEach(function(h){
+    h.style.fontSize=''; var fs=parseFloat(getComputedStyle(h).fontSize), n=0, vw=document.documentElement.clientWidth;
+    var over=function(){ return h.scrollWidth>h.clientWidth+1 || h.getBoundingClientRect().right>vw-2; };
+    if(h.getBoundingClientRect().left>vw) return;  // заголовок в горизонтальной ленте — не трогаем
+    while(over() && n++<20){ fs*=.94; h.style.fontSize=fs+'px'; }
+  }); }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit); else window.addEventListener('load',fit);
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
