@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Магия Красоты · салон красоты в Мурино</title>
+<meta name="description" content="Волосы, ногти, ресницы, косметология, массаж и татуаж в Мурино.">
+<meta name="theme-color" content="#2a1f2d">
+<style>
+@font-face{font-family:U;src:url(fonts/Unbounded-cyrillic.woff2) format("woff2");font-weight:200 900;unicode-range:U+0400-04FF}
+@font-face{font-family:U;src:url(fonts/Unbounded-latin.woff2) format("woff2");font-weight:200 900;unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+@font-face{font-family:J;src:url(fonts/Jost-cyrillic.woff2) format("woff2");font-weight:100 900;unicode-range:U+0400-04FF}
+@font-face{font-family:J;src:url(fonts/Jost-latin.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+:root{
+  --cream:#f3eef3; --paper:#fbf9fb; --ink:#1f1a20; --mute:#6c636e; --line:#e1d6e2; --sage:#b49ab8; --olive:#2a1f2d; --olive2:#3a2d3e; --wine:#a04a8c; --wine2:#a04a8c; --rose:#f0c2e3; --gold:#b89a6a;
+  --r:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font:400 17px/1.55 J,system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.w{width:min(1180px,100% - 40px);margin-inline:auto}
+.u{font-family:U,sans-serif;letter-spacing:-.02em}
+.kick{font:600 12px/1 J;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+h2{font:800 clamp(30px,6.4vw,64px)/1.02 U;letter-spacing:-.035em}
+h2 i{font-style:normal;color:var(--wine)}
+
+/* демо */
+.demo{background:var(--ink);color:#e9e2d6;font:500 12px/1.4 J;letter-spacing:.06em;text-align:center;padding:7px 12px}
+
+/* шапка */
+.top{position:sticky;top:0;z-index:40;background:rgba(242,236,226,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.s{border-color:var(--line)}
+.top .w{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{display:flex;align-items:baseline;gap:8px}
+.logo b{font:800 21px/1 U;letter-spacing:.02em}
+.logo span{font:500 13px/1 J;color:var(--mute);letter-spacing:.12em}
+.top nav{display:none;gap:30px;font:500 15px/1 J}
+.top nav a{opacity:.75}.top nav a:hover{opacity:1}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--olive);color:var(--paper);border-radius:99px;padding:13px 20px;font:600 15px/1 J;transition:transform .2s,background .2s}
+.cta:hover{background:var(--wine);transform:translateY(-1px)}
+.top .cta{padding:11px 16px;font-size:14px}
+
+/* первый экран */
+.hero{padding:26px 0 0;position:relative}
+.hero .w{display:grid;gap:26px}
+.hero h1{font:900 clamp(58px,19vw,190px)/.86 U;letter-spacing:-.055em;color:var(--olive);position:relative}
+.hero h1 .acc{position:relative;display:inline-block}
+.hero h1 .acc::after{content:"";position:absolute;left:46%;top:-.13em;width:.14em;height:.2em;background:var(--wine);transform:skewX(-28deg);border-radius:2px}
+.hero h1 small{display:block;font:700 clamp(18px,4.4vw,34px)/1.1 U;letter-spacing:-.01em;color:var(--ink);margin-top:.35em}
+.hero .lead{font-size:clamp(17px,2.4vw,20px);max-width:30ch;color:#3a342e}
+.hero .lead b{font-weight:600}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.facts span{border:1px solid var(--line);border-radius:99px;padding:8px 14px;font:500 14px/1 J;background:var(--paper)}
+.facts span i{font-style:normal;color:var(--wine);font-weight:700}
+.hero .acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ghost{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);border-radius:99px;padding:12px 18px;font:600 15px/1 J}
+.arches{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:end}
+.arch{border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:var(--line);position:relative}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arches .a1{aspect-ratio:3/4.4}
+.arches .a2{aspect-ratio:3/4}
+.stamp{position:absolute;right:-6px;top:-10px;width:118px;height:118px;border-radius:50%;background:var(--wine);color:var(--paper);display:grid;place-items:center;text-align:center;font:800 13px/1.15 U;letter-spacing:.02em;transform:rotate(-10deg);box-shadow:0 10px 30px rgba(92,27,39,.25);z-index:2}
+.stamp em{display:block;font:500 11px/1.2 J;letter-spacing:.1em;text-transform:uppercase;opacity:.8;font-style:normal;margin-top:4px}
+.arches .wrap2{position:relative}
+
+/* бегущая строка */
+.run{margin-top:44px;background:var(--olive);color:var(--cream);overflow:hidden;white-space:nowrap;padding:16px 0;transform:rotate(-1.2deg);width:104%;margin-left:-2%}
+.run div{display:inline-block;animation:run 38s linear infinite;font:700 clamp(18px,3vw,26px)/1 U;letter-spacing:-.01em}
+.run span{margin:0 22px}.run span.d{color:var(--sage)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* мелочи */
+.small{padding:96px 0 40px}
+.small .grid{display:grid;gap:26px;margin-top:34px}
+.tea{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/5;background:var(--line)}
+.tea img{width:100%;height:100%;object-fit:cover}
+.tea figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:var(--paper);border-radius:18px;padding:14px 16px;font-size:15px;line-height:1.45}
+.tea figcaption b{display:block;font:700 13px/1 J;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.det{display:grid;gap:0;border-top:1.5px solid var(--ink)}
+.det li{list-style:none;display:grid;grid-template-columns:54px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.det .n{font:800 15px/1.4 U;color:var(--wine)}
+.det h3{font:700 clamp(19px,2.6vw,24px)/1.2 U;letter-spacing:-.02em;margin-bottom:6px}
+.det p{color:#4a433b;font-size:16px}
+.det q{display:block;margin-top:8px;font-style:italic;color:var(--mute);font-size:15px}
+.det q::before,.det q::after{content:none}
+
+/* конструктор визита */
+.visit{padding:70px 0 90px;background:var(--olive);color:var(--cream);border-radius:40px 40px 0 0;margin-top:50px}
+.visit .kick{color:var(--sage)}
+.visit h2 i{color:#f0c2e3}
+.visit .intro{display:grid;gap:18px;margin-bottom:30px}
+.visit .intro p{max-width:46ch;color:#cfd3c4}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-bottom:18px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1.5px solid rgba(242,236,226,.3);border-radius:99px;padding:10px 16px;font:600 15px/1 J;color:var(--cream);transition:.2s}
+.tabs button.on{background:var(--cream);color:var(--olive);border-color:var(--cream)}
+.tabs button sup{font-size:10px;opacity:.6;margin-left:3px}
+.svc{display:grid;gap:8px}
+.svc button{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;text-align:left;background:var(--olive2);border-radius:18px;padding:15px 16px;transition:background .2s,transform .15s}
+.svc button:active{transform:scale(.99)}
+.svc button .ck{width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(242,236,226,.45);display:grid;place-items:center;transition:.2s}
+.svc button .ck::after{content:"";width:9px;height:5px;border:2px solid transparent;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.svc button.on{background:var(--cream);color:var(--ink)}
+.svc button.on .ck{background:var(--wine);border-color:var(--wine)}
+.svc button.on .ck::after{border-color:var(--cream)}
+.svc .t{font-size:16px;line-height:1.3}
+.svc .p{font:700 15px/1 U;white-space:nowrap;letter-spacing:-.01em}
+.bag{position:sticky;bottom:12px;margin-top:22px;background:var(--cream);color:var(--ink);border-radius:22px;padding:14px 14px 14px 20px;display:flex;align-items:center;gap:14px;justify-content:space-between;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:translateY(20px);opacity:0;pointer-events:none;transition:.3s}
+.bag.on{transform:none;opacity:1;pointer-events:auto}
+.bag .sum{font:800 24px/1 U;letter-spacing:-.03em}
+.bag small{display:block;font:500 13px/1.2 J;color:var(--mute);margin-top:4px}
+.bag .cta{background:var(--wine)}
+
+/* мастера */
+.team{padding:96px 0 40px}
+.people{display:grid;gap:18px;margin-top:34px}
+.pp{background:var(--paper);border-radius:var(--r);overflow:hidden;display:grid}
+.pp .ph{aspect-ratio:4/3.4;overflow:hidden;background:var(--line)}
+.pp .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.pp:hover .ph img{transform:scale(1.04)}
+.pp .tx{padding:20px 20px 24px}
+.pp .role{font:600 12px/1 J;letter-spacing:.18em;text-transform:uppercase;color:var(--wine)}
+.pp h3{font:800 30px/1 U;letter-spacing:-.03em;margin:10px 0 12px}
+.pp p{font-size:15.5px;color:#4a433b}
+.pp p cite{display:block;font-style:normal;color:var(--mute);font-size:13px;margin-top:6px}
+
+/* работы */
+.works{padding:60px 0 40px}
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px 20px 8px;margin:0 -20px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip figure{flex:none;width:min(62vw,300px);scroll-snap-align:start}
+.strip figure:nth-child(odd) .arch{border-radius:var(--r)}
+.strip .arch{aspect-ratio:3/4.3}
+.strip figcaption{font:500 14px/1.3 J;color:var(--mute);margin-top:10px}
+
+/* отзывы */
+.voices{padding:40px 0 80px}
+.vbig{margin-top:30px;font:700 clamp(24px,4.4vw,44px)/1.18 U;letter-spacing:-.03em;max-width:24ch}
+.vbig::before{content:"“";color:var(--wine);margin-right:.05em}
+.vbig::after{content:"”";color:var(--wine)}
+.vwho{margin-top:16px;color:var(--mute);font-size:15px}
+.vlist{display:grid;gap:12px;margin-top:40px}
+.vlist blockquote{background:var(--paper);border-radius:20px;padding:20px}
+.vlist blockquote p{font-size:16px}
+.vlist blockquote footer{margin-top:10px;font:600 13px/1 J;color:var(--mute);letter-spacing:.04em}
+.stars{color:var(--wine);letter-spacing:2px;font-size:14px;margin-bottom:8px}
+
+/* клуб */
+.club{padding:90px 0;background:var(--paper)}
+.cards{display:grid;gap:14px;margin-top:34px}
+.cc{border:1.5px solid var(--ink);border-radius:var(--r);padding:24px 22px;position:relative;background:var(--cream)}
+.cc .n{position:absolute;right:20px;top:18px;font:800 40px/1 U;color:var(--line);letter-spacing:-.04em}
+.cc h3{font:800 23px/1.12 U;letter-spacing:-.025em;max-width:15ch;margin-bottom:10px;padding-right:62px}
+.pp .ph.ty{display:grid;place-items:center;background:var(--wine);color:var(--cream);position:relative}
+.pp .ph.ty b{font:900 150px/1 U;letter-spacing:-.06em;opacity:.95}
+.pp .ph.ty span{position:absolute;left:18px;bottom:16px;right:18px;font:500 14px/1.35 J;color:#efd9d2}
+.cc p{color:#4a433b;font-size:15.5px}
+.cc .act{margin-top:16px}
+.refbox{display:flex;gap:8px;margin-top:14px}
+.refbox input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;font:500 13px J;background:var(--paper);color:var(--ink)}
+.refbox button{background:var(--olive);color:var(--cream);border-radius:12px;padding:0 14px;font:600 14px J}
+.rate{display:flex;gap:6px;margin-top:14px}
+.rate button{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);font:800 18px U;color:var(--mute);transition:.15s}
+.rate button.on{background:var(--wine);border-color:var(--wine);color:var(--cream)}
+.rout{margin-top:12px;font-size:15px;min-height:1.5em}
+.rout a{color:var(--wine);font-weight:600;border-bottom:1.5px solid}
+.cert{background:var(--wine);color:var(--cream);border-color:var(--wine)}
+.cert p{color:#efd9d2}.cert .n{color:rgba(255,255,255,.14)}
+.cert .noms{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.cert .noms button{border:1.5px solid rgba(255,255,255,.45);border-radius:99px;padding:9px 14px;font:700 14px U}
+.cert .noms button.on{background:var(--cream);color:var(--wine)}
+.remind{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:15px;cursor:pointer}
+.remind input{width:22px;height:22px;accent-color:var(--wine)}
+
+/* вопросы */
+.faq{padding:90px 0}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0}
+.faq details:first-of-type{border-top:1.5px solid var(--ink);margin-top:30px}
+.faq summary{list-style:none;cursor:pointer;font:700 clamp(17px,2.4vw,21px)/1.3 U;letter-spacing:-.02em;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 28px/1 J;color:var(--wine);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;color:#4a433b;max-width:62ch}
+
+/* финал */
+.fin{background:var(--olive);color:var(--cream);padding:90px 0 40px;border-radius:40px 40px 0 0}
+.fin h2{font-size:clamp(44px,11vw,120px);line-height:.9;color:var(--cream)}
+.fin h2 i{color:#f0c2e3}
+.fin .grid{display:grid;gap:28px;margin-top:40px}
+.fin dl{display:grid;gap:18px}
+.fin dt{font:600 12px/1 J;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:6px}
+.fin dd{font:600 20px/1.35 J}
+.fin dd a{border-bottom:1.5px solid rgba(242,236,226,.4)}
+.btns{display:grid;gap:10px}
+.btns a{display:flex;justify-content:space-between;align-items:center;border-radius:18px;padding:18px 20px;font:700 17px/1 U;letter-spacing:-.01em;background:var(--olive2);transition:.2s}
+.btns a:hover{background:var(--wine)}
+.btns a.main{background:var(--cream);color:var(--olive)}
+.btns a span{font:500 14px J;opacity:.7}
+.foot{margin-top:60px;padding-top:24px;border-top:1px solid rgba(242,236,226,.18);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:#aeb4a4}
+
+/* появление */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.run div{animation:none}}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);background:var(--ink);color:var(--cream);padding:12px 18px;border-radius:14px;font-size:14px;opacity:0;transition:.3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:760px){
+  .people{grid-template-columns:repeat(3,1fr)}
+  .cards{grid-template-columns:1fr 1fr}
+  .vlist{grid-template-columns:1fr 1fr}
+  .small .grid{grid-template-columns:.9fr 1.1fr;align-items:start}
+  .fin .grid{grid-template-columns:1fr 1fr}
+  .svc{grid-template-columns:1fr 1fr}
+}
+@media (min-width:1000px){
+  body{font-size:18px}
+  .top nav{display:flex}
+  .hero{padding-top:50px}
+  .hero .w{grid-template-columns:1.45fr .8fr;align-items:end;gap:44px}
+  .hero h1{font-size:clamp(90px,11.5vw,158px);white-space:nowrap}
+  .hero .left{padding-bottom:20px}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .cc.cert{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px 40px}
+  .cc.cert .noms{margin:0;grid-row:1/3;grid-column:2}
+  .visit .intro{grid-template-columns:1fr 1fr;align-items:end}
+  .strip{margin:0;padding-inline:0}
+}
+.hero h1{font-size:17.7vw}
+@media (min-width:1000px){.hero h1{font-size:156px}}
+</style>
+</head>
+<body>
+<div class="demo">Демо-версия сайта для «Магия Красоты». Фото, цены и отзывы с вашей карточки на Яндекс Картах</div>
+<header class="top" id="top"><div class="w"><a class="logo" href="#"><b>МАГИЯ</b><span>КРАСОТЫ</span></a><nav><a href="#visit">Услуги и цены</a><a href="#team">Мастера</a><a href="#voices">Отзывы</a><a href="#contacts">Как найти</a></nav><a class="cta" href="#visit">Записаться</a></div></header>
+<section class="hero"><div class="w">
+  <div class="left rv"><h1 style="">МАГИЯ<small>Салон красоты в Мурино</small></h1>
+    <p class="lead" style="margin-top:22px">Парикмахеры, маникюр, ресницы, косметология и массаж на <b>Шувалова, 33/35</b>. Всё в одном месте.</p>
+    <div class="facts" style="margin:22px 0 24px"><span>м. Девяткино · <i>2,8 км</i></span><span>ежедневно <i>9–22</i></span><span><i>160+</i> услуг</span></div>
+    <div class="acts"><a class="cta" href="#visit">Собрать визит и записаться →</a><a class="ghost" href="#voices">Что говорят</a></div></div>
+  <div class="arches rv"><div class="arch a1"><img src="img/003.jpg" alt="Работа студии" fetchpriority="high"></div>
+    <div class="wrap2"><div class="stamp">Работа<br>в четыре руки<em>экономит время</em></div><div class="arch a2"><img src="img/002.jpg" alt="Студия"></div></div></div>
+</div>
+<div class="run" aria-hidden="true"><div><span>стрижки</span><span class="d">✦</span><span>колорирование</span><span class="d">✦</span><span>маникюр</span><span class="d">✦</span><span>ресницы</span><span class="d">✦</span><span>косметология</span><span class="d">✦</span><span>массаж</span><span class="d">✦</span><span>татуаж</span><span class="d">✦</span><span>стрижки</span><span class="d">✦</span><span>колорирование</span><span class="d">✦</span><span>маникюр</span><span class="d">✦</span><span>ресницы</span><span class="d">✦</span><span>косметология</span><span class="d">✦</span><span>массаж</span><span class="d">✦</span><span>татуаж</span><span class="d">✦</span></div></div></section>
+<section class="small"><div class="w"><div class="rv"><span class="kick">Почему возвращаются</span><h2 style="margin-top:14px">Магия <i>в четыре руки</i></h2></div>
+  <div class="grid"><figure class="tea rv"><img src="img/009.jpg" alt="Студия" loading="lazy"><figcaption><b>В салоне</b>Домашняя обстановка, всегда предложат чай или кофе.</figcaption></figure>
+  <ol class="det rv"><li><span class="n">01</span><div><h3>В четыре руки</h3><p>Маникюр и волосы одновременно, когда дорого время.</p><q>Работа в четыре руки, время очень дорого. Рузанна Ч.</q></div></li><li><span class="n">02</span><div><h3>Всё в одном месте</h3><p>Маникюр, педикюр, парикмахер, массажист и косметолог.</p><q>Сразу предоставят все нужные процедуры. Ольга Р.</q></div></li><li><span class="n">03</span><div><h3>Настоящий колорист</h3><p>Для блондинок, которым сложно найти мастера.</p><q>Блондинки меня поймут, настоящего мастера найти сложно. Елена Д.</q></div></li><li><span class="n">04</span><div><h3>Спрашивают про комфорт</h3><p>Мастер уточняет, удобно ли вам.</p><q>Спрашивает в процессе миллион раз про комфорт. Дорис</q></div></li></ol></div></div></section>
+<section class="visit" id="visit"><div class="w"><div class="intro rv"><div><span class="kick">Услуги и цены</span><h2 style="margin-top:14px">Волосы, ногти <i>или массаж</i></h2></div>
+  <p>Отметьте всё, что хотите сделать, и сразу увидите сумму. Заявка уйдёт администратору готовым списком, останется выбрать время.</p></div>
+  <div class="tabs" id="tabs"></div><div class="svc" id="svc"></div>
+  <div class="bag" id="bag"><div><div class="sum" id="sum">0 ₽</div><small id="cnt">0 услуг</small></div><button class="cta" id="go">Записаться →</button></div></div></section>
+<section class="team" id="team"><div class="w"><div class="rv"><span class="kick">Мастера</span><h2 style="margin-top:14px">Мастера, к которым <i>записываются снова</i></h2></div><div class="people"><article class="pp rv"><div class="ph ty"><b>С</b><span></span></div><div class="tx"><span class="role">Маникюр · педикюр</span><h3>Сюзанна</h3><p>Пудровый маникюр и педикюр, клиентки ходят к ней годами.<cite>«Сюзанну знаю более 5 лет». Илья</cite></p></div></article><article class="pp rv"><div class="ph ty"><b>А</b><span></span></div><div class="tx"><span class="role">Колорист</span><h3>Алина</h3><p>Окрашивание для блондинок.<cite>«Настоящего мастера найти сложно». Елена Д.</cite></p></div></article><article class="pp rv"><div class="ph ty"><b>В</b><span></span></div><div class="tx"><span class="role">Массаж</span><h3>Вячеслав</h3><p>Массаж тела.<cite>«Просто чудо, профессионал своего дела». Кристина</cite></p></div></article></div></div></section>
+<section class="works"><div class="w"><div class="rv"><span class="kick">Работы</span><h2 style="margin-top:14px">Снято здесь, <i>без фильтров</i></h2></div><div class="strip"><figure><div class="arch"><img src="img/005.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure><figure><div class="arch"><img src="img/007.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure><figure><div class="arch"><img src="img/013.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure><figure><div class="arch"><img src="img/004.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure><figure><div class="arch"><img src="img/017.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure><figure><div class="arch"><img src="img/006.jpg" alt="Работа студии" loading="lazy"></div><figcaption>Работа студии</figcaption></figure></div></div></section>
+<section class="voices" id="voices"><div class="w"><span class="kick rv">Отзывы с Яндекс Карт</span><p class="vbig rv">Реальная магия</p><p class="vwho rv">Рузанна Ч.</p>
+  <div class="vlist"><blockquote class="rv"><div class="stars">★★★★★</div><p>Уютная и домашняя обстановка, профессиональные мастера.</p><footer>Наталья П.</footer></blockquote><blockquote class="rv"><div class="stars">★★★★★</div><p>Сегодня в очередной раз посетила полюбившийся мне салон.</p><footer>Елена Д.</footer></blockquote><blockquote class="rv"><div class="stars">★★★★★</div><p>Посещаю салон с основания! Очень уютно, чисто и позитивно!</p><footer>Илья</footer></blockquote><blockquote class="rv"><div class="stars">★★★★★</div><p>Всегда подскажут, какой дизайн в тренде. Покрытие держится великолепно!</p><footer>Ольга Д.</footer></blockquote></div></div></section>
+<section class="club" id="club"><div class="w"><div class="rv"><span class="kick">Свои люди</span><h2 style="margin-top:14px">Клуб <i>Магия</i></h2></div>
+  <div class="cards">
+    <div class="cc wide rv"><span class="n">01</span><h3>Приходите с подругой</h3><p>Отправьте ей свою ссылку. Когда она запишется, администратор увидит, что её пригласили вы.</p>
+      <div class="refbox"><input id="refName" placeholder="Ваше имя" maxlength="30"><button id="refBtn">Ссылка</button></div></div>
+    <div class="cc rv"><span class="n">02</span><h3>Напомним про коррекцию</h3><p>Ногти отрастают за 3–4 недели. Отметьте, и в заявке будет просьба напомнить.</p><label class="remind"><input type="checkbox" id="rmd"> напомнить через 3 недели</label></div>
+    <div class="cc rv"><span class="n">03</span><h3>Как вам у нас?</h3><p>Оцените последний визит.</p>
+      <div class="rate" id="rate"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div><div class="rout" id="rout"></div></div>
+    <div class="cc cert wide rv"><span class="n">04</span><h3>Подарочный сертификат</h3><p>На любую сумму или услугу. Выберите номинал, и мы подготовим сертификат к вашему приходу.</p>
+      <div class="noms" id="noms"><button>2 000 ₽</button><button>3 000 ₽</button><button>5 000 ₽</button><button>10 000 ₽</button></div></div>
+  </div></div></section>
+<section class="faq"><div class="w"><div class="rv"><span class="kick">Вопросы</span><h2 style="margin-top:14px">Коротко <i>о главном</i></h2></div><details><summary>Как вас найти?</summary><p>ул. Шувалова, 33/35, Мурино. От метро «Девяткино» 2,8 км.</p></details><details><summary>Можно маникюр и волосы одновременно?</summary><p>Да, мастера работают в четыре руки.</p></details><details><summary>Есть онлайн-запись?</summary><p>Да, кнопка «Записаться» или DIKIDI.</p></details></div></section>
+<section class="fin" id="contacts"><div class="w"><h2 class="rv">Магия<br><i>рядом с домом</i></h2><div class="grid">
+  <dl class="rv"><div><dt>Адрес</dt><dd><a href="https://yandex.ru/maps/org/magiya_krasoty/58047882190/" target="_blank" rel="noopener">ул. Шувалова, 33/35, Мурино</a><br><span style="opacity:.7;font-weight:400">м. Девяткино, 2,8 км</span></dd></div>
+    <div><dt>Часы</dt><dd>Ежедневно, 09:00–22:00</dd></div><div><dt>Телефон</dt><dd><a href="tel:+79313717107">+7 (931) 371-71-07</a></dd></div></dl>
+  <div class="btns rv"><a class="main" href="#visit">Собрать визит <span>→</span></a><a class="" href="https://wa.me/79313717107" target="_blank" rel="noopener">WhatsApp <span>написать</span></a><a class="" href="https://t.me/+79313717107" target="_blank" rel="noopener">Telegram <span>написать</span></a><a class="" href="https://dikidi.net/2017374" target="_blank" rel="noopener">Онлайн-запись <span>DIKIDI</span></a></div></div>
+  <div class="foot"><span>© Магия Красоты, Санкт-Петербург</span></div></div></section>
+<div class="toast" id="toast"></div>
+<script>
+var PRICES={"Волосы": [["Spa+укладка", 2500], ["Блондирование (обесцвечивание корней+тонирование) средняя дл", 7500], ["Блондирование (обесцвечивание Корней+ тонирование) короткая ", 5000], ["Блондирование(обесцвечивание Корней+ тонирование)супер длина", 11000], ["Выход из темного черного(длинные волосы)", 12000], ["Выход из черного темного (короткие волосы)", 8000], ["Выход из темного черного(средняя длина)", 10000], ["Выход из темного черного (супер длина)", 18000], ["Затемнение (выход из блонда,репигментация) короткие волосы", 4500], ["Затемнение( выход из блонда,репигментация) средние волосы", 5500], ["Затемнение( выход из блонда,репигментация) Длинные волосы", 6500], ["Затемнение( выход из блонда,репигментация) Супер длина", 8000], ["Комплекс(стрижка+окрашивание в один тон+уход) короткие волос", 5500], ["Комплекс(стрижка+окрашивание в один тон+уход)средние волосы", 6500]], "Ресницы и брови": [["Ботокс ресниц с ламинированием", 1700], ["Ламинирование ресниц", 1500], ["Нарашивание 2 Д", 2300], ["Наращивание классика", 2000], ["Наращивание ресниц (мокрый эффект)", 2300], ["Наращивание ресниц - ЗД", 2500], ["Снятие наращенных ресниц (чужой работы)", 400], ["Коррекция бровей", 350], ["Перманент бровей", 8000], ["Коррекция перманентного макияжа (губы, брови, межресничка)", 4000], ["Депиляция зоны над губой", 300], ["Коррекция бровей воском и пинцетом", 1100], ["Ламинирование бровей с корекцией", 2000]], "Ногти": [["Бразильский уход для рук", 400], ["Вросший ноготь", 220], ["Гигиенический педикюр", 2060], ["Комплекс педикюр (снятие+педикюр+покрытие гель лака)", 2600], ["Маникюр классический", 800], ["Маникюр комбинированный", 800], ["Педикюр лайт (обработка пальцев)", 1070], ["Покрытие обычным лаком", 350], ["Кополин", 170], ["Скраб для ног", 400], ["Лечебное покрыие для ног", 260], ["Снятие гель-лака", 400], ["Мужской педикюр", 1850], ["Титановая нить", 2060]], "Косметология": [["RF- лифтинг + маска", 2000], ["Гидро пилинг(Ультразвуковая чистка + гидропилинг+RF+ фарфоро", 4000], ["Карбокситерапия", 2000], ["Классический массаж лица", 2300], ["Комбинированная (ультразвук+ механическая) чистка лица+ маск", 3000], ["Маска альгинатная", 1000], ["Массаж лимфодренажный лица", 2300], ["Моделирующий массаж лица+ голова", 2800], ["Скульптурный массаж лица", 2500], ["Ультразвуковая чистка лица", 2200], ["Ультразвуковая чистка+фарфоровая кукла", 2800]], "Массаж": [["Spa-процедура для тела", 2600], ["Антицеллюлитный массаж", 2740], ["Аппаратный массаж", 1300], ["Баночный массаж", 900], ["Гирудотерапия", 2200], ["Детский массаж", 1500], ["Лимфодренажный массаж", 2600], ["Массаж антистресс", 2600], ["Массаж головы", 800], ["Массаж ног", 1160], ["Массаж рук", 400], ["Массаж спины", 1800], ["Массаж спины+ ШВЗ", 1950], ["Массаж спины+ ШВ3+грудной отдел", 2300]], "Татуаж": [["Татуаж межреснички", 8000], ["Перманент губ", 8000]]};
+var PHONE='79313717107', NAME="Магия Красоты", REVIEW='https://yandex.ru/maps/org/magiya_krasoty/58047882190/reviews/?add-review=true';
+var sel={}, cur="Волосы", cert='', P=new URLSearchParams(location.search);
+var SRC={karty:'Яндекс Карты',maps:'Яндекс Карты','2gis':'2ГИС',vk:'ВКонтакте',avito:'Авито',qr:'табличка с QR',tg:'Telegram',inst:'Instagram'};
+function st(k,v){try{if(v!==undefined)localStorage.setItem(k,v);return localStorage.getItem(k)||''}catch(e){return v||''}}
+var src=st('clubSrc',SRC[(P.get('src')||'').toLowerCase()]||undefined), from=st('clubFrom',P.get('from')||undefined);
+function rub(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₽'}
+function plural(n,a,b,c){n=Math.abs(n)%100;var m=n%10;return n>10&&n<20?c:m>1&&m<5?b:m==1?a:c}
+function toast(t){var e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove('on')},2400)}
+function tabs(){var h='';for(var k in PRICES){var c=0;PRICES[k].forEach(function(s){if(sel[s[0]])c++});h+='<button class="'+(k==cur?'on':'')+'" data-k="'+k+'">'+k+(c?'<sup>'+c+'</sup>':'')+'</button>'}document.getElementById('tabs').innerHTML=h}
+function list(){document.getElementById('svc').innerHTML=PRICES[cur].map(function(s){return '<button class="'+(sel[s[0]]?'on':'')+'" data-s="'+s[0]+'" data-p="'+s[1]+'"><span class="ck"></span><span class="t">'+s[0]+'</span><span class="p">'+rub(s[1])+'</span></button>'}).join('')}
+function bag(){var n=0,s=0;for(var k in sel){n++;s+=sel[k]}document.getElementById('sum').textContent=rub(s);document.getElementById('cnt').textContent=n+' '+plural(n,'услуга','услуги','услуг');document.getElementById('bag').classList.toggle('on',n>0)}
+document.getElementById('tabs').onclick=function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.k;tabs();list()};
+document.getElementById('svc').onclick=function(e){var b=e.target.closest('button');if(!b)return;var k=b.dataset.s;if(sel[k])delete sel[k];else sel[k]=+b.dataset.p;b.classList.toggle('on');tabs();bag()};
+function msg(){var m='Здравствуйте! Хочу записаться в '+NAME+'.',s=0,L=[];for(var k in sel){L.push('• '+k+', '+rub(sel[k]));s+=sel[k]}
+ if(L.length)m+='\n'+L.join('\n')+'\nИтого: '+rub(s);if(cert)m+='\nХочу подарочный сертификат на '+cert+'.';
+ if(document.getElementById('rmd').checked)m+='\nНапомните мне о коррекции через 3 недели.';
+ if(from)m+='\nМеня пригласил(а): '+from+'.';if(src)m+='\nОткуда узнал(а): '+src+'.';return m+'\nКакое время свободно?'}
+function send(){location.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg())}
+document.getElementById('go').onclick=send;
+document.getElementById('refBtn').onclick=function(){var n=document.getElementById('refName').value.trim();if(!n){toast('Напишите своё имя');return}
+ var u=location.origin+location.pathname+'?from='+encodeURIComponent(n);try{navigator.clipboard.writeText(u);toast('Ссылка скопирована, отправьте подруге')}catch(e){prompt('Ссылка для подруги',u)}};
+document.getElementById('rate').onclick=function(e){var b=e.target.closest('button');if(!b)return;var v=+b.textContent;[].forEach.call(this.children,function(x,i){x.classList.toggle('on',i<v)});
+ document.getElementById('rout').innerHTML=v>=5?'Спасибо! Поделитесь на <a href="'+REVIEW+'" target="_blank" rel="noopener">Яндекс Картах</a>, нам это очень помогает.':'Спасибо, что честно. <a href="https://wa.me/'+PHONE+'?text='+encodeURIComponent('Хочу рассказать, что было не так на визите в '+NAME+':')+'" target="_blank" rel="noopener">Напишите нам</a>, что было не так, и мы всё исправим.'};
+document.getElementById('noms').onclick=function(e){var b=e.target.closest('button');if(!b)return;cert=b.textContent;[].forEach.call(this.children,function(x){x.classList.toggle('on',x==b)});
+ location.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent('Здравствуйте! Хочу подарочный сертификат '+NAME+' на '+cert+'.')};
+tabs();list();bag();
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+addEventListener('scroll',function(){document.getElementById('top').classList.toggle('s',scrollY>10)},{passive:true});
+</script>
+</body>
+</html>
