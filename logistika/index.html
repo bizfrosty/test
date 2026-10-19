@@ -118,6 +118,22 @@ mark{background:var(--hazard-soft);color:inherit;outline:1px solid var(--hazard)
 .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font:600 14px var(--f-body)}
 .flow span{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px}
 .flow i{font-style:normal;color:var(--muted)}
+.xq{display:grid;gap:12px;margin-top:14px}
+.xc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:8px}
+.xc .qn{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.xc .qn .src{color:var(--hazard)}
+.xc h4{font:700 18px/1.3 var(--f-body);color:var(--ink);margin:0}
+.xc .short{font:600 17px/1.4 var(--f-body);background:var(--ok-soft);border-left:4px solid var(--ok);padding:8px 12px;border-radius:0 6px 6px 0}
+.xc ul,.xc ol{margin:0;padding-left:20px}
+.xc .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.xc .vs>div{background:var(--bg);border-radius:6px;padding:10px 12px}
+.xc .vs b{display:block;color:var(--accent)}
+.xc .mem{font-size:14.5px;color:var(--muted)}
+.xc .mem::before{content:"Запомнить: ";font-weight:600;color:var(--hazard)}
+.xc .ans{display:grid;gap:8px;transition:filter .2s}
+.hideans .xc .ans{filter:blur(7px);cursor:pointer;user-select:none}
+.hideans .xc.open .ans{filter:none}
+@media (prefers-reduced-motion: reduce){.xc .ans{transition:none}}
 .kbd{font:12px var(--f-mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;color:var(--muted)}
 </style>
 
@@ -134,15 +150,102 @@ mark{background:var(--hazard-soft);color:inherit;outline:1px solid var(--hazard)
 </header>
 
 <nav class="tabs" role="tablist">
-  <button role="tab" data-tab="zero" aria-selected="true">С нуля</button>
+  <button role="tab" data-tab="exam" aria-selected="true">С теста</button>
+  <button role="tab" data-tab="zero" aria-selected="false">С нуля</button>
   <button role="tab" data-tab="notes" aria-selected="false">Конспект</button>
   <button role="tab" data-tab="cards" aria-selected="false">Карточки</button>
   <button role="tab" data-tab="quiz" aria-selected="false">Тест</button>
   <button role="tab" data-tab="calc" aria-selected="false">Задачи</button>
 </nav>
 
+<!-- ================= С ТЕСТА ================= -->
+<section class="pane" id="exam">
+  <div class="note"><b>Что это</b>Вопросы, которые реально были на тесте (по словам друга). Учи их в первую очередь. Пометка «не из пособия» означает, что ответ взят из стандартного учебника.</div>
+  <div class="row">
+    <button class="btn pri" id="xHide" aria-pressed="false">Проверить себя: скрыть ответы</button>
+    <button class="btn" id="xQuiz">Пройти тестом</button>
+  </div>
+  <div class="xq" id="xList">
+
+    <div class="xc"><div class="qn">01 · Определение</div><h4>Что такое логистика?</h4><div class="ans">
+      <div class="short">Управление материальными и связанными с ними потоками от источника до потребителя с минимальными затратами</div>
+      <div class="mem">«нужное → туда → вовремя → дёшево» (7R)</div></div></div>
+
+    <div class="xc"><div class="qn">02 · Уровни <span class="src">не из пособия</span></div><h4>Макро-, мезо- и микрологистика</h4><div class="ans">
+      <div class="vs">
+        <div><b>Макро</b>страна, регион, мир: потоки между странами, транспортные коридоры</div>
+        <div><b>Мезо</b>середина: отрасль, группа фирм, холдинг, цепь поставок</div>
+        <div><b>Микро</b>одно предприятие: его производство, склад, закупки</div>
+      </div>
+      <div class="mem">макро — большое, мезо — среднее, микро — маленькое (как макро- и микроэкономика)</div></div></div>
+
+    <div class="xc"><div class="qn">03 · Функции <span class="src">не из пособия</span></div><h4>Функции логистики</h4><div class="ans">
+      <div class="short">Системообразующая (интегрирующая) → регулирующая → результирующая</div>
+      <ol><li><b>Системообразующая</b> — склеивает закупки, производство, транспорт, сбыт в одну систему</li><li><b>Регулирующая</b> — планирует и контролирует потоки</li><li><b>Результирующая</b> — даёт итог: нужный товар, вовремя, дёшево</li></ol>
+      <div class="mem">объединяет → регулирует → даёт результат</div></div></div>
+
+    <div class="xc"><div class="qn">04 · Области науки <span class="src">не из пособия</span></div><h4>В каких областях науки используется термин «логистика»?</h4><div class="ans">
+      <div class="vs">
+        <div><b>Военное дело</b>снабжение армии: доставка войскам еды, оружия, топлива</div>
+        <div><b>Математика (философия)</b>математическая логика; в Древней Греции — искусство вычислений и рассуждений</div>
+        <div><b>Экономика</b>управление потоками товаров, информации и денег</div>
+      </div>
+      <div class="mem">«армия, математика, экономика»: логистика пришла из армии и математики, а теперь живёт в экономике</div>
+      <p class="meta" style="margin:0">Если спросят про функциональные области (внутри экономики): закупочная, производственная, распределительная, транспортная, складская, запасов, информационная.</p></div></div>
+
+    <div class="xc"><div class="qn">05 · Науки <span class="src">не из пособия</span></div><h4>На каких науках и областях знаний основана логистика?</h4><div class="ans">
+      <div class="short">Логистика междисциплинарна</div>
+      <ul><li><b>Математика</b>: исследование операций, теория вероятностей, теория графов, массового обслуживания</li><li><b>Экономика</b>, менеджмент, маркетинг</li><li><b>Системный анализ</b>, кибернетика, теория управления</li><li><b>Информатика</b>, прогнозирование, моделирование</li></ul>
+      <div class="mem">математика + экономика + системы + компьютеры</div></div></div>
+
+    <div class="xc"><div class="qn">06 · Термин <span class="src">не из пособия</span></div><h4>Что такое материальный поток?</h4><div class="ans">
+      <div class="short">Грузы, детали, товары, с которыми выполняют логистические операции (перевозка, хранение, погрузка), за определённый период времени</div>
+      <div class="mem">вещи в движении</div></div></div>
+
+    <div class="xc"><div class="qn">07 · Отличие <span class="src">не из пособия</span></div><h4>Логистическая система и логистическая сеть</h4><div class="ans">
+      <div class="vs">
+        <div><b>Сеть</b>все звенья, связанные потоками: поставщики, склады, перевозчики, магазины. «Карта» участников</div>
+        <div><b>Система</b>сеть + единое управление + общая цель + обратная связь</div>
+      </div>
+      <div class="mem">сеть — <i>из кого</i> состоит, система — <i>как</i> управляется</div></div></div>
+
+    <div class="xc"><div class="qn">08 · Отличие <span class="src">не из пособия</span></div><h4>Закупки и снабжение</h4><div class="ans">
+      <div class="vs">
+        <div><b>Закупка</b>сам акт покупки: найти поставщика, договор, оплата</div>
+        <div><b>Снабжение</b>весь процесс: план потребности → закупка → доставка → хранение → передача в производство</div>
+      </div>
+      <div class="short">Закупка — часть снабжения</div></div></div>
+
+    <div class="xc"><div class="qn">09 · Системы</div><h4>Что такое MRP?</h4><div class="ans">
+      <div class="short">Планирование потребности в материалах (Material Requirements Planning). Толкающая система</div>
+      <p style="margin:0">Сначала решают, сколько готовой продукции нужно и к какому сроку, потом считают, какие материалы, сколько и когда закупить.</p>
+      <div class="mem">как по рецепту: 100 велосипедов к пятнице → 200 колёс к среде</div></div></div>
+
+    <div class="xc"><div class="qn">10 · Планирование <span class="src">не из пособия</span></div><h4>Сколько всего видов логистического планирования?</h4><div class="ans">
+      <div class="short">4: нормативное · стратегическое · тактическое · оперативное</div>
+      <ol><li><b>Нормативное</b> — «как должно быть»: правила, нормы, миссия</li><li><b>Стратегическое</b> — на годы вперёд</li><li><b>Тактическое</b> — на месяцы, год</li><li><b>Оперативное</b> — на дни и недели</li></ol>
+      <div class="mem">от большого к малому: норма → стратегия → тактика → операция. Если в вариантах их 3, выбирай стратегическое, тактическое и оперативное</div></div></div>
+
+    <div class="xc"><div class="qn">11 · Вопрос от препода</div><h4>Какой расы Доктор Кто? А Доктор Стрэндж?</h4><div class="ans">
+      <div class="vs">
+        <div><b>Доктор Кто</b>Повелитель времени (Таймлорд) с планеты Галлифрей</div>
+        <div><b>Доктор Стрэндж</b>человек: бывший нейрохирург Стивен Стрэндж, Верховный маг (Marvel)</div>
+      </div>
+      <div class="mem">Кто — инопланетянин с двумя сердцами, Стрэндж — обычный человек, ставший магом</div></div></div>
+
+    <div class="xc"><div class="qn">12 · Транспорт</div><h4>Главный минус железной дороги</h4><div class="ans">
+      <div class="short">Мало перевозчиков</div>
+      <div class="mem">второй минус: поезд не подъедет к двери, нужен грузовик</div></div></div>
+
+    <div class="xc"><div class="qn">13 · Транспорт</div><h4>Минусы трубопровода (назови 5)</h4><div class="ans">
+      <ol><li>Большая металлоёмкость, дорогие трубы</li><li>Низкая скорость: 70-80 км/сутки</li><li>Только в одну сторону</li><li>Узкая специализация: только жидкости и газы</li><li>Нельзя перевозить малые объёмы</li></ol>
+      <div class="mem">ещё есть: нефть и газ надо готовить заранее; трубы и агрегаты нужно постоянно обновлять</div></div></div>
+
+  </div>
+</section>
+
 <!-- ================= С НУЛЯ ================= -->
-<section class="pane zero" id="zero">
+<section class="pane zero" id="zero" hidden>
   <div class="toc"><a href="#z0">Что это за предмет</a><a href="#z1">Производство</a><a href="#z2">Закупки</a><a href="#z3">Транспорт</a><a href="#z4">Сбыт</a><a href="#z5">Как сдать</a></div>
 
   <h2 id="z0" style="margin-top:20px"><span class="no">НАЧАЛО</span>Что вообще за предмет</h2>
@@ -1083,7 +1186,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{const v=localStorage.getItem('lg_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('lg_'+k,JSON.stringify(v))}catch(e){}}};
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const fmt=x=>Number.isFinite(x)?(Math.round(x*100)/100).toLocaleString('ru-RU'):'—';
-const PARTS={1:'Микрологистика',2:'Закупки',3:'Транспорт',4:'Сбыт'};
+const PARTS={1:'Микрологистика',2:'Закупки',3:'Транспорт',4:'Сбыт',5:'С теста'};
 /* режим «Минимум»: что убрано из теста и карточек (второстепенное, чего нет в сокращённом пособии) */
 let MODE=store.get('mode','min');
 const SKIP_Q=new Set([4,8,9,12,14,15,18,19,20,21,24,27,30,32,33,34,36,37,38,39,43,44,46,47,50,51,52,60,63,81,91,96,97,103,104,111,115,116,117,120,125,130,131,132,135,136,138,143,145,146,147,151,153,154,155,156,157,158,159,160,162,163,164,168,169,170,171]);
@@ -1091,10 +1194,14 @@ const SKIP_C=new Set([7,8,14,20,30,31,32,33,37,39,50,51,58,59,60,61,62,64,65,67,
 const qOn=i=>MODE==='full'||!SKIP_Q.has(i), cOn=i=>MODE==='full'||!SKIP_C.has(i);
 
 /* ---------- tabs ---------- */
-let current='zero';
-function showTab(t){current=t;$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));$$('section.pane').forEach(s=>s.hidden=s.id!==t);store.set('tab2',t)}
+let current='exam';
+function showTab(t){current=t;$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));$$('section.pane').forEach(s=>s.hidden=s.id!==t);store.set('tab3',t)}
 $$('nav.tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
-showTab(store.get('tab2','zero'));
+showTab(store.get('tab3','exam'));
+
+/* ---------- вопросы с теста ---------- */
+$('#xHide').onclick=()=>{const on=$('#xList').classList.toggle('hideans');$('#xHide').setAttribute('aria-pressed',on);$('#xHide').textContent=on?'Показать все ответы':'Проверить себя: скрыть ответы';$$('#xList .xc').forEach(c=>c.classList.remove('open'))};
+$$('#xList .xc').forEach(c=>c.addEventListener('click',()=>{if($('#xList').classList.contains('hideans'))c.classList.toggle('open')}));
 
 /* ---------- search in notes ---------- */
 const blks=$$('#notes .blk');
@@ -1455,10 +1562,25 @@ const Q=[
 [4,'Консолидация и разукрупнение — это функция распределения:','Физическая',['Аналитическая','Маркетинговая','Финансовая'],''],
 [4,'Что НЕ относится к ситуациям, когда нужно определять зоны сбыта?','Нужно сократить число поставщиков',['Нет информации о числе потребителей','Нужна адресная реклама','Целесообразно эксклюзивное распределение'],''],
 [4,'Что НЕ входит в задачи сбытовой логистики?','Оценка поставщиков сырья',['Послепродажное обслуживание','Получение и обработка заказов','Размещение распределительных центров'],'Оценка поставщиков — закупочная логистика.'],
+[5,'Логистика — это:','Управление материальными и связанными с ними потоками от источника до потребителя с минимальными затратами',['Наука о рекламе и продвижении товаров','Управление персоналом предприятия','Учёт финансовых операций фирмы'],''],
+[5,'Мезологистика — это уровень:','Отрасли, группы связанных фирм, цепи поставок',['Одного предприятия','Страны и мировой экономики','Одного склада'],'Макро — страна и мир, микро — одно предприятие.'],
+[5,'Макрологистика охватывает:','Страну, регион, мировую экономику',['Одно предприятие','Один цех','Группу фирм одной отрасли'],''],
+[5,'Микрологистика охватывает:','Одно предприятие: производство, склад, закупки',['Мировую экономику','Отрасль','Транспортные коридоры между странами'],''],
+[5,'Функции логистики:','Системообразующая, регулирующая, результирующая',['Планирующая, рекламная, кадровая','Толкающая, тянущая, смешанная','Аналитическая, физическая, сервисная'],''],
+[5,'В каких областях науки используется термин «логистика»?','Военное дело, математика (мат. логика), экономика',['Медицина, биология, химия','Право, история, география','Физика, астрономия, геология'],''],
+[5,'Сколько видов логистического планирования?','4: нормативное, стратегическое, тактическое, оперативное',['2: краткосрочное и долгосрочное','5: годовое, квартальное, месячное, недельное, дневное','3: закупочное, производственное, сбытовое'],'Если в вариантах их три, выбирай стратегическое, тактическое и оперативное.'],
+[5,'Какой расы Доктор Кто?','Повелитель времени (Таймлорд) с Галлифрея',['Человек','Далек','Киберчеловек'],'Доктор Стрэндж — человек.'],
+[5,'Что НЕ является функциональной областью логистики?','Рекламная',['Закупочная','Транспортная','Складская'],''],
+[5,'Материальный поток — это:','Грузы и товары, с которыми выполняют логистические операции, за период времени',['Денежные расчёты между фирмами','Поток заказов от покупателей','Сведения о запасах на складе'],''],
+[5,'Чем логистическая система отличается от логистической сети?','Система — это сеть плюс единое управление и общая цель',['Сеть больше системы и включает её','Это одно и то же','Система — только транспорт, сеть — только склады'],'Сеть — из кого состоит, система — как управляется.'],
+[5,'Как соотносятся закупки и снабжение?','Закупка — часть снабжения',['Снабжение — часть закупки','Это одно и то же','Закупка относится к сбыту, а снабжение к производству'],''],
+[5,'Логистика как наука опирается на:','Математику, экономику, системный анализ и информатику',['Только бухгалтерский учёт','Только право','Только маркетинг'],''],
+[5,'Главный минус железнодорожного транспорта:','Мало перевозчиков',['Зависимость от погоды','Самые высокие тарифы','Возит только жидкости'],''],
+[5,'Что из этого — минус трубопровода?','Работает только в одну сторону',['Высокая себестоимость перевозки','Зависимость от погоды','Плохая сохранность груза'],'Минусы: металлоёмкость, 70-80 км/сутки, одна сторона, узкая специализация, нельзя малые объёмы.'],
 ];
 let qPart=store.get('qpart',0), qCount=store.get('qcount',20), run=[], qi=0, score=0, answered=false, wrongIdx=new Set(store.get('wrong',[])), sessionWrong=[];
 function drawParts(){
-  $('#quizParts').innerHTML=[0,1,2,3,4].map(p=>`<button class="chip" data-p="${p}" aria-pressed="${p===qPart}">${p?p+'. '+PARTS[p]:'Все части'} <span class="meta">${Q.filter((q,i)=>qOn(i)&&(!p||q[0]===p)).length}</span></button>`).join('');
+  $('#quizParts').innerHTML=[0,1,2,3,4,5].map(p=>`<button class="chip" data-p="${p}" aria-pressed="${p===qPart}">${p?p+'. '+PARTS[p]:'Все части'} <span class="meta">${Q.filter((q,i)=>qOn(i)&&(!p||q[0]===p)).length}</span></button>`).join('');
   $$('#quizParts .chip').forEach(b=>b.onclick=()=>{qPart=+b.dataset.p;store.set('qpart',qPart);$$('#quizParts .chip').forEach(x=>x.setAttribute('aria-pressed',x===b))});
 }
 drawParts();
@@ -1468,6 +1590,7 @@ function updSetup(){const wn=[...wrongIdx].filter(qOn).length;$('#mistN').textCo
 updSetup();
 function startQuiz(idx){run=idx.map(i=>({i,opts:shuffle([Q[i][2],...Q[i][3]])}));qi=0;score=0;sessionWrong=[];$('#quizSetup').hidden=true;$('#quizDone').hidden=true;$('#quizRun').hidden=false;renderQ()}
 $('#qStart').onclick=()=>{let idx=shuffle(Q.map((q,i)=>i).filter(i=>qOn(i)&&(!qPart||Q[i][0]===qPart)));if(qCount)idx=idx.slice(0,qCount);startQuiz(idx)};
+$('#xQuiz').onclick=()=>{qPart=5;drawParts();showTab('quiz');startQuiz(shuffle(Q.map((q,i)=>i).filter(i=>Q[i][0]===5)))};
 $('#qMistakes').onclick=()=>startQuiz(shuffle([...wrongIdx].filter(qOn)));
 function renderQ(){
   const r=run[qi],q=Q[r.i];answered=false;
