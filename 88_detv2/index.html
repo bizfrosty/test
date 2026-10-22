@@ -160,7 +160,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 .c p{color:var(--mut);font-size:14px;margin-top:5px;min-height:1.6em}
 
 /* PROCESS */
-.proc{--cover:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center;background:var(--bg2)}
+.proc{--cover:var(--bg2);display:grid;grid-template-columns:minmax(0,860px);justify-content:center;gap:clamp(40px,6vw,100px);align-items:center;background:var(--bg2)}
 .proc .ph{aspect-ratio:4/5;overflow:hidden;--cover:var(--bg2)}
 .proc .ph img{width:100%;height:100%;object-fit:cover}
 .steps{margin-top:46px;counter-reset:s}
@@ -427,7 +427,6 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 </section>
 
 <section class="proc">
- <div class="ph" data-img><img src="media/process_box.jpg" alt="BMW в боксе 88 Detailing" loading="lazy"></div>
  <div>
   <div class="k" data-r>Как проходит работа</div><h2>От звонка<br><em>до выдачи</em></h2>
   <div class="steps">
