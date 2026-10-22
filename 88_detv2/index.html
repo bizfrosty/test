@@ -95,7 +95,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 .hero .lead{font-size:18px;line-height:1.6;color:var(--tx2);max-width:520px}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
 .hero .facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0 56px;margin-top:70px;padding-top:26px;border-top:1px solid var(--line)}
-.facts b{display:block;font:700 22px/1.1 Unbounded;letter-spacing:-.02em}
+.facts b{display:block;font:700 22px/1.1 Unbounded;letter-spacing:-.02em;white-space:nowrap}
 .facts small{display:block;font-size:13px;color:var(--mut);margin-top:6px}
 .js .hero .fx{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease),transform 1.2s var(--ease)}
 .js .hero.go .fx{opacity:1;transform:none}
@@ -131,7 +131,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 .p.on .n{color:var(--acc)}
 .p .vt{position:absolute;z-index:2;left:22px;bottom:26px;writing-mode:vertical-rl;transform:rotate(180deg);font:800 19px/1 Unbounded;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;transition:opacity .45s,transform .6s var(--ease)}
 .p.on .vt{opacity:0;transform:rotate(180deg) translateY(-20px)}
-.p .bd{position:absolute;z-index:2;left:clamp(24px,3vw,44px);bottom:clamp(24px,3vw,40px);width:min(500px,calc(100% - 48px));opacity:0;transform:translateY(26px);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
+.p .bd{position:absolute;z-index:2;left:clamp(24px,3vw,44px);bottom:clamp(24px,3vw,40px);width:min(460px,34vw);opacity:0;transform:translateY(26px);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
 .p.on .bd{opacity:1;transform:none;transition:opacity .9s var(--ease) .45s,transform 1.1s var(--ease) .45s;pointer-events:auto}
 .bd h3{font:800 clamp(24px,2.4vw,36px)/1.02 Unbounded;text-transform:uppercase;letter-spacing:-.025em}
 .bd > p{color:var(--tx2);margin:14px 0 22px;font-size:15px;max-width:440px}
@@ -287,7 +287,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
  .hero .l{position:relative;z-index:2;padding:120px var(--pad) 40px;min-height:100svh}
  .hero .cap{top:96px;bottom:auto;right:var(--pad)}
  .hero .facts{grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
- .facts b{font-size:15px}.facts small{font-size:12px}
+ .facts b{font-size:clamp(11px,3.4vw,15px)}.facts small{font-size:12px}
  .intro,.proc,.calc,.ct,.faq{grid-template-columns:1fr}
  .faq dl>div{grid-template-columns:1fr;gap:8px}
  .rv article:first-child{grid-row:auto}
@@ -355,7 +355,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 
 <main id="main">
 <section class="intro">
- <div><div class="k" data-r>О студии</div><h2>88 Detailing<br><em>в Домодедово</em></h2></div>
+ <div><div class="k" data-r>О студии</div><h2>88 Detailing<br><em>Домодедово</em></h2></div>
  <div data-r>
   <p class="big">Плёнка, полировка, керамика и салон. Пока машина у нас, присылаем <em>фото и видео каждого этапа</em>.</p>
  </div>
@@ -427,7 +427,7 @@ nav.s{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-
 </section>
 
 <section class="proc">
- <div class="ph" data-img><img src="media/polish.jpg" alt="Полировка в боксе" loading="lazy"></div>
+ <div class="ph" data-img><img src="media/process_box.jpg" alt="BMW в боксе 88 Detailing" loading="lazy"></div>
  <div>
   <div class="k" data-r>Как проходит работа</div><h2>От звонка<br><em>до выдачи</em></h2>
   <div class="steps">
