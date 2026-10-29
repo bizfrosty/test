@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<script>/* 29.10: F5 посреди страницы — браузер не прыгает сам (высоты блоков считаются после загрузки фото), возвращаем место после load */
+try{history.scrollRestoration='manual';var _sy=+sessionStorage.getItem('sy'+location.pathname)||0;
+addEventListener('beforeunload',function(){sessionStorage.setItem('sy'+location.pathname,scrollY)});
+addEventListener('load',function(){if(_sy)setTimeout(function(){scrollTo({top:_sy,behavior:'instant'})},150)});}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Родина Моторс Автосервис · Казань, автосервис, автотехцентр в Казани</title>
