@@ -166,7 +166,7 @@ a{color:inherit}
 
 /* ===== общие секции ===== */
 section{position:relative}
-.sec{padding:140px 0}
+.sec{padding:84px 0}  /* 02.11: было 140 — между блоками выходило ~300 px пустоты */
 .tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
 .tag:before{content:"";width:28px;height:1.5px;background:var(--acc)}
 .tag b{color:var(--acc);font-weight:700}
@@ -279,7 +279,7 @@ section{position:relative}
 
 /* ===== работы: горизонтальная лента ===== */
 .works{overflow:visible;padding:0}
-.works .pin{position:relative;overflow:hidden;padding:140px 0 60px}
+.works .pin{position:relative;overflow:hidden;padding:84px 0 40px}
 .js-pin .works .pin{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 30px}
 .js-pin .shot{width:auto;height:min(58vh,560px)}
 .js-pin .works .pin>.wrap{width:100%}
@@ -567,7 +567,7 @@ body{font-size:16px;padding-bottom:76px}
 .cue{display:none}
 .brands{padding:34px 0 30px}
 .row div{gap:22px;padding-right:22px}.row i{width:10px;height:10px}
-.sec{padding:90px 0}
+.sec{padding:64px 0}
 .big{font-size:min(70px,calc((100vw - 32px) / 6))}
 .mid{font-size:min(58px,calc((100vw - 32px) / 5.6))}
 .js .scene{height:300vh}
