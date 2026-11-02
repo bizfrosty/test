@@ -283,6 +283,7 @@ section{position:relative}
 .js-pin .works .pin{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 30px}
 .js-pin .shot{width:auto;height:min(58vh,560px)}
 .js-pin .works .pin>.wrap{width:100%}
+.js-wheel .track{cursor:grab}.js-wheel .track.drag{cursor:grabbing;user-select:none}.js-wheel .track img{-webkit-user-drag:none;user-select:none}
 .works .head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:50px}
 .works .head p{color:var(--ink2);max-width:30ch}
 .track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 40px 16px;scrollbar-width:none}
@@ -344,6 +345,7 @@ section{position:relative}
 .studio .ph img{width:100%;height:100%;object-fit:cover}
 .studio .ph.big{grid-row:span 2;min-height:600px}
 .studio .phs{display:grid;gap:18px;grid-template-rows:1fr 1fr}
+.studio .phs .ph{aspect-ratio:4/3}  /* 02.11: вертикальное фото справа раздувало блок до 1250 px, большое фото показывало потолок */
 .studio .ph .lab{position:absolute;left:16px;bottom:14px;color:var(--ink);background:rgba(8,9,11,.6);padding:7px 10px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .studio .top2{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
 .card-live{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line2);font:700 13px/1 var(--head);letter-spacing:.12em;text-transform:uppercase}
@@ -756,11 +758,11 @@ body{font-size:16px;padding-bottom:76px}
 <div class="send"><a class="btn btn-acc" id="sendTg" href="https://t.me/+79872978484" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg> Отправить наряд в Telegram</a>
 <div class="alt"><a id="sendWa" href="https://wa.me/79872978484" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+79872978484">Позвонить</a></div></div></div>
 </form></div></section>
-<section class="works sec" id="works"><div class="pin"><div class="ghost" aria-hidden="true">Porsche · Audi · VW</div>
+<section class="works sec" id="works"><div class="pin"><div class="ghost" aria-hidden="true">Porsche · Audi</div>
 <div class="wrap"><div class="head"><div><span class="tag lab"><b>Работы</b> · фото с Яндекс Карт</span><h2 class="H big">Машины <br>наших клиентов</h2></div><p>Машины, которые обслуживаются у нас. Листайте дальше.</p></div></div>
-<div class="swipe lab"><i></i>Листайте <span>4 машин</span></div><div class="track"><figure class="shot"><span class="c"></span><span class="n">01/04</span><img decoding="async" src="img/p004.webp" alt="Porsche Cayenne, Родина Моторс" loading="lazy" width="960" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Porsche Cayenne</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">02/04</span><img decoding="async" src="img/p021.webp" alt="Audi A6, Родина Моторс" loading="lazy" width="720" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Audi A6</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">03/04</span><img decoding="async" src="img/p033.webp" alt="Audi A3, Родина Моторс" loading="lazy" width="960" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Audi A3</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">04/04</span><img decoding="async" src="img/p014.webp" alt="VW Touareg, Родина Моторс" loading="lazy" width="960" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>VW Touareg</b></figcaption></figure></div></div></section>
+<div class="swipe lab"><i></i>Листайте <span>3 машины</span></div><div class="track"><figure class="shot"><span class="c"></span><span class="n">01/03</span><img decoding="async" src="img/p004.webp" alt="Porsche Cayenne, Родина Моторс" loading="lazy" width="960" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Porsche Cayenne</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">02/03</span><img decoding="async" src="img/p021.webp" alt="Audi A6, Родина Моторс" loading="lazy" width="720" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Audi A6</b></figcaption></figure><figure class="shot"><span class="c"></span><span class="n">03/03</span><img decoding="async" src="img/p033.webp" alt="Audi A3, Родина Моторс" loading="lazy" width="960" height="1280"><figcaption><span class="lab">Родина Моторс · сервис</span><b>Audi A3</b></figcaption></figure></div></div></section>
 <section class="story sec"><div class="wrap">
-<div class="sph rv"><img decoding="async" src="img/p006.webp" alt="Родина Моторс" loading="lazy" width="1280" height="960"><span class="lab">Из отзывов</span></div>
+<div class="sph rv"><img decoding="async" src="img/p014.webp" alt="Родина Моторс" loading="lazy" width="960" height="1280"><span class="lab">Из отзывов</span></div>
 <div class="rv"><span class="tag lab"><b>Из отзывов</b> · Яндекс Карты</span><h2 class="H mid">Без записи — <br><em>сразу на подъёмник</em></h2><p>Иван заехал впервые на замену масла. Запись была на неделю вперёд, но его поставили на свободный подъёмник сразу.</p>
 <blockquote>Заехал впервые у ним на замену масла, все прошло быстро, запустили на свободный подъемник без записи за неделю вперед.</blockquote><div class="who lab">Иван, отзыв на Яндекс Картах</div>
 <a class="btn btn-acc" href="#cfg">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
@@ -768,7 +770,7 @@ body{font-size:16px;padding-bottom:76px}
 <div class="tl"><span class="bar"></span><article class="stp"><span class="dot">01</span><h3>Запись без ожидания</h3><div class="im"><img decoding="async" src="img/p016.webp" alt="Запись без ожидания" loading="lazy" width="960" height="1280"></div><blockquote>«После диагностики ремонт часто делают в тот же день, детали обычно есть в наличии.»<cite class="lab">Ивар Сервис, отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">02</span><h3>Всё объяснят</h3><div class="im"><img decoding="async" src="img/p026.webp" alt="Всё объяснят" loading="lazy" width="1280" height="960"></div><blockquote>«Ремонтируют опытные слесаря которые знают всё про ВАГ, всё показали объяснили.»<cite class="lab">Аlmaz a., отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">03</span><h3>Помогут с запчастями</h3><div class="im"><img decoding="async" src="img/p030.webp" alt="Помогут с запчастями" loading="lazy" width="1280" height="960"></div><blockquote>«Все исправили заменили запчасти .»<cite class="lab">Александр Васильев, отзыв на Яндекс Картах</cite></blockquote></article><article class="stp"><span class="dot">04</span><h3>Без лишних работ</h3><div class="im"><img decoding="async" src="img/p029.webp" alt="Без лишних работ" loading="lazy" width="960" height="1280"></div><blockquote>«Всегда подробно проконсультирует, лишнего не навяжет.»<cite class="lab">Александра Красулина, отзыв на Яндекс Картах</cite></blockquote></article></div></div></section>
 <section class="studio sec"><div class="wrap">
 <div class="top2"><div><span class="tag lab"><b>Сервис</b> · ул. Родины, 7/3</span><h2 class="H big">Сервис <br>на Родины</h2></div><div class="card-live"><span class="live lab"><b></b><span>пн–пт 9–18, сб–вс выходной</span></span></div></div>
-<div class="grid"><div class="ph big wipe"><img decoding="async" src="img/p027.webp" alt="Студия Родина Моторс" loading="lazy" width="960" height="1280"><span class="lab">Бокс</span></div><div class="phs"><div class="ph wipe"><img decoding="async" src="img/p005.webp" alt="Студия Родина Моторс" loading="lazy" width="960" height="1280"></div><div class="ph wipe"><img decoding="async" src="img/p013.webp" alt="Студия Родина Моторс" loading="lazy" width="768" height="768"><span class="lab">Вход</span></div></div></div>
+<div class="grid"><div class="ph big wipe"><img decoding="async" src="img/p006.webp" alt="Студия Родина Моторс" loading="lazy" width="1280" height="960"><span class="lab">Бокс</span></div><div class="phs"><div class="ph wipe"><img decoding="async" src="img/p027.webp" alt="Студия Родина Моторс" loading="lazy" width="960" height="1280"></div><div class="ph wipe"><img decoding="async" src="img/p013.webp" alt="Студия Родина Моторс" loading="lazy" width="768" height="768"><span class="lab">Ремонт двигателей</span></div></div></div>
 <dl class="spec rv"><div><dt class="lab">Рейтинг</dt><dd>5,0 ★ · 126 оценок</dd></div><div><dt class="lab">Адрес</dt><dd>ул. Родины, 7/3, м. Горки (2,27 км)</dd></div><div><dt class="lab">Часы</dt><dd>Пн–пт 9:00–18:00, сб–вс выходной</dd></div><div><dt class="lab">Оплата</dt><dd>Постоплата, наличными, оплата картой, банковским переводом, онлайн, QR-код, СБП, оплата кредитной картой, по ссылке, бесконтактная оплата, безналичная, наложенным платежом, предоплата</dd></div><div><dt class="lab">Работ в прайсе</dt><dd>95</dd></div><div><dt class="lab">Режим</dt><dd>пн-пт 09–18</dd></div></dl></div></section>
 <section class="voices sec" id="voices"><div class="wrap">
 <div class="top3"><div class="score rv"><span class="tag lab"><b>Отзывы</b> · Яндекс Карты</span><b>5,0</b><div class="stars"><i></i><i></i><i></i><i></i><i></i></div><span class="lab">126 оценок · 98 отзывов</span></div>
@@ -984,22 +986,27 @@ if(!sendTg.dataset.wa) sendTg.addEventListener('click', copyGo);
 if(dockBtn) dockBtn.addEventListener('click', function(){ if(state().sum) copyGo(); });
 }
 
-// работы: лента едет вбок при прокрутке вниз (компьютер)
+// работы на компьютере (02.11): навёл мышь на ленту — колесо листает фото вбок, у краёв ленты колесо снова листает страницу; ленту можно тянуть мышью
 var works = $('.works'), track = $('.track'), ghost = $('.ghost');
-if(works && track && matchMedia('(min-width: 901px)').matches && !reduce){
-root.classList.add('js-pin');
-var pin = $('.pin', works), extra = 0;
-var size = function(){ track.style.overflow = 'visible'; extra = track.scrollWidth - track.clientWidth + 80; works.style.height = (pin.offsetHeight + extra) + 'px'; pin.style.position = 'sticky'; pin.style.top = '0px'; };
-size(); addEventListener('resize', size);
-onScroll.push(function(){
-var r = works.getBoundingClientRect(), span = works.offsetHeight - pin.offsetHeight;
-var p = Math.min(1, Math.max(0, (parseFloat(pin.style.top) - r.top) / span));
-track.style.transform = 'translateX(' + (-p * extra) + 'px)';
-if(ghost) ghost.style.transform = 'translate(' + (-p * extra * .35) + 'px,-50%)';
-});
+if(works && track && matchMedia('(hover: hover) and (pointer: fine)').matches){
+root.classList.add('js-wheel'); track.style.scrollSnapType = 'none';
+var maxL = function(){ return track.scrollWidth - track.clientWidth; }, goal = null;
+var glide = function(){ var d = goal - track.scrollLeft; if(Math.abs(d) < .5){ track.scrollLeft = goal; goal = null; return; } track.scrollLeft += d * .18; requestAnimationFrame(glide); };
+track.addEventListener('wheel', function(ev){
+var d = Math.abs(ev.deltaY) > Math.abs(ev.deltaX) ? ev.deltaY : ev.deltaX, m = maxL(), cur = goal === null ? track.scrollLeft : goal;
+if(m <= 2 || (d < 0 && cur <= 0) || (d > 0 && cur >= m - 1)) return;
+ev.preventDefault(); var start = goal === null; goal = Math.max(0, Math.min(m, cur + d * 1.6)); if(start) requestAnimationFrame(glide);
+}, {passive: false});
+var drag = null;
+track.addEventListener('mousedown', function(ev){ drag = {x: ev.clientX, l: track.scrollLeft, moved: false}; goal = null; track.classList.add('drag'); ev.preventDefault(); });
+addEventListener('mousemove', function(ev){ if(!drag) return; var dx = ev.clientX - drag.x; if(Math.abs(dx) > 4) drag.moved = true; track.scrollLeft = drag.l - dx; });
+addEventListener('mouseup', function(){ if(drag){ track.classList.remove('drag'); setTimeout(function(){ drag = null; }, 0); } });
+track.addEventListener('click', function(ev){ if(drag && drag.moved){ ev.preventDefault(); ev.stopPropagation(); } }, true);
+if(ghost) track.addEventListener('scroll', function(){ ghost.style.transform = 'translate(' + (-track.scrollLeft * .35) + 'px,-50%)'; }, {passive: true});
+var fits = function(){ var sw = $('.swipe', works), f = maxL() <= 2; if(sw) sw.style.visibility = f ? 'hidden' : ''; track.style.justifyContent = f ? 'center' : ''; }; fits(); addEventListener('resize', fits);
 }
 
-if(works && track && !root.classList.contains('js-pin') && !reduce && 'IntersectionObserver' in window){
+if(works && track && !root.classList.contains('js-wheel') && !reduce && 'IntersectionObserver' in window){
 var nio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; nio.disconnect();
 var t0 = null; (function nud(t){ if(t0 === null) t0 = t; var k = (t - t0) / 1300; if(k > 1){ track.scrollLeft = 0; return; }
 track.scrollLeft = Math.sin(Math.PI * k) * 120; requestAnimationFrame(nud); })(performance.now()); }); }, {threshold:.6});
