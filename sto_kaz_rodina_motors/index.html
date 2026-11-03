@@ -387,8 +387,8 @@ section{position:relative}
 .qrow.paper .q .who small{color:#77736a}
 .qrow.paper .q .qm{color:var(--paper-ink);opacity:.14}
 .qrow.paper .q .st{color:#d9a400}
-/* 03.11 телефон: отзывы не едут сами (лагали), а листаются пальцем */
-@media (hover:none){.qrow{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:6px 16px}.qrow::-webkit-scrollbar{display:none}.qrow>div{animation:none!important;will-change:auto}.qrow .q{scroll-snap-align:center;box-shadow:none}}
+/* 03.11 телефон: отзывы едут сами через прокрутку (без тяжёлой анимации), пальцем можно остановить и листать */
+@media (hover:none){.qrow{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:6px 16px}.qrow::-webkit-scrollbar{display:none}.qrow>div{animation:none!important;will-change:auto}.qrow .q{box-shadow:none}}
 .voices .top3:has(.score+.score){grid-template-columns:auto auto 1fr}.allrev+.allrev{margin-left:28px}
 .allrev{display:inline-flex;margin-top:40px;font:700 12.5px/1 var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);text-decoration:none;border-bottom:1.5px solid;padding-bottom:5px}
 
@@ -1023,7 +1023,16 @@ var touch = matchMedia('(hover:none)').matches;
 $$('.row>div,.qrow>div').forEach(function(tr){
 var kids = [].slice.call(tr.children), half = kids.length / 2;
 if(!half) return;
-if(touch && tr.parentNode.classList.contains('qrow')){ kids.slice(half).forEach(function(k){ tr.removeChild(k); }); return; }  // телефон: без копий и анимации
+if(touch && tr.parentNode.classList.contains('qrow')){  // телефон: сами едут, палец останавливает
+var box = tr.parentNode, sw = kids[half].offsetLeft - kids[0].offsetLeft, dir = box.classList.contains('rev') ? -1 : 1, pos = dir < 0 ? sw : 0, hold = 0, t0 = 0;
+if(sw <= 0) return; box.scrollLeft = pos;
+var stop = function(){ hold = 1; }, go = function(){ hold = 2; setTimeout(function(){ if(hold === 2){ pos = box.scrollLeft; hold = 0; } }, 1800); };
+box.addEventListener('touchstart', stop, {passive: true}); box.addEventListener('touchend', go, {passive: true});
+(function step(t){ var dt = t0 ? Math.min(64, t - t0) : 0; t0 = t;
+if(!hold){ pos += dir * dt * .03; if(pos >= sw) pos -= sw; if(pos < 0) pos += sw; box.scrollLeft = pos; }
+else if(box.scrollLeft >= sw * 1.5) box.scrollLeft -= sw; else if(box.scrollLeft < 2) box.scrollLeft += sw;
+requestAnimationFrame(step); })(0);
+return; }
 var w = kids[half].offsetLeft - kids[0].offsetLeft; if(w <= 0) return;
 kids.slice(half).forEach(function(k){ tr.removeChild(k); });
 while(tr.scrollWidth < w + innerWidth + 200){ kids.slice(0, half).forEach(function(k){ tr.appendChild(k.cloneNode(true)); }); }
