@@ -309,6 +309,12 @@ section{position:relative}
 .sph img{width:100%;height:100%;object-fit:cover}
 .sph .lab{position:absolute;left:16px;top:16px;background:var(--acc);color:var(--acc-ink);padding:8px 12px}
 .hero h1.l3{font-size:min(clamp(64px,9.2vw,150px),calc((min(100vw,1320px) - 80px) * .64 / (var(--L,9) * .57)))}
+.hero:has(.hq) .cue,.hero:has(.hq) .hud .gps{display:none} /* 04.11: «Листайте» и координаты налезали на подпись под отзывом */
+@media (min-width:901px) and (max-width:1200px){.hq{margin-right:34px}} /* 04.11: уголок рамки задевал подпись отзыва */
+@media (min-width:901px) and (max-height:900px){ /* 04.11: низкие экраны ноутбуков — первый экран влезает по высоте, подпись не заезжает под логотип */
+.hero h1{font-size:min(clamp(78px,13.2vw,230px),calc((min(100vw,1320px) - 80px) * .64 / (var(--L,9) * .57)),15svh);margin-bottom:18px}
+.hero h1.l3{font-size:min(clamp(64px,9.2vw,150px),calc((min(100vw,1320px) - 80px) * .64 / (var(--L,9) * .57)),10svh)}
+.hero .lead{margin-bottom:18px}.hero .wrap{padding-bottom:40px}}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .duo figure{position:relative;background:var(--card);border:1px solid var(--line);padding:22px 18px 18px;text-align:center}
 .duo figure:last-child{border-color:rgba(var(--acc-rgb),.5);background:linear-gradient(180deg,rgba(var(--acc-rgb),.07),transparent)}
@@ -498,6 +504,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 
 .hsp span{position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap;font:700 11.5px/1 var(--head);letter-spacing:.12em;text-transform:uppercase;padding:7px 9px;background:rgba(8,9,11,.85);border:1px solid var(--line2)}
 .hsp.r span{left:30px}.hsp.l span{right:30px}
 .hsp:hover i,.hsp.on i{transform:scale(1.25)}.hsp.on span{border-color:var(--acc);color:var(--acc)}
+@media (min-width:901px) and (max-width:1240px){.hsp span{display:none}.hsp.on span{display:block}} /* 04.11: на узких ноутбуках подписи точек налезали друг на друга */
 .stabs,.otabs{display:flex;flex-wrap:wrap;gap:8px}
 .stab,.otab{position:relative;padding:11px 14px;border:1px solid var(--line2);background:var(--card);color:var(--ink2);font:700 12px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s}
 .stab.on,.otab.on{border-color:var(--acc);color:var(--ink);box-shadow:inset 0 -2px 0 var(--acc)}
