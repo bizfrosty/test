@@ -160,6 +160,48 @@ body{background:
 .a-mem p{font-weight:700}
 .tag{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .prog{background:linear-gradient(135deg,var(--paper),var(--paper2))}
+.side-foot{display:grid;grid-template-columns:1fr 1fr}
+/* flashcards */
+.tstats{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;color:var(--muted);font-weight:600;font-size:14px;margin-bottom:14px}
+.tstats b{color:var(--fg);font-family:var(--display)} .tstats .meter{flex:1 1 200px;margin:0}
+.fc{position:relative;background:linear-gradient(140deg,color-mix(in srgb,var(--tc) 18%, var(--paper)),var(--paper) 60%);border:1px solid color-mix(in srgb,var(--tc) 40%, var(--line));border-radius:26px;padding:clamp(20px,3vw,40px);min-height:380px;display:flex;flex-direction:column;box-shadow:0 40px 80px -50px color-mix(in srgb,var(--tc) 80%, transparent)}
+.fc-sub{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tc)}
+.fc-type{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--paper2);color:var(--muted);align-self:flex-start}
+.fc-front{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,30px);line-height:1.3;margin:18px 0;text-wrap:balance}
+.fc-front.desc{font-family:var(--body);font-weight:600;font-size:clamp(19px,2vw,24px)}
+.fc-back{border-top:2px dashed color-mix(in srgb,var(--fg) 16%,transparent);padding-top:16px;margin-bottom:10px}
+.fc-back ol{margin:0;padding-left:22px} .fc-back li{margin:6px 0;font-size:16.5px} .fc-back p{margin:0;font-size:17px}
+.fc-act{margin-top:auto}
+.fc-rate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fc-rate button{border:1px solid var(--line);border-radius:14px;padding:14px 8px;font-weight:700;font-size:15px;background:var(--paper2);color:var(--fg)}
+.fc-rate .r0:hover{border-color:#ff5a6e} .fc-rate .r1:hover{border-color:#f5b82e} .fc-rate .r2:hover{border-color:var(--ok)}
+.fc-flip{width:100%;padding:16px;font-size:16px}
+.fc-done{background:var(--paper);border:1px solid var(--ok);border-radius:22px;padding:30px;text-align:center}
+.fc-done b{font-family:var(--display);font-size:26px}
+.fc-done p{color:var(--muted);max-width:52ch;margin:10px auto 18px}
+.tscope{margin:0}
+/* method */
+.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.method div{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;border-top:4px solid var(--accent)}
+.method div:nth-child(2){border-top-color:#4f8cff} .method div:nth-child(3){border-top-color:#a46bff} .method div:nth-child(4){border-top-color:#19c3a6} .method div:nth-child(5){border-top-color:#ff4f8b} .method div:nth-child(6){border-top-color:#f5b82e}
+.method b{display:block;font-family:var(--display);font-size:16px;margin-bottom:6px}
+.method span{color:var(--muted);font-size:14.5px}
+/* visuals */
+.a-steps ol{flex-direction:row;flex-wrap:wrap;gap:10px}
+.a-steps li{grid-template-columns:1fr;flex:1 1 150px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;position:relative}
+.a-steps li::before{margin-bottom:6px}
+.a-steps li:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--tc);font-weight:900;z-index:1}
+.mx{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:stretch}
+.mx .ax{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:grid;place-items:center;text-align:center;padding:4px}
+.mx .ax.v{writing-mode:vertical-rl;transform:rotate(180deg)}
+.mx .q{border-radius:14px;padding:14px;min-height:92px;border:1px solid var(--line);background:var(--paper)}
+.mx .q b{display:block;font-family:var(--display);font-size:15px;margin-bottom:4px}
+.mx .q span{font-size:13.5px;color:var(--muted)}
+.mx .g{background:color-mix(in srgb,#3ddc97 16%,var(--paper));border-color:color-mix(in srgb,#3ddc97 45%,var(--line))}
+.mx .y{background:color-mix(in srgb,#f5b82e 16%,var(--paper));border-color:color-mix(in srgb,#f5b82e 45%,var(--line))}
+.mx .b{background:color-mix(in srgb,#4f8cff 16%,var(--paper));border-color:color-mix(in srgb,#4f8cff 45%,var(--line))}
+.mx .r{background:color-mix(in srgb,#ff5a6e 16%,var(--paper));border-color:color-mix(in srgb,#ff5a6e 45%,var(--line))}
+@media (max-width:820px){ .method{grid-template-columns:1fr} .fc-rate{grid-template-columns:1fr} .a-steps li:not(:last-child)::after{display:none} .top #trainThis{order:3;width:100%} }
 .human{margin-top:16px;padding:14px 18px;border-radius:16px;background:color-mix(in srgb,var(--tc) 9%, var(--paper2));border:1px solid color-mix(in srgb,var(--tc) 30%, var(--line));max-width:900px}
 .human .tag{color:var(--tc)}
 .human p{margin:6px 0 0;font-size:16.5px;line-height:1.6}
@@ -196,9 +238,10 @@ body{background:
     </div>
     <nav class="list" id="list" aria-label="Билеты"></nav>
     <div class="side-foot">
-      <button type="button" data-v="study" class="on">Учить</button>
-      <button type="button" data-v="plan">План</button>
-      <button type="button" data-v="how">Как писать</button>
+      <button type="button" data-v="study" class="on">📖 Учить</button>
+      <button type="button" data-v="train">🧠 Тренировка</button>
+      <button type="button" data-v="plan">🕒 План</button>
+      <button type="button" data-v="how">💡 Как учить</button>
     </div>
   </aside>
 
@@ -207,6 +250,7 @@ body{background:
       <div class="top">
         <div class="crumb">Билет <b id="cn">1</b> из 21</div>
         <span class="kbd">← → листать</span>
+        <button type="button" class="btn" id="trainThis">🧠 Тренировать этот билет</button>
         <button type="button" class="btn acc" id="rnd">🎲 Случайный билет</button>
       </div>
       <article class="ticket" id="tk">
@@ -239,6 +283,34 @@ body{background:
       </div>
     </section>
 
+    <section class="view" id="v-train" hidden>
+      <div class="top">
+        <h2 class="vtitle" style="margin:0;margin-right:auto">Тренировка</h2>
+        <div class="filters tscope" role="group" aria-label="Что тренировать">
+          <button type="button" data-s="cur" aria-pressed="false">Этот билет</button>
+          <button type="button" data-s="core" aria-pressed="false">Ядро</button>
+          <button type="button" data-s="all" aria-pressed="true">Все</button>
+        </div>
+      </div>
+      <div class="tstats"><span>Осталось: <b id="tleft">0</b></span><span>Выучено: <b id="tdone">0</b></span><span>Повторов: <b id="trep">0</b></span><div class="meter"><i id="tm"></i></div></div>
+      <div class="fc" id="fc">
+        <div class="fc-sub" id="fsub"></div>
+        <div class="fc-type" id="ftype"></div>
+        <div class="fc-front" id="ffront"></div>
+        <div class="fc-back" id="fback" hidden></div>
+        <div class="fc-act">
+          <button type="button" class="btn acc fc-flip" id="fflip">Показать ответ <span class="kbd">пробел</span></button>
+          <div class="fc-rate" id="frate" hidden>
+            <button type="button" class="r0" data-r="0">😵 Не знал <span class="kbd">1</span></button>
+            <button type="button" class="r1" data-r="1">🤔 Сомневался <span class="kbd">2</span></button>
+            <button type="button" class="r2" data-r="2">✅ Знал <span class="kbd">3</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="fc-done" id="fdone" hidden><b>🔥 Всё вспомнил!</b><p>Сделай перерыв 10–15 минут, потом пройди ещё раз: повтор через паузу закрепляет в долгую память.</p><button type="button" class="btn acc" id="frestart">Пройти заново</button></div>
+      <p class="hint" style="margin-top:14px">Сначала попробуй ответить вслух или в голове, и только потом открывай ответ. Честно оценивай себя: «Не знал» вернёт карточку через пару вопросов, «Сомневался» — чуть позже.</p>
+    </section>
+
     <section class="view" id="v-plan" hidden>
       <h2 class="vtitle">План на вечер</h2>
       <div class="grid2">
@@ -252,7 +324,16 @@ body{background:
     </section>
 
     <section class="view" id="v-how" hidden>
-      <h2 class="vtitle">Как писать ответ</h2>
+      <h2 class="vtitle">Как учить, чтобы запомнить</h2>
+      <div class="method">
+        <div><b>1 · Пойми</b><span>Прочитай «Простыми словами» и пояснения со стрелкой. Понятое запоминается в разы легче, чем зазубренное.</span></div>
+        <div><b>2 · Вспомни</b><span>Закрой ответ и напиши или скажи его сам. Вспоминание — самый сильный способ запомнить, сильнее перечитывания.</span></div>
+        <div><b>3 · Проверь</b><span>Открой эталон, найди, что упустил, допиши. Ошибка, которую ты сам нашёл, запоминается лучше всего.</span></div>
+        <div><b>4 · Повтори вперемешку</b><span>Режим «Тренировка»: карточки из разных билетов вперемешку, как на комиссии. Что не знал — вернётся.</span></div>
+        <div><b>5 · Пауза и сон</b><span>Повтор через 15–20 минут и сон закрепляют память. Ночная зубрёжка без сна работает хуже.</span></div>
+        <div><b>6 · Объясни другу</b><span>Если можешь объяснить тему простыми словами за минуту — ты её знаешь. Если споткнулся — вот что повторить.</span></div>
+      </div>
+      <h2 class="vtitle" style="margin-top:28px">Как писать ответ</h2>
       <div class="card" style="margin-bottom:16px"><h3>Схема любого ответа · 6–10 предложений</h3>
         <div class="flow"><div><b>1. Определение</b><span>одной фразой, как в лекции</span></div><div><b>2. Виды и этапы</b><span>перечисли и поясни</span></div><div><b>3. Пример</b><span>реальная компания</span></div><div><b>4. Вывод</b><span>зачем это фирме</span></div></div></div>
       <div class="grid2">
@@ -297,7 +378,16 @@ var PLAN=[[10,"Разминка","Вкладка «Как писать»",0],[50
     $('tkw').innerHTML=''; t.kw.forEach(function(w){var c=document.createElement('span');c.className='chip';c.textContent=w;$('tkw').appendChild(c)});
     var h='<div class="a-def"><span class="tag">Определение</span><p>'+esc(t.d)+'</p></div>';
     $('th').textContent=t.h;
-    t.b.forEach(function(bl,bi){ h+='<div class="a-blk"><h4>'+esc(bl[0])+'</h4><ol>'+bl[1].map(function(s,si){return li(s,t.x[bi][si])}).join('')+'</ol></div>'; });
+    if(/БКГ/.test(t.q)) h+='<div class="a-blk"><h4>Схема</h4><div class="mx">'+
+      '<div class="ax v">Рост &gt; 10%</div><div class="q y"><b>? Трудные дети</b><span>вкладывать или уходить</span></div><div class="q g"><b>★ Звёзды</b><span>инвестировать</span></div>'+
+      '<div class="ax v">Рост &lt; 10%</div><div class="q r"><b>✕ Собаки</b><span>сокращать</span></div><div class="q b"><b>$ Дойные коровы</b><span>дают деньги</span></div>'+
+      '<div></div><div class="ax">Доля &lt; 1</div><div class="ax">Доля &gt; 1</div></div></div>';
+    if(/Ансоффа/.test(t.q)) h+='<div class="a-blk"><h4>Схема</h4><div class="mx">'+
+      '<div class="ax v">Старый рынок</div><div class="q g"><b>Проникновение</b><span>больше тем же людям</span></div><div class="q b"><b>Развитие товара</b><span>новинка своим клиентам</span></div>'+
+      '<div class="ax v">Новый рынок</div><div class="q y"><b>Развитие рынка</b><span>тот же товар в новую страну</span></div><div class="q r"><b>Диверсификация</b><span>всё новое, риск</span></div>'+
+      '<div></div><div class="ax">Старый товар</div><div class="ax">Новый товар</div></div></div>';
+    t.b.forEach(function(bl,bi){ var st=/этап|стади|Новизна|росту риска/i.test(bl[0]);
+      h+='<div class="a-blk'+(st?' a-steps':'')+'"><h4>'+esc(bl[0])+(st?' · по порядку':'')+'</h4><ol>'+bl[1].map(function(s,si){return li(s,t.x[bi][si])}).join('')+'</ol></div>'; });
     h+='<div class="a-row"><div class="a-ex"><span class="tag">Пример</span><p>'+esc(t.ex)+'</p></div><div class="a-mem"><span class="tag">⚡ Как запомнить</span><p>'+esc(t.m)+'</p></div></div>';
     h+='<div class="a-out"><span class="tag">Вывод</span><p>'+esc(t.o)+'</p></div>';
     var A=$('ans'); A.innerHTML=h;
@@ -307,7 +397,7 @@ var PLAN=[[10,"Разминка","Вкладка «Как писать»",0],[50
   }
   function wc(){var n=($('draft').value.trim().match(/\S+/g)||[]).length; $('wc').textContent=n+' '+(n%10==1&&n%100!=11?'слово':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'слова':'слов'));}
   function go(i){S.cur=(i+D.length)%D.length; save(); renderList(); renderTicket(); view('study'); var on=document.querySelector('.item.on'); if(on) on.scrollIntoView({block:'nearest'}); window.scrollTo({top:0});}
-  function view(v){S.view=v; save(); ['study','plan','how'].forEach(function(x){$('v-'+x).hidden=(x!==v)});
+  function view(v){S.view=v; save(); ['study','train','plan','how'].forEach(function(x){$('v-'+x).hidden=(x!==v)}); if(v==='train'&&!Q.length&&!TD) startTrain();
     document.querySelectorAll('[data-v]').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)}); }
   function hm(d){return pad(d.getHours())+':'+pad(d.getMinutes())}
   function plan(){
@@ -327,8 +417,46 @@ var PLAN=[[10,"Разминка","Вкладка «Как писать»",0],[50
   document.querySelectorAll('[data-f]').forEach(function(b){b.onclick=function(){S.filter=b.dataset.f; save();
     document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x===b)}); renderList();}; if(b.dataset.f===S.filter) b.click();});
   document.querySelectorAll('[data-v]').forEach(function(b){b.onclick=function(){view(b.dataset.v)}});
-  document.addEventListener('keydown',function(e){ if(e.target.tagName==='TEXTAREA') return; if(e.key==='ArrowRight') go(S.cur+1); if(e.key==='ArrowLeft') go(S.cur-1); });
-  renderList(); renderTicket(); plan(); view(S.view);
+  /* ===== тренировка: активное вспоминание + интервальный повтор ===== */
+  var Q=[], TD=0, TR=0, TOT=0, scope='all', flipped=false;
+  function term(s){var k=s.indexOf(' — '); return k>0?s.slice(0,k):s}
+  function bli(s){var k=s.indexOf(' — '); return '<li>'+(k>0?'<b>'+esc(s.slice(0,k))+'</b> — '+esc(s.slice(k+3)):esc(s))+'</li>'}
+  function buildCards(){
+    var C=[];
+    D.forEach(function(t,i){
+      if(scope==='core'&&!t.core) return; if(scope==='cur'&&i!==S.cur) return;
+      var sub='Билет '+(i+1)+' · '+t.tn;
+      C.push({i:i,sub:sub,type:'Определение',front:'Суть билета одной фразой: «'+t.q+'»',back:'<p>'+esc(t.d)+'</p>'});
+      t.b.forEach(function(bl,bi){
+        if(bl[1].length>1) C.push({i:i,sub:sub,type:'Назови все пункты',front:bl[0]+(/этап|стади|росту/i.test(bl[0])?' — по порядку':'')+' ('+bl[1].length+')',back:'<ol>'+bl[1].map(bli).join('')+'</ol>'});
+        bl[1].forEach(function(s,si){ if(s.indexOf(' — ')>0) C.push({i:i,sub:sub+' · '+bl[0],type:'Как это называется?',desc:1,front:t.x[bi][si],back:'<ol>'+bli(s)+'</ol>'}); });
+      });
+    });
+    for(var k=C.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),tmp=C[k];C[k]=C[j];C[j]=tmp;}
+    return C;
+  }
+  function startTrain(){ Q=buildCards(); TOT=Q.length; TD=0; TR=0; $('fdone').hidden=true; $('fc').hidden=false; showCard(); }
+  function showCard(){
+    $('tleft').textContent=Q.length; $('tdone').textContent=TD; $('trep').textContent=TR; $('tm').style.width=(TOT?TD/TOT*100:0)+'%';
+    if(!Q.length){ $('fc').hidden=true; $('fdone').hidden=false; return; }
+    var c=Q[0]; document.documentElement.style.setProperty('--tc',D[c.i].c);
+    $('fsub').textContent=c.sub; $('ftype').textContent=c.type; $('ffront').textContent=c.front; $('ffront').className='fc-front'+(c.desc?' desc':'');
+    $('fback').innerHTML=c.back; $('fback').hidden=true; $('frate').hidden=true; $('fflip').hidden=false; flipped=false;
+  }
+  function flip(){ if(!Q.length) return; $('fback').hidden=false; $('frate').hidden=false; $('fflip').hidden=true; flipped=true; }
+  function rate(r){ if(!flipped) return; var c=Q.shift();
+    if(r===2){ TD++; } else { TR++; Q.splice(Math.min(r===0?2:6,Q.length),0,c); }
+    showCard(); }
+  $('fflip').onclick=flip;
+  document.querySelectorAll('#frate [data-r]').forEach(function(b){b.onclick=function(){rate(+b.dataset.r)}});
+  $('frestart').onclick=startTrain;
+  document.querySelectorAll('[data-s]').forEach(function(b){b.onclick=function(){scope=b.dataset.s;
+    document.querySelectorAll('[data-s]').forEach(function(x){x.setAttribute('aria-pressed',x===b)}); startTrain();};});
+  $('trainThis').onclick=function(){ scope='cur'; document.querySelectorAll('[data-s]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.s==='cur')}); startTrain(); view('train'); };
+  document.addEventListener('keydown',function(e){ if(e.target.tagName==='TEXTAREA') return;
+    if(S.view==='train'){ if(e.key===' '){e.preventDefault(); flip();} if(e.key==='1')rate(0); if(e.key==='2')rate(1); if(e.key==='3')rate(2); return; }
+    if(e.key==='ArrowRight') go(S.cur+1); if(e.key==='ArrowLeft') go(S.cur-1); });
+  renderList(); renderTicket(); plan(); view(S.view==='train'?'study':S.view);
 })();
 </script>
 
