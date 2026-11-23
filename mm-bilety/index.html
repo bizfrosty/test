@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Билеты ММ к комиссии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: экзаменационные билеты — карточки с отрывным корешком; тёмная тема по умолчанию */
+:root{
+  --bg:#0c0f1d; --bg2:#121630; --paper:#161b33; --paper2:#1d2342; --fg:#eef0f8; --muted:#9aa1bd; --line:#2a3156;
+  --accent:#ff6b2c; --accent-ink:#1a0d05; --blue:#7c93ff; --ok:#3ddc97; --ok-ink:#06261a;
+  --display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#eef0f6; --bg2:#e3e7f2; --paper:#ffffff; --paper2:#f5f6fb; --fg:#12162b; --muted:#5b6283; --line:#d9ddea;
+  --accent:#f0551a; --accent-ink:#ffffff; --blue:#3550d9; --ok:#0f9d63; --ok-ink:#ffffff; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#eef0f6; --bg2:#e3e7f2; --paper:#ffffff; --paper2:#f5f6fb; --fg:#12162b; --muted:#5b6283; --line:#d9ddea;
+  --accent:#f0551a; --accent-ink:#ffffff; --blue:#3550d9; --ok:#0f9d63; --ok-ink:#ffffff; color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;padding:0 16px;
+  background-image:radial-gradient(900px 500px at 85% -10%, color-mix(in srgb,var(--accent) 22%, transparent), transparent 60%),
+                   radial-gradient(700px 400px at -10% 10%, color-mix(in srgb,var(--blue) 18%, transparent), transparent 60%);
+  background-repeat:no-repeat;min-height:100vh}
+.wrap{max-width:820px;margin:0 auto;padding-block:36px 100px}
+
+/* hero */
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 45%, transparent);border-radius:30px;padding:5px 12px}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(34px,8vw,64px);line-height:1;letter-spacing:-.02em;margin:18px 0 0;text-wrap:balance}
+h1 .ac{color:var(--accent)}
+.lead{color:var(--muted);margin:16px 0 0;max-width:58ch;font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.stat b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(22px,5vw,32px);line-height:1.1}
+.stat span{color:var(--muted);font-size:14px}
+
+/* sticky bar */
+.bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:5;margin:28px 0 8px;
+  background:color-mix(in srgb,var(--paper) 88%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--line);border-radius:18px;padding:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  box-shadow:0 12px 30px -18px rgba(0,0,0,.6)}
+.ring{position:relative;width:52px;height:52px;flex:none}
+.ring svg{width:52px;height:52px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:6}
+.ring .bgc{stroke:var(--line)} .ring .fgc{stroke:var(--ok);stroke-linecap:round;transition:stroke-dashoffset .5s}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:13px;font-weight:700}
+.tabs{display:flex;gap:4px;background:var(--bg2);border-radius:12px;padding:4px;flex:1;min-width:0;overflow-x:auto}
+.tabs button{font:inherit;font-size:14px;font-weight:600;white-space:nowrap;border:0;background:transparent;color:var(--muted);border-radius:9px;padding:8px 12px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--paper2);color:var(--fg);box-shadow:0 1px 0 var(--line)}
+.rnd{font:inherit;font-size:14px;font-weight:700;border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:11px 14px;cursor:pointer;white-space:nowrap}
+.rnd:active{transform:scale(.97)}
+section[hidden]{display:none}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,4.5vw,30px);margin:34px 0 16px;letter-spacing:-.01em}
+
+/* tickets */
+.list{display:flex;flex-direction:column;gap:16px}
+.t{display:grid;grid-template-columns:88px minmax(0,1fr);background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  scroll-margin-top:130px;position:relative;transition:border-color .25s, transform .25s}
+.t:hover{border-color:color-mix(in srgb,var(--accent) 40%, var(--line))}
+.stub{position:relative;background:var(--accent);color:var(--accent-ink);border-radius:17px 0 0 17px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:18px 6px;gap:6px;transition:background .3s}
+.stub-l{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.stub-n{font-family:var(--display);font-weight:900;font-size:34px;line-height:1}
+.stub-ok{font-size:22px;font-weight:900;opacity:0;transform:scale(.4);transition:.3s}
+.t::before,.t::after{content:"";position:absolute;left:79px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:1px solid var(--line);z-index:1}
+.t::before{top:-10px;clip-path:inset(50% 0 0 0)} .t::after{bottom:-10px;clip-path:inset(0 0 50% 0)}
+.tb{padding:18px 20px 18px 24px;border-left:2px dashed color-mix(in srgb,var(--fg) 18%, transparent);min-width:0}
+.tmeta{min-height:0}
+.core{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%, transparent);padding:3px 9px;border-radius:20px;margin-bottom:8px}
+.t h3{font-family:var(--display);font-weight:500;font-size:clamp(17px,3.6vw,21px);line-height:1.3;margin:0;text-wrap:balance}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:13.5px;line-height:1.3;color:var(--fg);background:var(--paper2);border:1px solid var(--line);border-radius:8px;padding:4px 9px}
+.row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:16px}
+.show{font:inherit;font-size:14px;font-weight:700;border:1px solid var(--line);background:var(--paper2);color:var(--fg);border-radius:10px;padding:9px 14px;cursor:pointer}
+.show[aria-expanded="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.know{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none}
+.know input,.step input{position:absolute;opacity:0;width:1px;height:1px}
+.sw{width:42px;height:24px;border-radius:20px;background:var(--line);position:relative;transition:background .25s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--fg);transition:transform .25s}
+.know input:checked + .sw{background:var(--ok)} .know input:checked + .sw::after{transform:translateX(18px);background:var(--ok-ink)}
+.know input:focus-visible + .sw{outline:2px solid var(--accent);outline-offset:2px}
+.t.ok .stub{background:var(--ok);color:var(--ok-ink)} .t.ok .stub-ok{opacity:1;transform:scale(1)}
+.t.ok{border-color:color-mix(in srgb,var(--ok) 50%, var(--line))}
+.t.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 transparent}25%{box-shadow:0 0 0 4px var(--accent)}}
+.ans{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.para{display:grid;grid-template-columns:auto;gap:4px;padding:12px 14px;border-radius:12px;background:var(--paper2);border:1px solid var(--line)}
+.para p{margin:0;max-width:68ch}
+.tag{justify-self:start;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:6px}
+.tag-определение{color:var(--accent);background:color-mix(in srgb,var(--accent) 14%, transparent)}
+.tag-раскрытие{color:var(--blue);background:color-mix(in srgb,var(--blue) 14%, transparent)}
+.tag-пример{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%, transparent)}
+.tag-вывод{color:var(--fg);background:color-mix(in srgb,var(--fg) 10%, transparent)}
+
+/* plan timeline */
+.tip{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 16%, var(--paper)),var(--paper));border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:18px}
+.tip b.big{font-family:var(--display);font-weight:700;display:block;font-size:17px;margin-bottom:6px}
+.steps{list-style:none;padding:0 0 0 6px;margin:0;position:relative}
+.steps::before{content:"";position:absolute;left:15px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.step{position:relative;margin:0 0 10px}
+.step label{display:grid;grid-template-columns:22px 58px minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 0;cursor:pointer;margin-left:0}
+.step .dot{width:20px;height:20px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);margin-left:-1px;position:relative;z-index:1;transition:.25s;margin-top:2px;justify-self:center}
+.step.rest label{background:transparent;border-style:dashed}
+.step.rest .dot{border-color:var(--muted)}
+.tm{font-family:var(--display);font-weight:700;font-size:15px;color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px}
+.pt b{font-size:17px} .pt em{font-style:normal;color:var(--muted);font-size:14px;margin-left:8px}
+.pt small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.step input:checked ~ .dot{background:var(--ok);border-color:var(--ok)}
+.step input:checked ~ .pt{opacity:.5;text-decoration:line-through}
+.step input:focus-visible ~ .dot{outline:2px solid var(--accent);outline-offset:2px}
+.startrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:-4px 0 16px;color:var(--muted);font-weight:600}
+.restart{font:inherit;font-size:14px;font-weight:700;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:10px;padding:8px 14px;cursor:pointer}
+.core-box{margin-top:18px;border:1px solid color-mix(in srgb,var(--accent) 40%, var(--line));border-radius:18px;padding:16px 20px;background:var(--paper)}
+.core-box .nums{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.core-box a{font-family:var(--display);font-weight:700;font-size:15px;color:var(--accent-ink);background:var(--accent);text-decoration:none;border-radius:10px;padding:6px 11px}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;min-width:0}
+.box.wide{grid-column:1/-1}
+.box h4{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 10px}
+.box ol,.box ul{margin:0;padding-left:20px} .box li{margin:5px 0}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.flow div{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.flow b{display:block;font-family:var(--display);font-size:22px;color:var(--accent)}
+.flow span{font-size:14px;font-weight:600}
+.reset{margin-top:30px;font:inherit;font-size:13px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .t{grid-template-columns:1fr}
+  .t::before,.t::after{display:none}
+  .stub{flex-direction:row;align-items:center;justify-content:flex-start;border-radius:17px 17px 0 0;padding:10px 16px;gap:10px}
+  .stub-n{font-size:22px} .stub-l{font-size:10px}
+  .stub-ok{margin-left:auto;font-size:18px}
+  .tb{border-left:0;border-top:2px dashed color-mix(in srgb,var(--fg) 18%, transparent);padding:16px}
+  .para{padding:12px}
+  .how{grid-template-columns:1fr} .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{gap:8px} .stats .stat{padding:12px 10px} .stat span{font-size:12.5px}
+  .bar{gap:8px}
+  .tabs{order:3;flex:1 1 100%}
+  .tabs button{flex:1}
+  .rnd{flex:1}
+  .step label{grid-template-columns:22px 48px minmax(0,1fr);gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">● Комиссия · международный маркетинг</span>
+    <h1>18 билетов.<br><span class="ac">Один вечер.</span></h1>
+    <p class="lead">Готовые развёрнутые ответы по лекциям курса Учишь опоры, пишешь по памяти, сверяешь — ровно так, как завтра на комиссии.</p>
+    <div class="stats">
+      <div class="stat"><b>18</b><span>билетов с ответами</span></div>
+      <div class="stat"><b>~4 ч</b><span>план от «сейчас»</span></div>
+      <div class="stat"><b>9</b><span>билетов в ядре</span></div>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="ring" aria-label="Выучено билетов"><svg viewBox="0 0 52 52"><circle class="bgc" cx="26" cy="26" r="22"/><circle class="fgc" id="rc" cx="26" cy="26" r="22" stroke-dasharray="138.2" stroke-dashoffset="138.2"/></svg><b id="pt">0/18</b></div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="plan" aria-selected="true">План</button>
+      <button type="button" role="tab" data-tab="tickets" aria-selected="false">Билеты</button>
+      <button type="button" role="tab" data-tab="how" aria-selected="false">Как писать</button>
+    </div>
+    <button type="button" class="rnd" id="rnd">🎲 Случайный билет</button>
+  </div>
+
+  <section id="plan">
+    <h2>План на вечер</h2>
+    <div class="startrow"><span id="span">Старт: —</span><button type="button" class="restart" id="restart">↻ Начинаю сейчас</button></div>
+    <div class="tip"><b class="big">Один приём на каждый билет</b>Прочитал ответ → закрыл → написал на листе опоры и 4–5 предложений своими словами → сверил → включил «Могу написать сам».</div>
+    <ul class="steps"><li class="step" data-min="10"><label><input type="checkbox" id="p0"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Разминка</b><em>10 мин</em><small>Вкладка «Как писать». Запомни схему из 4 шагов.</small></span></label></li><li class="step" data-min="50"><label><input type="checkbox" id="p1"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Билеты 1–4</b><em>50 мин</em><small>Основы, этапы, концепции, мотивы.</small></span></label></li><li class="step rest" data-min="10"><label><input type="checkbox" id="p2"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Перерыв</b><em>10 мин</em><small>Встать, попить, без телефона.</small></span></label></li><li class="step" data-min="55"><label><input type="checkbox" id="p3"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Билеты 5–9</b><em>55 мин</em><small>Среда, регулирование, сегментация, стратегии, позиционирование.</small></span></label></li><li class="step rest" data-min="10"><label><input type="checkbox" id="p4"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Перерыв</b><em>10 мин</em><small>Пройтись, перекусить.</small></span></label></li><li class="step" data-min="50"><label><input type="checkbox" id="p5"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Билеты 10–14</b><em>50 мин</em><small>Матрицы и товар. БКГ и Ансоффа нарисуй на листе.</small></span></label></li><li class="step rest" data-min="10"><label><input type="checkbox" id="p6"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Перерыв</b><em>10 мин</em><small>Глаза закрыть, подышать.</small></span></label></li><li class="step" data-min="40"><label><input type="checkbox" id="p7"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Билеты 15–18</b><em>40 мин</em><small>МЖЦТ, формы выхода, цена, реклама.</small></span></label></li><li class="step" data-min="20"><label><input type="checkbox" id="p8"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Репетиция</b><em>20 мин</em><small>Два случайных билета 🎲, по 10 минут на листе. Сверь.</small></span></label></li><li class="step rest" data-min="0"><label><input type="checkbox" id="p9"><span class="dot" aria-hidden="true"></span><span class="tm">--:--</span><span class="pt"><b>Спать</b><small>Сон закрепляет выученное. Утром 20 минут: только опоры.</small></span></label></li></ul>
+    <div class="core-box"><b>Мало времени?</b> Сначала ядро курса — эти билеты спрашивают чаще всего:
+      <div class="nums"><a href="#b1" data-go="1">01</a><a href="#b2" data-go="2">02</a><a href="#b3" data-go="3">03</a><a href="#b5" data-go="5">05</a><a href="#b8" data-go="8">08</a><a href="#b10" data-go="10">10</a><a href="#b11" data-go="11">11</a><a href="#b13" data-go="13">13</a><a href="#b16" data-go="16">16</a></div></div>
+  </section>
+
+  <section id="tickets" hidden>
+    <h2>Билеты</h2>
+    <div class="list"><article class="t" id="b1">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">01</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Понятие, субъект, объект и цели международного маркетинга</h3>
+    <div class="chips"><span class="chip">концепция управления</span><span class="chip">ТНК</span><span class="chip">мировой рынок</span><span class="chip">цель</span><span class="chip">комплекс 4P/6P</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k1"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Международный маркетинг — это рыночная концепция управления международной деятельностью фирмы, ориентированная на запросы конечных потребителей разных стран и формирование их предпочтений в соответствии со стратегическими целями расширения бизнеса в глобальных масштабах.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Это прежде всего маркетинговая деятельность транснациональных корпораций, которая распространяется на зарубежные страны, но в неё входит и работа на внешних рынках малых и средних предприятий.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Субъект международного маркетинга — международная или транснациональная компания. Объект — мировой рынок или его сегмент. Общая цель — удовлетворение спроса на внешнем рынке на экономически выгодных для компании условиях. Задача — получать информацию о внешней среде и интерпретировать её с учётом специфики выхода компании на международный рынок.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Комплекс международного маркетинга строится на модели 4P Маккарти: товар, цена, сбыт, продвижение. Для международного рынка Ф. Котлер предложил модель 6P, добавив PR (связи с общественностью) и политику, так как за рубежом нужно формировать общественное мнение и заручаться поддержкой властей. Есть также 5P (+люди), 7P (+процесс и физическое окружение), 4C (взгляд покупателя) и SIVA.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Coca-Cola продаёт напитки более чем в 200 странах и при этом учитывает законы и вкусы каждой из них.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: международный маркетинг отличается от внутреннего объектом (мировой, а не национальный рынок) и сложностью среды, но использует тот же инструментарий.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b2">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">02</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Этапы превращения национальной компании в международную</h3>
+    <div class="chips"><span class="chip">неявный → редкий → регулярный → доминирующий → глобальный</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k2"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Национальная компания становится международной, последовательно проходя пять этапов.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>1) Неявный международный маркетинг: фирма не действует за рубежом, но её товары могут попадать туда через торговые фирмы или иностранцев. 2) Редкий зарубежный маркетинг: экспорт возникает из-за излишков или падения спроса дома и прекращается, когда спрос стабилизируется. 3) Регулярный зарубежный маркетинг: фирма постоянно работает за рубежом через посредников или свои подразделения, но главным остаётся внутренний рынок. 4) Доминирующий (международный) маркетинг: фирма полностью вовлечена в международную деятельность и зависит от зарубежной выручки. 5) Глобальный маркетинг: компания рассматривает мир как единый рынок.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Компанию относят к ТНК, если она работает в нескольких странах (по ООН — от 2 до 6 и более), имеет там дочерние фирмы, получает от зарубежных операций не менее 25% дохода и имеет многонациональный персонал.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: IKEA начинала в Швеции, затем вышла в соседние страны, а сейчас работает по всему миру как глобальная компания.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: интернационализация — это постепенный процесс, и на каждом этапе фирме нужна своя маркетинговая стратегия.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b3">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">03</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Концепции международного маркетинга</h3>
+    <div class="chips"><span class="chip">расширенный национальный (этно)</span><span class="chip">многонациональный (поли)</span><span class="chip">глобальный (гео)</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k3"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>В процессе развития международного маркетинга сформировались три концепции.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Концепция расширенного национального рынка: главным считается внутренний рынок, внешний — лишь его дополнение, стратегия за рубежом та же, что и дома. Такие фирмы называют этноцентрическими.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Концепция многонационального рынка: для каждой страны разрабатывается своя независимая маркетинговая программа, комплекс маркетинга адаптируется под каждую страну. Это полицентрические фирмы.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Концепция глобального рынка: весь мир рассматривается как единый рынок, фирма выпускает стандартный товар и использует стандартизированный комплекс маркетинга. Это геоцентрические фирмы.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: McDonald&#x27;s близок к многонациональной концепции, так как меняет меню под страны; Apple — к глобальной: один iPhone для всего мира.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: выбор концепции определяет, будет ли фирма стандартизировать или адаптировать свой маркетинг.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b4">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">04</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Мотивы выхода на зарубежные рынки и барьеры</h3>
+    <div class="chips"><span class="chip">активные (хочу)</span><span class="chip">реактивные (приходится)</span><span class="chip">внутренние и внешние барьеры</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k4"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Мотивы выхода на зарубежные рынки делятся на две группы.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Активные — инициатива самой фирмы: стремление увеличить прибыль и рост, инициатива менеджеров с международным опытом, наличие уникального продукта или технологии, спрос за рубежом, экономия от масштаба, налоговые льготы и господдержка экспорта.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Реактивные — вынужденные, под давлением среды: насыщение или малый размер внутреннего рынка, давление зарубежных конкурентов, избыточные производственные мощности, следование за своими клиентами, случайные экспортные заказы, сезонность спроса.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Барьеры бывают внутренние (нет решимости, финансирования, знаний и связей, мощностей) и внешние: общие рыночные риски (удалённость, язык, культура), коммерческие (колебания валют, неплатежи, порча при доставке) и политические (тарифы, валютный контроль, войны).</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: российский производитель, у которого простаивает завод, начинает экспорт в Казахстан — это реактивный мотив.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: первые годы на новом рынке дорогие, но затем экспортёры получают основную долю прибыли с зарубежных рынков.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b5">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">05</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Международная маркетинговая среда</h3>
+    <div class="chips"><span class="chip">контролируемые / неконтролируемые</span><span class="chip">экономика</span><span class="chip">политика и риски</span><span class="chip">право</span><span class="chip">культура</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k5"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Факторы международной маркетинговой среды делятся на контролируемые и неконтролируемые. Контролируемые — инструменты маркетинга (товар, цена, продвижение, распределение), а также финансовые, технологические и организационные возможности фирмы. Неконтролируемые — факторы своей и зарубежной среды, которыми фирма не управляет, а изучает и адаптируется к ним.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Экономическая среда показывает возможности потребления: ВНП, уровень жизни, темпы роста, стабильность валюты. Страны делят по структуре хозяйства (натуральное, сырьевое, промышленное) и по уровню дохода. Важна региональная интеграция и свободные экономические зоны — районы с льготным режимом.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Политическая среда: стабильность, строй, отношение к импорту, валютные ограничения. Риски — страновой (национализация), валютный, финансовый (повышенные налоги для иностранцев), банковский, военный.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Правовая среда: системы обычного права (США, Великобритания — решения судов), гражданского (Россия, Германия — кодексы) и теократического (мусульманские страны). Режимы — наибольшего благоприятствования и национальный; принципы взаимности и реторсии.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Социально-культурная среда: язык, обычаи, образование, ценности, эстетика, религия.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: фирма не может изменить зарубежную среду, поэтому должна изучить её до выхода на рынок.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b6">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">06</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Государственное регулирование ВЭД: тарифные и нетарифные методы</h3>
+    <div class="chips"><span class="chip">свобода торговли / протекционизм</span><span class="chip">пошлины</span><span class="chip">квоты, эмбарго, лицензии, стандарты</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k6"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Государственное регулирование внешней торговли существует в двух формах: свобода торговли (минимальное вмешательство) и протекционизм (защита внутреннего рынка от иностранной конкуренции).</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Тарифные методы связаны с деньгами: таможенный тариф (перечень ставок пошлин), таможенные платежи (пошлины, НДС, акцизы) и экспортные субсидии, позволяющие своим экспортёрам продавать дешевле.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Нетарифные методы — административные и технические ограничения: квоты (лимит объёма ввоза или вывоза), эмбарго (полный запрет), добровольное ограничение экспорта, лицензирование, государственная монополия внешней торговли, стандарты как скрытый барьер, требование местных компонентов, административные проволочки.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Сингапур — страна почти свободной торговли с нулевыми пошлинами на большинство товаров; США вводили высокие пошлины на товары из Китая — это протекционизм.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: при выходе на рынок фирма должна учитывать барьеры страны; при жёстком протекционизме выгоднее производить внутри страны через совместное предприятие или лицензию.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b7">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">07</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Международная сегментация</h3>
+    <div class="chips"><span class="chip">макро / микро</span><span class="chip">вглубь / вширь</span><span class="chip">гипер</span><span class="chip">4 специфических метода</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k7"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Международная сегментация — это деление потребителей мирового рынка на однородные группы со схожим спросом и одинаковой реакцией на маркетинговое воздействие.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Виды: макросегментация (деление стран и регионов) и микросегментация (деление выбранных крупных сегментов); сегментация вглубь (от широкой группы к узкой) и вширь (охват смежных сегментов); гиперсегментация — чрезмерное дробление, оправданное для эксклюзивных товаров; предварительная и окончательная.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Критерии те же, что на внутреннем рынке (демографические, географические, экономические), но применять их сложнее. Специфические методы: поиск стран, похожих на нашу (просто и дёшево); поиск универсального сегмента во всех странах (подходит известным брендам); поиск разных сегментов в каждой стране (самый затратный); поиск рынков с модификацией товара.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Nike выделяет во всех странах универсальный сегмент — молодёжь, увлечённую спортом.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: сегментация — основа для выбора целевого рынка и позиционирования товара.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b8">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">08</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Стратегии выбора целевых рынков и проникновения</h3>
+    <div class="chips"><span class="chip">муравей / стрекоза</span><span class="chip">лазерный луч</span><span class="chip">военные стратегии</span><span class="chip">цена × маркетинг</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k8"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>При выборе зарубежных рынков используют две основные стратегии. Стратегия «муравья» (концентрированная) — последовательное освоение рынков один за другим: тщательный отбор, мало ошибок, невысокие затраты, но медленный результат. Стратегия «стрекозы» (дисперсная) — выход сразу на максимум рынков с последующим закреплением: выигрыш во времени, но большие затраты и риск для престижа. Есть гибридная стратегия.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Стратегии активного расширения: расширение границ рынка, «новый товар — новый рынок», «лазерный луч» (сначала дом, затем нейтральные рынки, затем высококонкурентные), наступление.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>«Военные» стратегии: накопление боевого снаряжения (отработка дома), завоевание плацдарма (покупка сетей и складов), фронтальный штурм, «тиски» (атака на подступах к рынкам конкурентов), «грабли» (отбор сегментов на их рынках). Оборона и «партизанская война» защищают свои позиции.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>По соотношению цены и затрат на маркетинг: интенсивное проникновение (высокая цена, высокие затраты), выборочное (высокая, низкие) — для небольших рынков; широкое (низкая, высокие) и пассивное (низкая, низкие) — для ёмких рынков. Роли на рынке: лидер, челленджер, нишер, последователь.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: IKEA выходила в страны по очереди — это «муравей».</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: выбор стратегии зависит от ресурсов фирмы, скорости конкурентов и необходимости контроля.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b9">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">09</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Позиционирование товара и уход с рынка</h3>
+    <div class="chips"><span class="chip">аналогичное</span><span class="chip">конкурентное</span><span class="chip">уникальное</span><span class="chip">страна происхождения</span><span class="chip">деинвестиция</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k9"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Позиционирование — определение одного или нескольких свойств товара, которые лучше всего отвечают запросам целевой аудитории. Перед этим изучают позиции товаров конкурентов.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Подходы: аналогичное позиционирование (по примеру конкурента), конкурентное (упор на самые выигрышные свойства) и уникальное (товар без аналогов). Особое значение имеет фактор страны происхождения: «немецкое» ассоциируется с качеством.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Уход с рынка может быть быстрым или медленным. Причины: рынок не соответствует стратегии, есть более выгодное применение ресурсов, срочно нужны деньги, действия конкурентов. Если у фирмы было производство за рубежом, уход означает деинвестицию — изъятие капитала, продажу доли, закрытие предприятия.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: многие западные компании в 2022 году продали российские активы — это деинвестиция.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: позиции товара со временем меняются вместе со средой, поэтому их нужно пересматривать.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b10">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">10</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Матрица БКГ</h3>
+    <div class="chips"><span class="chip">доля ÷ лидер (граница 1)</span><span class="chip">рост рынка (10%)</span><span class="chip">звёзды, коровы, дети, собаки</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k10"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Матрица Бостонской консалтинговой группы помогает определить приоритеты развития товаров компании. Её идея: деньги от успешных товаров на зрелых рынках нужно вкладывать в быстрорастущие сегменты.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>По горизонтали — относительная доля рынка: доля компании, делённая на долю ведущего конкурента. Больше 1 — доля высокая. По вертикали — темп роста рынка: больше 10% — рынок быстрорастущий. Размер круга показывает объём продаж.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Четыре квадранта: «звёзды» (высокий рост, высокая доля) — инвестировать; «дойные коровы» (низкий рост, высокая доля) — источник денег; «трудные дети» (высокий рост, низкая доля) — решить, вкладываться или уходить; «собаки» (низкий рост, низкая доля) — сокращать.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: доля фирмы 15%, у лидера 30%, рынок растёт на 14%. Относительная доля 0,5, рост высокий — это «трудный ребёнок».</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: матрица помогает сбалансировать портфель — коровы кормят звёзд и трудных детей.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b11">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">11</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Матрица Ансоффа</h3>
+    <div class="chips"><span class="chip">товар × рынок</span><span class="chip">проникновение</span><span class="chip">развитие рынка</span><span class="chip">развитие товара</span><span class="chip">диверсификация</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k11"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Матрица Ансоффа («товар — рынок») описывает стратегии роста компании в зависимости от новизны товара и рынка.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Проникновение на рынок — старый товар на старом рынке, рост доли. Развитие рынка — старый товар на новых рынках, например в других странах. Развитие товара — новый товар для существующих клиентов. Диверсификация — новый товар на новом рынке, самая рискованная стратегия.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Существующий рынок — тот, где фирма уже работает и имеет репутацию; новый — куда она хочет выйти. Существующий продукт имеет историю продаж, новый — нет.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Valve проводит распродажи Steam (проникновение), запустила Steam China (развитие рынка), выпустила Steam Deck (развитие товара), VR-шлемы (диверсификация).</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: правило «где новое, то и развиваем»; чем больше новизны, тем выше риск.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b12">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">12</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Матрицы ADL и McKinsey 7S</h3>
+    <div class="chips"><span class="chip">стадия отрасли × позиция</span><span class="chip">жёсткие и мягкие элементы</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k12"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Матрица ADL помогает выбрать стратегию по стадии жизненного цикла отрасли и конкурентной позиции фирмы. Стадии отрасли: становление, рост, зрелость, старение. Позиции: доминирующая, сильная, благоприятная, неустойчивая, слабая. Сильная фирма в молодой отрасли инвестирует, слабая в стареющей уходит.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Модель McKinsey 7S анализирует внутреннюю организацию. Жёсткие элементы: стратегия, структура, системы управления — их проще описать и контролировать. Мягкие: совместные ценности, стиль руководства, персонал, навыки — ими сложнее управлять, но они дают долгосрочное преимущество.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Порядок анализа 7S: описать элементы, найти противоречия, составить идеальную модель, определить изменения, внедрить, повторить анализ.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: ADL смотрит на рынок и позицию фирмы снаружи, 7S — на её устройство изнутри.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b13">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">13</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Стандартизация и адаптация товара</h3>
+    <div class="chips"><span class="chip">один товар везде / под страну</span><span class="chip">плюсы, минусы</span><span class="chip">стадия зрелости</span><span class="chip">двойная</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k13"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Стандартизация — продажа за рубежом тех же товаров, что и на внутреннем рынке. Двойная стандартизация — одинаковы и товар, и продвижение.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Плюсы стандартизации: снижение затрат за счёт эффекта масштаба, не нужны затраты на НИОКР и изменение продвижения, проще управлять, формируется приверженность к товару. Минус: нельзя учесть все запросы потребителей разных стран. Решение принимают с учётом стратегии, характеристик товара, стадии ЖЦТ и однородности спроса. На стадиях внедрения и роста стандартизация нецелесообразна, её проводят в зрелости.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Адаптация — изменение товара под условия страны: покупательную способность, условия потребления, законы, климат, культуру. Двойная адаптация — меняются и товар, и продвижение.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Coca-Cola почти одинакова во всём мире — стандартизация; McDonald&#x27;s в Индии не продаёт бургеры с говядиной — адаптация.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: выбор зависит от товара и того, насколько похожи потребители в разных странах.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b14">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">14</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Новый товар в международном маркетинге</h3>
+    <div class="chips"><span class="chip">мотивы</span><span class="chip">5 уровней новизны</span><span class="chip">этапы</span><span class="chip">линейная / цепочная</span><span class="chip">НИОКР</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k14"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Новый товар нужен для удовлетворения новых потребностей. Внешние мотивы: научно-технический прогресс, действия конкурентов, изменение предпочтений. Внутренние: рост продаж и доли, конкурентоспособность, снижение риска узкого ассортимента.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Уровни новизны по возрастанию: модифицированный товар, новый для фирмы, новый для страны происхождения, новый для внешних рынков, новый для мирового рынка.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Этапы разработки: сегментация, выбор рынка, позиционирование, генерация и отбор идей, образец, испытания, подготовка рынка, серийное производство, выведение на рынок, доработка.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Методологии: линейная (США, Западная Европа) — стадии идут последовательно в НИОКР, товар создают с нуля, дорого (пример — Apple iPhone); цепочная (Япония) — идеи от всех отделов и клиентов, товар постоянно улучшают, дешевле (пример — Toyota). НИОКР бывают централизованными (масштаб, коммерческая тайна) и децентрализованными (лучше адаптация).</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: новизна товара определяет затраты и риск выхода на внешний рынок.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b15">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">15</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Международный жизненный цикл товара</h3>
+    <div class="chips"><span class="chip">5 стадий</span><span class="chip">дифференциация → стандартизация</span><span class="chip">синхронная / авангардная</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k15"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>На внутреннем рынке товар проходит четыре стадии: внедрение, рост, зрелость, спад. На мировом рынке эти стадии повторяются многократно.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Стадии МЖЦТ: 1) товар продаётся дома, аналогов нет — снятие сливок; 2) дома появляются аналоги, товар становится стандартным — снижение цены, реклама; 3) экспорт, сначала в развитые, затем в развивающиеся страны; 4) местные фирмы за рубежом начинают производить аналоги — ценовая конкуренция; 5) фирма делает прямые инвестиции за рубежом, возникает обратный импорт.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Пока товар дифференцирован, упор делают на товарную политику, когда стандартизирован — на ценовую. Модели: синхронная (сразу на все рынки) и авангардная (сначала дома, потом за рубеж).</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>ЖЦТ сокращается из-за быстрого НТП, сильных конкурентов дома, протекционизма за рубежом, дешёвых ресурсов в других странах.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: понимание МЖЦТ подсказывает, когда выходить на новый рынок и когда переносить производство.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b16">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">16</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"><span class="core">ядро</span></div>
+    <h3>Формы выхода на внешний рынок и организация ММ в фирме</h3>
+    <div class="chips"><span class="chip">косвенный экспорт → прямой → лицензия/франчайзинг → СП → свой завод</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k16"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Формы выхода по росту контроля, затрат и риска: косвенный экспорт (через посредников в своей стране), прямой экспорт (продаём сами), лицензирование (продаём право производить), франчайзинг (передаём бренд и модель бизнеса), совместное предприятие (общий капитал, прибыль и риски с местным партнёром), прямые инвестиции — свой завод или филиал за рубежом.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Организация ММ внутри фирмы: средней фирме, которая впервые выходит за рубеж, подходит экспортный отдел; крупной фирме на далёком рынке — международный филиал; на высшей ступени — транснациональная компания.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Посредники: дистрибьютор (покупает и перепродаёт), агент (продаёт от имени фирмы за комиссию), дилер, брокер.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: McDonald&#x27;s развивается через франчайзинг; автопроизводители часто создают совместные предприятия.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: чем больше фирма вкладывает в страну, тем больше контроля, но и тем выше риск.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b17">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">17</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Ценовая политика на внешних рынках</h3>
+    <div class="chips"><span class="chip">что влияет</span><span class="chip">сливки / проникновение</span><span class="chip">демпинг</span><span class="chip">трансфертные</span><span class="chip">Инкотермс</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k17"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>На цену за рубежом влияют пошлины и налоги, транспорт, курс валют, посредники, цены конкурентов и доходы населения, поэтому экспортная цена обычно выше внутренней.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Стратегии: «снятие сливок» — высокая цена на новинку; проникновение — низкая цена для захвата доли; вытеснение — крайне низкая цена; следование за лидером; ценовая дискриминация — разные цены на один товар.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Демпинг — продажа за рубежом дешевле, чем дома или ниже себестоимости; против него вводят антидемпинговые пошлины. Трансфертные цены — цены между подразделениями одной ТНК. Условия поставки и то, кто платит за доставку, определяют правила Инкотермс.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: новый iPhone выходит по высокой цене — снятие сливок; китайские бренды смартфонов заходили на рынки с низкими ценами — проникновение.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: цена на внешнем рынке зависит не только от затрат, но и от конкурентов и регулирования страны.</p></div></div>
+  </div>
+</article>
+<article class="t" id="b18">
+  <div class="stub"><span class="stub-l">билет</span><span class="stub-n">18</span><span class="stub-ok">✓</span></div>
+  <div class="tb">
+    <div class="tmeta"></div>
+    <h3>Коммуникационная политика и реклама в ММ</h3>
+    <div class="chips"><span class="chip">реклама</span><span class="chip">PR</span><span class="chip">стимулирование</span><span class="chip">выставки</span><span class="chip">стандартизация / адаптация</span></div>
+    <div class="row">
+      <button type="button" class="show" aria-expanded="false"><span>Показать ответ</span></button>
+      <label class="know"><input type="checkbox" id="k18"><span class="sw" aria-hidden="true"></span>Могу написать сам</label>
+    </div>
+    <div class="ans" hidden><div class="para"><span class="tag tag-определение">Определение</span><p>Комплекс продвижения на внешнем рынке включает рекламу, PR, стимулирование сбыта, личные продажи, выставки и ярмарки.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Главный выбор — стандартизация (одна кампания на весь мир) или адаптация (под язык, культуру и законы страны). Стандартизации мешают язык и перевод слоганов, религия и обычаи, законы о рекламе, разные медиа.</p></div><div class="para"><span class="tag tag-раскрытие">Раскрытие</span><p>Прямая реклама — открытый призыв купить: быстрый, но короткий эффект, часто раздражает. Product placement — товар внутри фильма или сюжета: доверия больше, эффект дольше, но показ сложно контролировать.</p></div><div class="para"><span class="tag tag-пример">Пример</span><p>Пример: Coca-Cola использует общие глобальные кампании, но меняет язык и лица в рекламе под страны.</p></div><div class="para"><span class="tag tag-вывод">Вывод</span><p>Вывод: удачная коммуникация за рубежом учитывает культуру страны, иначе реклама может дать обратный эффект.</p></div></div>
+  </div>
+</article></div>
+  </section>
+
+  <section id="how" hidden>
+    <h2>Как писать ответ</h2>
+    <div class="how">
+      <div class="box wide"><h4>Схема любого ответа · 6–10 предложений</h4>
+        <div class="flow"><div><b>1</b><span>Определение</span></div><div><b>2</b><span>Виды и этапы</span></div><div><b>3</b><span>Пример</span></div><div><b>4</b><span>Вывод</span></div></div></div>
+      <div class="box"><h4>Нельзя</h4><ul>
+        <li>Писать одними ключевыми словами — раскрывай целым предложением.</li>
+        <li>Оставлять пустым — неполный ответ лучше пустого.</li>
+        <li>Уходить в сторону — сначала прямо ответь на вопрос.</li></ul></div>
+      <div class="box"><h4>Примеры на все случаи</h4><ul>
+        <li><b>McDonald's</b> — адаптация, франчайзинг.</li>
+        <li><b>Coca-Cola</b> — стандартизация.</li>
+        <li><b>IKEA</b> — «муравей».</li>
+        <li><b>Apple</b> — линейная разработка, сливки. <b>Toyota</b> — цепочная.</li>
+        <li><b>Сингапур</b> — свобода торговли. <b>США против Китая</b> — протекционизм.</li></ul></div>
+      <div class="box wide"><h4>Практический вопрос в билете</h4>Назови понятие из лекции, примени к ситуации и обоснуй. Например: «Средняя фирма впервые выходит за рубеж → стратегия муравья и экспортный отдел, потому что ресурсов мало и нужен контроль».</div>
+    </div>
+  </section>
+
+  <button type="button" class="reset" id="reset">Сбросить отметки</button>
+</div>
+
+<script>
+(function(){
+  var KEY='mm-commission-v1', st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){st={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  var boxes=[].slice.call(document.querySelectorAll('input[type=checkbox]'));
+  var C=138.2;
+  function upd(){
+    var k=0; document.querySelectorAll('.t').forEach(function(c){var on=c.querySelector('.know input').checked; c.classList.toggle('ok',on); if(on)k++;});
+    document.getElementById('pt').textContent=k+'/18';
+    document.getElementById('rc').style.strokeDashoffset=C-(C*k/18);
+  }
+  boxes.forEach(function(b){ if(st[b.id]) b.checked=true; b.addEventListener('change',function(){ st[b.id]=b.checked?1:0; save(); upd(); }); });
+  function setAns(c,open){ var a=c.querySelector('.ans'), btn=c.querySelector('.show'); a.hidden=!open;
+    btn.firstChild.textContent=open?'Скрыть ответ':'Показать ответ'; btn.setAttribute('aria-expanded',open); }
+  document.querySelectorAll('.show').forEach(function(btn){ btn.addEventListener('click',function(){
+    var c=btn.closest('.t'); setAns(c, c.querySelector('.ans').hidden); }); });
+  function tab(name){ document.querySelectorAll('.tabs [data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.dataset.tab===name)});
+    ['plan','tickets','how'].forEach(function(s){document.getElementById(s).hidden=(s!==name)}); try{localStorage.setItem(KEY+'-tab',name)}catch(e){} }
+  document.querySelectorAll('.tabs [data-tab]').forEach(function(b){ b.addEventListener('click',function(){tab(b.dataset.tab)}); });
+  function go(n){ tab('tickets'); var c=document.getElementById('b'+n); setAns(c,false);
+    c.scrollIntoView({behavior:'smooth',block:'start'}); c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash'); }
+  document.getElementById('rnd').addEventListener('click',function(){ go(1+Math.floor(Math.random()*18)); });
+  document.querySelectorAll('[data-go]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); go(+a.dataset.go); }); });
+  document.getElementById('reset').addEventListener('click',function(){ boxes.forEach(function(b){b.checked=false}); st={}; save(); upd(); });
+  function hm(d){return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+  function times(){
+    var s=+st.start; if(!s||Date.now()-s>12*3600e3){ var d=new Date(); d.setSeconds(0,0); s=+d; st.start=s; save(); }
+    var t=s; document.querySelectorAll('.step').forEach(function(li){ li.querySelector('.tm').textContent=hm(new Date(t)); t+=(+li.dataset.min)*60000; });
+    document.getElementById('span').textContent='Старт '+hm(new Date(s))+' · финиш около '+hm(new Date(t));
+  }
+  document.getElementById('restart').addEventListener('click',function(){ st.start=0; times(); });
+  try{var t=localStorage.getItem(KEY+'-tab'); if(t) tab(t);}catch(e){}
+  times(); upd();
+})();
+</script>
+
+</body>
+</html>
