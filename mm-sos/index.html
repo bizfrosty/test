@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOS: ядро за час</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: один экран — один билет ядра, таймер 8 минут сверху */
+:root{--bg:#0a0c18;--paper:#141a32;--paper2:#1c2344;--fg:#f0f2fa;--muted:#99a1c0;--line:#283059;--tc:#ff6b2c;--ok:#3ddc97;
+ --display:"Unbounded","Golos Text",system-ui,sans-serif;--body:"Golos Text",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;min-height:100vh;color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;padding:0 16px;
+ background:radial-gradient(900px 500px at 90% -10%,color-mix(in srgb,var(--tc) 25%,transparent),transparent 60%),var(--bg);transition:background .4s}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding-block:18px 60px}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 0;background:linear-gradient(var(--bg) 70%,transparent)}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dots button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--muted);font-family:var(--display);font-size:13px}
+.dots button.on{border-color:var(--tc);color:var(--fg);background:color-mix(in srgb,var(--tc) 22%,var(--paper))}
+.dots button.done{background:var(--ok);color:#052117;border-color:var(--ok)}
+.timer{margin-left:auto;display:flex;align-items:center;gap:10px}
+.clock{font-family:var(--display);font-weight:900;font-size:30px;font-variant-numeric:tabular-nums;min-width:96px;text-align:right}
+.clock.late{color:#ff5a6e}
+.tb{border:1px solid var(--line);background:var(--paper);color:var(--fg);border-radius:10px;padding:8px 12px;font-weight:700}
+.head{margin-top:8px}
+.head small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tc)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,42px);line-height:1.1;margin:6px 0 0;text-wrap:balance}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 20px;min-width:0}
+.card.hl{background:linear-gradient(135deg,color-mix(in srgb,var(--tc) 20%,var(--paper)),var(--paper));border-color:color-mix(in srgb,var(--tc) 45%,var(--line))}
+.tag{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tc);margin-bottom:6px}
+.card p{margin:0}
+.def{font-weight:600}
+.blk{margin-top:12px}
+.blk b{display:block;font-family:var(--display);font-size:14px;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--paper2);border:1px solid color-mix(in srgb,var(--tc) 35%,var(--line));border-radius:9px;padding:5px 10px;font-size:15px;font-weight:600}
+.mem{background:color-mix(in srgb,#f5b82e 14%,var(--paper));border-color:color-mix(in srgb,#f5b82e 45%,var(--line))}
+.mem .tag{color:#f5b82e} .mem p{font-weight:700}
+.ex .tag{color:var(--ok)}
+.say{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.say .steps{display:flex;gap:8px;flex-wrap:wrap;margin-right:auto}
+.say .steps span{background:var(--paper2);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:600}
+.next{border:0;border-radius:14px;padding:16px 22px;font-weight:800;font-size:17px;background:var(--tc);color:#160903}
+.fin{text-align:center;padding:60px 20px}
+.fin b{font-family:var(--display);font-size:34px;display:block}
+.fin p{color:var(--muted);max-width:48ch;margin:14px auto}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.timer{margin-left:0;width:100%;justify-content:space-between}.clock{font-size:26px}.next{width:100%}}
+</style></head><body>
+<div class="wrap">
+  <div class="bar"><div class="dots" id="dots"></div>
+    <div class="timer"><span class="clock" id="clock">8:00</span><button class="tb" id="tp" type="button">⏸</button><button class="tb" id="tr" type="button">↻ 8 мин</button></div></div>
+  <section id="main">
+    <div class="head"><small id="meta"></small><h1 id="q"></h1></div>
+    <div class="grid">
+      <div class="card hl"><span class="tag">💬 Простыми словами</span><p id="h"></p></div>
+      <div class="card"><span class="tag">Определение</span><p class="def" id="d"></p></div>
+      <div class="card" style="grid-column:1/-1"><span class="tag">🦴 Скелет ответа: назови эти слова</span><div id="b"></div></div>
+      <div class="card ex"><span class="tag">Пример</span><p id="ex"></p></div>
+      <div class="card mem"><span class="tag">⚡ Как запомнить</span><p id="m"></p></div>
+      <div class="say"><div class="steps"><span>1. Прочитай</span><span>2. Закрой глаза</span><span>3. Скажи вслух: определение → пункты → пример</span></div>
+        <button class="next" id="next" type="button">Сказал вслух → дальше</button></div>
+    </div>
+  </section>
+  <section class="fin" id="fin" hidden><b>🔥 Ядро пройдено</b><p>Теперь спать. Будильник на утро, потом 30 минут «Тренировка → Ядро» на основном сайте. Ты сделал главное.</p>
+    <button class="next" id="again" type="button">Пройти ещё раз</button></section>
+</div>
+<script>
+var D=[{"n": 1, "q": "Понятие, субъект, объект и цели международного маркетинга", "c": "#ff6b2c", "h": "Представь компанию, которая решила продавать не только в своей стране, а по всему миру. Международный маркетинг — это то, как она изучает людей в разных странах и подстраивает под них свой товар, цену и рекламу. Цель простая: продавать за границей и при этом зарабатывать.", "d": "Международный маркетинг — рыночная концепция управления международной деятельностью фирмы, ориентированная на запросы потребителей разных стран, ради расширения бизнеса в глобальных масштабах.", "b": [["Кто и что", ["Субъект", "Объект", "Цель", "Задача"]], ["Комплекс маркетинга", ["4P (Маккарти, 1960)", "6P (Котлер)", "5P / 7P", "4C"]]], "ex": "Coca-Cola продаёт напитки в 200+ странах и подстраивается под законы каждой.", "m": "6P = 4P + «PR и политика» — Котлер. Не HR!"}, {"n": 2, "q": "Этапы превращения национальной компании в международную", "c": "#ff6b2c", "h": "Компания не становится международной за один день. Сначала товар случайно уезжает за границу, потом экспорт идёт постоянно, а в конце компания видит весь мир как один большой рынок. Это как лестница из 5 ступенек.", "d": "Национальная компания становится международной постепенно, проходя пять последовательных этапов.", "b": [["5 этапов", ["Неявный", "Редкий", "Регулярный", "Доминирующий", "Глобальный"]], ["Признаки ТНК (ООН)", ["Страны", "Доход", "Персонал"]]], "ex": "IKEA: Швеция → соседние страны → весь мир.", "m": "«Не Редко Регулярно Добиваюсь Глобального»"}, {"n": 3, "q": "Концепции международного маркетинга", "c": "#ff6b2c", "h": "Концепция — это взгляд компании на заграницу. Можно думать «там всё как у нас», можно «в каждой стране всё по-своему», а можно «весь мир одинаковый». От этого взгляда зависит, будет ли фирма менять товар под страны.", "d": "Концепция определяет, как фирма относится к зарубежным рынкам: как к продолжению домашнего, как к отдельным рынкам или как к единому миру.", "b": [["3 концепции", ["Расширенного национального рынка", "Многонационального рынка", "Глобального рынка"]]], "ex": "McDonald's меняет меню под страны — полицентризм. Apple продаёт один iPhone всем — геоцентризм.", "m": "Этно — «как дома». Поли — «много стран». Гео — «весь земной шар»."}, {"n": 5, "q": "Международная маркетинговая среда", "c": "#4f8cff", "h": "Маркетинговая среда — это всё, что влияет на работу фирмы в другой стране. Часть фирма может менять сама: цену, рекламу, товар. А часть не может: законы, экономику, культуру чужой страны. Под них остаётся только подстраиваться.", "d": "Маркетинговая среда — факторы, влияющие на работу фирмы за рубежом; делятся на контролируемые и неконтролируемые.", "b": [["Две группы", ["Контролируемые", "Неконтролируемые"]], ["Неконтролируемые факторы", ["Экономика", "Политика", "Право", "Культура"]], ["Политические риски", ["Страновой", "Валютный", "Финансовый", "Военный"]]], "ex": "Компании, работавшие в зоне конфликта, теряли имущество — военный риск.", "m": "Э-П-П-К: экономика, политика, право, культура."}, {"n": 9, "q": "Стратегии выбора рынков и проникновения", "c": "#a46bff", "h": "Есть два главных способа заходить на рынки: аккуратно по одному, как муравей, или сразу везде, как стрекоза. Ещё есть «военные» стратегии против конкурентов и выбор между дорогой или дешёвой ценой.", "d": "Стратегия выбора рынков определяет, в каком порядке и с каким напором фирма заходит в зарубежные страны.", "b": [["Выбор рынков", ["«Муравей»", "«Стрекоза»", "«Лазерный луч»"]], ["«Военные» стратегии", ["Плацдарм", "Фронтальный штурм", "«Тиски»", "«Грабли»", "«Партизанская война»"]], ["Цена × затраты на маркетинг", ["Интенсивное", "Выборочное", "Широкое", "Пассивное"]]], "ex": "IKEA заходила в страны по очереди — «муравей».", "m": "Высокая цена — маленький рынок, низкая — большой."}, {"n": 11, "q": "Матрица БКГ", "c": "#19c3a6", "h": "Матрица БКГ — это таблица 2 на 2, которая показывает, какие товары кормят компанию, а в какие стоит вкладывать. Смотрят на две вещи: насколько мы сильны против лидера и как быстро растёт рынок.", "d": "Матрица Бостонской консалтинговой группы определяет приоритеты развития товаров: деньги из сильных товаров на зрелых рынках вкладывают в растущие.", "b": [["Оси", ["По X", "По Y", "Круг"]], ["4 квадранта", ["Звёзды", "Дойные коровы", "Трудные дети", "Собаки"]]], "ex": "Доля 15%, у лидера 30%, рост 14%: 15 ÷ 30 = 0,5 при росте >10% → трудный ребёнок.", "m": "Коровы кормят звёзд и детей, собак — на выход."}, {"n": 12, "q": "Матрица Ансоффа", "c": "#19c3a6", "h": "Матрица Ансоффа отвечает на вопрос, как компании расти. Можно продавать больше старого товара старым клиентам, искать новых клиентов, придумывать новый товар или делать всё новое сразу.", "d": "Матрица Ансоффа («товар — рынок») описывает стратегии роста по новизне товара и рынка.", "b": [["4 стратегии", ["Проникновение", "Развитие рынка", "Развитие товара", "Диверсификация"]]], "ex": "Valve: распродажи Steam — проникновение; Steam China — развитие рынка; Steam Deck — развитие товара; VR-шлемы — диверсификация.", "m": "«Где новое, то и развиваем». Всё новое — диверсификация."}, {"n": 15, "q": "Стандартизация и адаптация товара", "c": "#ff4f8b", "h": "Главный вопрос товара за рубежом: продавать везде одно и то же или переделывать под каждую страну. Одинаковый товар дешевле, а переделанный лучше продаётся у местных.", "d": "Стандартизация — продажа за рубежом того же товара, что и дома; адаптация — изменение товара под условия страны.", "b": [["Стандартизация", ["Плюсы", "Минус", "Когда", "Двойная"]], ["Адаптация", ["Причины", "Двойная"]]], "ex": "Coca-Cola почти одинакова везде — стандартизация. McDonald's в Индии без говядины — адаптация.", "m": "Стандартизация — «один для всех». Адаптация — «каждому своё»."}, {"n": 19, "q": "Формы выхода на рынок и организация ММ в фирме", "c": "#f5b82e", "h": "Выйти на зарубежный рынок можно по-разному: от «продали посреднику дома» до «построили свой завод за границей». Чем больше вкладываешь, тем больше контроля, но и тем больше можешь потерять.", "d": "Форма выхода — способ, которым фирма присутствует на зарубежном рынке; чем больше вложений, тем больше контроля и риска.", "b": [["Формы выхода (по росту риска)", ["Косвенный экспорт", "Прямой экспорт", "Лицензия", "Франчайзинг", "Совместное предприятие", "Своё производство"]], ["Кто занимается внутри фирмы", ["Экспортный отдел", "Международный филиал", "ТНК"]]], "ex": "McDonald's растёт через франчайзинг.", "m": "Экспорт → лицензия → СП → свой завод: чем дальше, тем больше контроля и риска."}], K='mm-sos', S={i:0,done:{}};
+try{var s=JSON.parse(localStorage.getItem(K)||'null'); if(s) S=s;}catch(e){}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+var $=function(x){return document.getElementById(x)}, left=480, run=true;
+function dots(){var w=$('dots'); w.innerHTML=''; D.forEach(function(t,i){var b=document.createElement('button'); b.type='button'; b.textContent=t.n;
+  b.className=(i===S.i?'on ':'')+(S.done[i]?'done':''); b.onclick=function(){show(i)}; w.appendChild(b);});}
+function show(i){S.i=i; save(); var t=D[i]; $('fin').hidden=true; $('main').hidden=false;
+  document.documentElement.style.setProperty('--tc',t.c);
+  $('meta').textContent='Билет '+t.n+' · '+(i+1)+' из '+D.length; $('q').textContent=t.q; $('h').textContent=t.h; $('d').textContent=t.d;
+  $('ex').textContent=t.ex; $('m').textContent=t.m;
+  $('b').innerHTML=''; t.b.forEach(function(bl){var d=document.createElement('div'); d.className='blk'; var h=document.createElement('b'); h.textContent=bl[0]; d.appendChild(h);
+    var c=document.createElement('div'); c.className='chips'; bl[1].forEach(function(x){var s=document.createElement('span'); s.className='chip'; s.textContent=x; c.appendChild(s)}); d.appendChild(c); $('b').appendChild(d);});
+  left=480; run=true; $('tp').textContent='⏸'; tick(); dots(); window.scrollTo(0,0);}
+function tick(){var m=Math.floor(Math.abs(left)/60), s=Math.abs(left)%60; $('clock').textContent=(left<0?'+':'')+m+':'+(s<10?'0':'')+s; $('clock').classList.toggle('late',left<0);}
+setInterval(function(){ if(run&&!$('main').hidden){ left--; tick(); } },1000);
+$('tp').onclick=function(){run=!run; this.textContent=run?'⏸':'▶';};
+$('tr').onclick=function(){left=480; tick();};
+$('next').onclick=function(){S.done[S.i]=1; save(); if(S.i<D.length-1) show(S.i+1); else {dots(); $('main').hidden=true; $('fin').hidden=false;}};
+$('again').onclick=function(){S={i:0,done:{}}; save(); show(0);};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Enter') $('next').click(); if(e.key==='ArrowLeft'&&S.i>0) show(S.i-1);});
+show(S.i||0);
+</script></body></html>
